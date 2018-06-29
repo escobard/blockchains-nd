@@ -23,3 +23,18 @@
 	- Medicine: more secure and accurate patient information.
 	- Finance: Can freely send money around the world.
 	- Government: Can be made more secure and transparent on the blockchain.
+
+### Financial Transactions:
+
+#### Problems blockchains aim to solve, and solutions it provides
+
+	- A trusted currency with intristic value, is the main purpose of cryptocurrencies.
+	- We created the banking system to keep currencies secure, and centralized to maintain its value.
+		- banks helped establish the confidence needed to make safe transactions.
+		- they keep a record of all transactions we keep records of, in a transaction sheet / db called the ledger.
+		- These are kept to ensure transaction validity, and prevent fraud.
+	- The bank system has a few major problems, which cryptocurrencies aim to address:
+		- Fees - bank takes tons of fees.
+		- Not just banks handle our transactions, many companies can be involved which causes even more fees.
+		- this causes delays and additional fees when sending money to other countries or continents.
+	- This is why Bitcoin was created, in an attempt to address the problems above.
