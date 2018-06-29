@@ -1,0 +1,25 @@
+## Lesson 2 
+
+### Influence of Blockchain
+
+ - blockchains enable us to share data in a completely new way.
+ - allows us to make transactions in a way that is more secure, transparent, and cheaper than previously
+ - we can do all of this without large companies collecting our data like they do today
+
+#### Personal Identity
+
+	- we all want to keep our identity safe, to secure our privacy
+	- large coorporations keep all our data, which has major security risks which jeapordize our privacy.
+	- these databases being hacked reveal our private information.
+
+
+#### Supply Chain
+	- decentralized networks do not contain data in a single centralized database - its shared with everyone and verified by the network 
+	- makes data breaches nearly impossible
+	- Supply chain management is de-centralized and tracked by many companies, making the management of inventory messy, and often innacurate.
+
+#### Impact on other industries
+
+	- Medicine: more secure and accurate patient information.
+	- Finance: Can freely send money around the world.
+	- Government: Can be made more secure and transparent on the blockchain.
