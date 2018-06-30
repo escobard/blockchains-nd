@@ -38,3 +38,15 @@
 		- Not just banks handle our transactions, many companies can be involved which causes even more fees.
 		- this causes delays and additional fees when sending money to other countries or continents.
 	- This is why Bitcoin was created, in an attempt to address the problems above.
+
+### Simple Transactions:
+
+#### What are the issues we face?
+
+- Sending money from one person to another:
+	- Goes through the senders bank, the receivers bank, then the receiver.
+	- Each involved party needs to keep track of their own ledger
+	- Parties need to pass along information
+	- Risk of not being in sync.
+	- ledger is where transaction details are involved.
+- 
