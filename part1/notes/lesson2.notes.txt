@@ -49,4 +49,19 @@
 	- Parties need to pass along information
 	- Risk of not being in sync.
 	- ledger is where transaction details are involved.
-- 
+
+### Blockchains, Bitcoin and Crypto
+
+- Transactions with cryptocurrencies have a shared ledger.
+	- Removes the needs for bansk to help manage our transaction.
+	- Up to date, out in the open, and verified by everyone. 
+	- This is whats known as a trustless system.
+	- The system itself handles the security necessary to handle the transactions.
+- The security is ensured by using cryptography, which encrypts all transaction blocks. 
+- Cryptocurrency - a system that uses cryptography to ensure security to its value, is called a cryptocurrency.
+- Bitcoin is a decentralized digital cryptocurrency powered by a shared digital ledger known as the blockchain.
+- Any blockchain is in essence a shared digital ledger
+- Each transaction is grouped together in something known as a block.
+	- Each block is verified by other members in the networks.
+	- These members are known as nodes.
+	- Once our block has been verified, it is added to the rest of the blocks, forming a blockchain.
