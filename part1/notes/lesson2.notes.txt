@@ -97,6 +97,87 @@
 	basis, and nodes can leave and rejoin the network at will, accepting the longest
 	proof-of-work chain as proof of what happened while they were gone.
 
-### Bitcoin WHitepaper:
+### Bitcoin Whitepaper:
 
-- 
+#### Introduction
+
+	- talks about how financial systems act as third parties to establish trust
+	- reversible payments: are the ability to dispute and change a transaction 
+	- reversible payments increase the need of third party usage
+	- without access to this information, the company would not have the ability to reverse a transaction
+	- adds a lot of overhead which results in higher costs
+	- they propose a solution to this problem
+	- an electronic payment system based on cryptography that could establish a trustless system that would allow anyone to make transactions without needing a third party
+
+#### Transactions
+
+	- describes how transactions will happen in the network.
+	- describe how banks have solved the double spending problem: double spending is when users pay the same amount of money more than once.
+	- for a financial system to work properly, this can't be possible
+	- banks defend from double spending by keeping track of all transactions that have ever taken place
+	- banks know when double spending is occurring, due to keeping track of all transaction data
+	- instead of having a bank keep track of transaction data, we give public access to this data for all users, with crytpocurrency blockchains
+
+#### Timestamping
+
+	- every bitcoin transaction that takes place, includes a timestamp of when it happened.
+	- essentially if someone tries to cheat the system and send money twice, they wont be able to
+	- the timestamp ensures this by keeping track of WHEN a transaction took place.
+
+#### Proof of Work
+
+	- there needs to be ways to validate information to ensure trust
+	- there needs to be rules, ways to make decisions, and ways to validate transactions
+	- in bitcoin, group concensus drives decisions and the way to make these decisions is proof of work
+	- proof of work at a high level is the idea that if you've done work to figure something out and the majority of people agree with you, then it must be right
+	- majority rules in the blockchain
+	- as long as we can trust the majority of the network is honest, we can trust that the transaction is accurate
+	- if the majority of the chains are innacurate, they can take control of a blockchain network. This is known as a 51% attack, which will be covered later.
+
+#### Network
+
+	1) New transactions are broadcast to all nodes.
+	2) Each node collects new transactions into a block.
+	3) Each node works on finding a difficult proof-of-work for its block.
+	4) When a node finds a proof-of-work, it broadcasts the block to all nodes.
+	5) Nodes accept the block only if all transactions in it are valid and not already spent
+	6) Nodes express their acceptance of the block by working on creating the next block in the chain, using the hash of the accepted block as the previous hash
+
+#### Incentive
+
+	- Drive the network to validate transactions through mining.
+	- Mining is how the blockchain utilizes peer-to-peer networks to validate transactions.
+	- After mining a block, the miner is awarded a small amount of bitcoin for their effort.
+	- Like gold miners that spend time and money to find gold, uses electricity and CPU time to earn bitcoin.
+	- The incentive to mine these coins keeps the miners working, which in turn keeps the network running.
+
+#### Reclaiming Disk Space
+
+	- Lots of transactions means lots of data, which affects the speed of the network.
+	- To ensure data optimal efficiency, the network stores data in what is called a hash, which stores encrypted data in a few characters, ensuring that each transaction no matter how large is stored in 64 characters.
+	- These hashes can be used to decrypt a block if needed, which ensures that the data is compacted and small to save disk space.
+
+#### Simple payment verification
+
+	- Normally to test a transaction we need access to the entire ledger.
+	- This means you would have to download the transaction records for the ENTIRE network.
+	- Simple payment verification describes a way to verify the transaction without needing to access the entire ledger.
+	- By cross referencing and checking the previous block's hash, it ensures the authenticity.
+
+#### Combining and Splitting value
+
+	- Individually processing coins is possible, but it isn't very efficient to make a new transaction for every cent in the transfer.
+	- To deal with this, bitcoin makes it possible to split, or recombine the value of coins.
+	- This allows us to break down a large coin into many parts, or for a small coin to be combined.
+	- Similar to a cashier, where change is expected in return for a monetary transaction, or when change is expected in splitting larger bills.
+
+#### Privacy
+
+	- To ensure privacy, bitcoin changes the flow of information in comparison to a bank
+	- Your identity is used to varify transactions, which can't be hidden from the public.
+	- Bitcoin hides your identity within transactions, ensuring that all transactions are anonymous.
+
+#### Calculations:
+	
+	- Won't be reviewed in the program, but in a nutshell this section outlines the complex mathematics used to ensure the security of the blockchain.
+	
