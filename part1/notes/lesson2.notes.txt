@@ -250,4 +250,17 @@
 	- can create a wallet with a 12 word seed.
 	- salt can be thought of as random bits of data you can put in with your passphrase.
 	- think of salt as sprinkling data on your passphrase, like salt over your food, to increase its 'flavor' or complexity.
-	- 
+
+### Restore wallet
+
+#### With wallet seeds / words
+
+	- Use these with Electrum, to restore a lost wallet.
+	- benefits are that its much simpler
+	- cons include anyone who discovers these will have access to your wallet
+
+#### Private / Public keys
+
+	- Importing: adds a new private key from the source wallet to the new wallet - any bitcoins assigned to original private key now exist in both wallets.
+	- Sweeping: adds a new private key from the source wallet into destination wallet, all the bitcoins from previous wallet are swept from the source wallet into the new wallet.
+
