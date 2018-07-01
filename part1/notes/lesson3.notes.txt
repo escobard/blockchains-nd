@@ -1,0 +1,34 @@
+## Intro to Wallet types
+	
+	- wallets actually contain keys, not coins.
+	- The term wallet is a bit misleading.
+	- they can be thought of more as keychains.
+
+### Non-Deterministic
+
+	- These wallets are simply collections of randomly generated private keys.
+	- Private keys are randomly generated between 1 and 2^256
+
+### Deterministic wallet
+
+#### Sequential deterministic
+
+	- these wallets contain private keys that are derived sequentially from a single seed and can be traced back to that seed.
+	- Private keys are generated with sha256(seed+n), where seed = 128 random bits
+
+#### Hierarchical Deterministic Wallet
+
+	- HD wallet for short.
+	- This is the most complex form of sequential deterministic wallets.
+	- These wallets are created in a tree based hirerachy, where the parent keys can have children keys, and grandchildren keys.
+	- 
+
+#### Non-Deterministic
+
+	- These wallets are simply collections of randomly generated private keys.
+	- Private key = randomly generated between 1 and 2^256
+
+#### Mnemonic Words
+
+	- were created to make it easier for the user to remember how to recover their account.
+	- 
