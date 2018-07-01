@@ -180,4 +180,28 @@
 #### Calculations:
 	
 	- Won't be reviewed in the program, but in a nutshell this section outlines the complex mathematics used to ensure the security of the blockchain.
+
+### Blockchain Core Components
+
+#### Block
 	
+	- small packages of data including transaction information
+	- each given a unique fingerprints, which is known as hashing
+	- hash is a digital fingerprint for information.
+	- hashes are created by passing data through a hash algorythm.
+	- this algorythm takes data and encrypts it into a hash.
+	- you use this hash value whenever you want to search for the original information
+	- similar to social security numbers, phone numbers or addresses. 
+	- each new block contains the hash value of the block before it.
+	- this links blocks together, which is what builds the blockchain.
+
+### Peer to peer networks
+
+	- These connect the members of the network with one another.
+	- This allows them to send information between each other.
+	- The bitcoin and the blockchain uses this idea to create and validate new blocks.
+	- allows anyone in the network to send transactions to anyone else
+	- it allows anyone on the network to validate any blocks and transactions that happen.
+	- this allows the network to be controlled by the members rather than any large centralized system like a bank.
+	- concensus is the term of how members in the network come to an agreement to make decisions.
+
