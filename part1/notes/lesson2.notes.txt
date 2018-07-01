@@ -228,3 +228,26 @@
 	- The public key is ran through the Secure Hash Algoyrthm (SHA-256), and the RIPEMD160 algrorythm.
 	- This is then ran through a BASE58CHECK algorythm, removing similar characters, like 0 to O or 1 to I.
 	- 
+
+#### Wallet generation seed:
+	
+	- these 12 words are needed to recover your wallet if lost.
+
+### Mnemonic Devices
+
+#### Deterministic Wallets
+
+	- A wallet that is created with the seed to generate address, public and private.
+	- Improvement over non-deterministic wallets (old versions) where one had to keep track of public and private keys.
+	- These were introduced as the standard during Bitcoin Improvement Proposal (BIP) v39.
+
+#### Bitcoin Improvement Proposals
+
+	- proposals introduced to drive improvements to the bitcoin protocols.
+
+#### Create mnemonic wallet - https://brainwallet.io/
+
+	- can create a wallet with a 12 word seed.
+	- salt can be thought of as random bits of data you can put in with your passphrase.
+	- think of salt as sprinkling data on your passphrase, like salt over your food, to increase its 'flavor' or complexity.
+	- 
