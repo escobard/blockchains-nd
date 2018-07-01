@@ -195,7 +195,7 @@
 	- each new block contains the hash value of the block before it.
 	- this links blocks together, which is what builds the blockchain.
 
-### Peer to peer networks
+#### Peer to peer networks
 
 	- These connect the members of the network with one another.
 	- This allows them to send information between each other.
@@ -205,3 +205,26 @@
 	- this allows the network to be controlled by the members rather than any large centralized system like a bank.
 	- concensus is the term of how members in the network come to an agreement to make decisions.
 
+### Simple Blockchain transactions
+
+#### Wallets
+
+	- Wallet address: used to communicate between wallets, send funds, transactions, etc.
+	- Wallet addresses are not communicated with transaction hashes, and are hidden from the public.
+	- Wallets store keys, they do not contain coins or any currency, they store your public and private keys - think of them as keychains instead of a traditional wallet.
+
+#### Keys
+	
+	- Public keys can be shared.
+	- Public keys are created USING private keys and a secure algorythm.
+	- Once the public key is created, it shouldn't be possible to determine what the original public key was.
+	- The algorythm that creates the public key is known as the one way elliptic curve digital signature (ECDSA)
+	- Private keys should not be shared, and should be handled with extreme caution.
+
+#### Address 
+	
+	- Like a public address, tells users where to send money to.
+	- Addresses are created by running the PUBLIC key through an algorythm to create the address.
+	- The public key is ran through the Secure Hash Algoyrthm (SHA-256), and the RIPEMD160 algrorythm.
+	- This is then ran through a BASE58CHECK algorythm, removing similar characters, like 0 to O or 1 to I.
+	- 
