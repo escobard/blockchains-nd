@@ -31,4 +31,28 @@
 #### Mnemonic Words
 
 	- were created to make it easier for the user to remember how to recover their account.
-	- 
+
+## Private Keys
+
+- None of these keys are actually stored on the blockchain, these are instead presented to the blockchain.
+- A private key is just a 256-bit random number between 1 and 2^256 - this is a huge number.
+- Its best to use an industry established private key generator to ensure private key uniqueness.
+- private keys generate public keys and wallet addreses which allow us to interact with the blockchain network and other users in the network.
+
+### Different formats include:
+	
+	- all still represent the same 256 private key number, encoded differently
+	- Hex: 256 character number
+	- Wallet Import Format (WIF) with (BASE58Check): 
+	- WIF-Compressed (Base58Check added suffix 0x01 before encoding)
+
+### Creating private keys
+
+#### Bitaddress.org 
+	- create a randomly generated number based on the OS's random number generator, used for private keys.
+	- Move the mouse around to create characters / uniqueness.
+	- Its recommended to create a private key offline with this creator, in order to ensure security.
+
+#### Electrum
+	
+	- you can export your private keys in json or CSV form
