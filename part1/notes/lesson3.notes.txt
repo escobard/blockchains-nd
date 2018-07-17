@@ -8,13 +8,24 @@
 
 	- These wallets are simply collections of randomly generated private keys.
 	- Private keys are randomly generated between 1 and 2^256
+		- These wallets are simply collections of randomly generated private keys.
+	- Private key = randomly generated between 1 and 2^256
+	- created during the first implementation of the bitcoin client
+	- keys generated randomly
+	- no way to determine how they were derived
+	- its best practice to genereate new wallet addres for each transaction so nobody can link back between our addresses and the transaction
+	- due to this a large amount of private keys are created
+	- has a collection of private keys, which due to how the wallet address is seeded is more secure than other wallets for back end services
 
 ### Deterministic wallet
+
+	- all private, public keys and wallet address can be traced back to the seed 
 
 #### Sequential deterministic
 
 	- these wallets contain private keys that are derived sequentially from a single seed and can be traced back to that seed.
 	- Private keys are generated with sha256(seed+n), where seed = 128 random bits
+	- These types of waallets were first introduced in Electrum
 
 #### Hierarchical Deterministic Wallet
 
@@ -23,10 +34,6 @@
 	- These wallets are created in a tree based hirerachy, where the parent keys can have children keys, and grandchildren keys.
 	- 
 
-#### Non-Deterministic
-
-	- These wallets are simply collections of randomly generated private keys.
-	- Private key = randomly generated between 1 and 2^256
 
 #### Mnemonic Words
 
