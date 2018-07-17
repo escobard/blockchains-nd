@@ -21,10 +21,32 @@
 ### Mainnet
 	- primary bitcoin transactions take place on this network
 	- live transactions, has value and contains peers, slowest network
+	- vs Testnet:
+		- Production
+		- Public
+		- Peers - Entire network
+		- Size - 200GB
+		- Block creation - 10 minutes
+		- Value - Full Value
+		- Public key prefix: 1
+		- Block difficulty - Full - Self adjusted dependent of block creation net
 
 ### Testnet
 	- for testing, no value, has peers
+	- alternative bitcoin blockchain which helps the testing of applications
 	- creating new blocks, and validating new blockchains takes time - slows down the network
+	- People have hoarded test coins:
+		- it makes it more difficult for developers to continue testing with the network.
+		- Because of this, developers have started from scratch to wipe the network 
+	- vs Mainnet:
+		- testing
+		- Public
+		- Peers - Active testers
+		- Size - 14GB
+		- Block creation - 10 minutes
+		- Value - No value
+		- public key prefix: **m** or **n**
+		- block difficulty - Half of mainnet, takes less computing power
 
 ### Regnet - Regression Test Mode Network
 	- for testing, no value, no peers
