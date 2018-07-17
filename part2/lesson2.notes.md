@@ -18,12 +18,14 @@
 
 ## Bitcoin Core - Networks
 
+	- will be using 3 networks to build applications with this course for bitcoin
+
 ### Mainnet
 	- primary bitcoin transactions take place on this network
 	- live transactions, has value and contains peers, slowest network
 	- vs Testnet:
-		- Production
-		- Public
+		- Purpose - Production
+		- Environment - Public
 		- Peers - Entire network
 		- Size - 200GB
 		- Block creation - 10 minutes
@@ -39,8 +41,17 @@
 		- it makes it more difficult for developers to continue testing with the network.
 		- Because of this, developers have started from scratch to wipe the network 
 	- vs Mainnet:
-		- testing
-		- Public
+		- Purpose - testing
+		- Environment - Public
+		- Peers - Active testers
+		- Size - 14GB
+		- Block creation - 10 minutes
+		- Value - No value
+		- public key prefix: **m** or **n**
+		- block difficulty - Half of mainnet, takes less computing power
+	- vs Regnet:
+		- Purpose - testing
+		- Environment - Public
 		- Peers - Active testers
 		- Size - 14GB
 		- Block creation - 10 minutes
@@ -51,3 +62,12 @@
 ### Regnet - Regression Test Mode Network
 	- for testing, no value, no peers
 	- not on a network, takes almost no time
+	vs Regnet
+		- Purpose - testing
+		- Environment - Private, completely local to your own computer
+		- Peers - No peers
+		- Size - 0GB
+		- Block creation - instantly, since there is no block validation
+		- Value - No value
+		- public key prefix: **m** or **n**
+		- block difficulty - no difficulty
