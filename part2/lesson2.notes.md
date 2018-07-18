@@ -87,3 +87,10 @@
 			- `#testnet=1`
 		- the bitcoin core client must be shut down in order for this to work.
 		- accessing the regnet is exactly the same as with bitcoin
+
+## Bitcoin core - test network coin faucet
+	- faucets come and go, but we can find current faucets for testnet here: https://testnet.manu.backend.hamburg/faucet
+	- copy your address into the input to get coins
+
+## Bitcoin core - transactions
+	- refer to 
