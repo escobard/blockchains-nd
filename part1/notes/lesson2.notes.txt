@@ -1,0 +1,266 @@
+## Lesson 2 
+
+### Influence of Blockchain
+
+ - blockchains enable us to share data in a completely new way.
+ - allows us to make transactions in a way that is more secure, transparent, and cheaper than previously
+ - we can do all of this without large companies collecting our data like they do today
+
+#### Personal Identity
+
+	- we all want to keep our identity safe, to secure our privacy
+	- large coorporations keep all our data, which has major security risks which jeapordize our privacy.
+	- these databases being hacked reveal our private information.
+
+
+#### Supply Chain
+	- decentralized networks do not contain data in a single centralized database - its shared with everyone and verified by the network 
+	- makes data breaches nearly impossible
+	- Supply chain management is de-centralized and tracked by many companies, making the management of inventory messy, and often innacurate.
+
+#### Impact on other industries
+
+	- Medicine: more secure and accurate patient information.
+	- Finance: Can freely send money around the world.
+	- Government: Can be made more secure and transparent on the blockchain.
+
+### Financial Transactions:
+
+#### Problems blockchains aim to solve, and solutions it provides
+
+	- A trusted currency with intristic value, is the main purpose of cryptocurrencies.
+	- We created the banking system to keep currencies secure, and centralized to maintain its value.
+		- banks helped establish the confidence needed to make safe transactions.
+		- they keep a record of all transactions we keep records of, in a transaction sheet / db called the ledger.
+		- These are kept to ensure transaction validity, and prevent fraud.
+	- The bank system has a few major problems, which cryptocurrencies aim to address:
+		- Fees - bank takes tons of fees.
+		- Not just banks handle our transactions, many companies can be involved which causes even more fees.
+		- this causes delays and additional fees when sending money to other countries or continents.
+	- This is why Bitcoin was created, in an attempt to address the problems above.
+
+### Simple Transactions:
+
+#### What are the issues we face?
+
+- Sending money from one person to another:
+	- Goes through the senders bank, the receivers bank, then the receiver.
+	- Each involved party needs to keep track of their own ledger
+	- Parties need to pass along information
+	- Risk of not being in sync.
+	- ledger is where transaction details are involved.
+
+### Blockchains, Bitcoin and Crypto
+
+- Transactions with cryptocurrencies have a shared ledger.
+	- Removes the needs for bansk to help manage our transaction.
+	- Up to date, out in the open, and verified by everyone. 
+	- This is whats known as a trustless system.
+	- The system itself handles the security necessary to handle the transactions.
+- The security is ensured by using cryptography, which encrypts all transaction blocks. 
+- Cryptocurrency - a system that uses cryptography to ensure security to its value, is called a cryptocurrency.
+- Bitcoin is a decentralized digital cryptocurrency powered by a shared digital ledger known as the blockchain.
+- Any blockchain is in essence a shared digital ledger
+- Each transaction is grouped together in something known as a block.
+	- Each block is verified by other members in the networks.
+	- These members are known as nodes.
+	- Once our block has been verified, it is added to the rest of the blocks, forming a blockchain.
+
+### History of Bitcoin
+
+#### Supporting Material:
+
+- https://www.anf.es/pdf/Haber_Stornetta.pdf (time stamp a digital document)
+- https://bitcoin.org/bitcoin.pdf (bitcoin whitepaper)
+
+- How to timestamp in a nutshell:
+	- developed a new way to verify document by using timestamps.
+	- these timestamps are also linked to the previous document
+	- explains how it can form a chain of validated up to date documents
+	- this became the precursor to the idea of blockchains
+
+- Bitcoin whitepaper in a nutshell:
+	- Explains how peer-to-peer transactions were introduced into the world and their impact
+	- a pure peer-to-peer transaction that allows online payments from one party to another without going through a financial institution
+	- A purely peer-to-peer version of electronic cash would allow online
+	payments to be sent directly from one party to another without going through a
+	financial institution. Digital signatures provide part of the solution, but the main
+	benefits are lost if a trusted third party is still required to prevent double-spending.
+	We propose a solution to the double-spending problem using a peer-to-peer network.
+	The network timestamps transactions by hashing them into an ongoing chain of
+	hash-based proof-of-work, forming a record that cannot be changed without redoing
+	the proof-of-work. The longest chain not only serves as proof of the sequence of
+	events witnessed, but proof that it came from the largest pool of CPU power. As
+	long as a majority of CPU power is controlled by nodes that are not cooperating to
+	attack the network, they'll generate the longest chain and outpace attackers. The
+	network itself requires minimal structure. Messages are broadcast on a best effort
+	basis, and nodes can leave and rejoin the network at will, accepting the longest
+	proof-of-work chain as proof of what happened while they were gone.
+
+### Bitcoin Whitepaper:
+
+#### Introduction
+
+	- talks about how financial systems act as third parties to establish trust
+	- reversible payments: are the ability to dispute and change a transaction 
+	- reversible payments increase the need of third party usage
+	- without access to this information, the company would not have the ability to reverse a transaction
+	- adds a lot of overhead which results in higher costs
+	- they propose a solution to this problem
+	- an electronic payment system based on cryptography that could establish a trustless system that would allow anyone to make transactions without needing a third party
+
+#### Transactions
+
+	- describes how transactions will happen in the network.
+	- describe how banks have solved the double spending problem: double spending is when users pay the same amount of money more than once.
+	- for a financial system to work properly, this can't be possible
+	- banks defend from double spending by keeping track of all transactions that have ever taken place
+	- banks know when double spending is occurring, due to keeping track of all transaction data
+	- instead of having a bank keep track of transaction data, we give public access to this data for all users, with crytpocurrency blockchains
+
+#### Timestamping
+
+	- every bitcoin transaction that takes place, includes a timestamp of when it happened.
+	- essentially if someone tries to cheat the system and send money twice, they wont be able to
+	- the timestamp ensures this by keeping track of WHEN a transaction took place.
+
+#### Proof of Work
+
+	- there needs to be ways to validate information to ensure trust
+	- there needs to be rules, ways to make decisions, and ways to validate transactions
+	- in bitcoin, group concensus drives decisions and the way to make these decisions is proof of work
+	- proof of work at a high level is the idea that if you've done work to figure something out and the majority of people agree with you, then it must be right
+	- majority rules in the blockchain
+	- as long as we can trust the majority of the network is honest, we can trust that the transaction is accurate
+	- if the majority of the chains are innacurate, they can take control of a blockchain network. This is known as a 51% attack, which will be covered later.
+
+#### Network
+
+	1) New transactions are broadcast to all nodes.
+	2) Each node collects new transactions into a block.
+	3) Each node works on finding a difficult proof-of-work for its block.
+	4) When a node finds a proof-of-work, it broadcasts the block to all nodes.
+	5) Nodes accept the block only if all transactions in it are valid and not already spent
+	6) Nodes express their acceptance of the block by working on creating the next block in the chain, using the hash of the accepted block as the previous hash
+
+#### Incentive
+
+	- Drive the network to validate transactions through mining.
+	- Mining is how the blockchain utilizes peer-to-peer networks to validate transactions.
+	- After mining a block, the miner is awarded a small amount of bitcoin for their effort.
+	- Like gold miners that spend time and money to find gold, uses electricity and CPU time to earn bitcoin.
+	- The incentive to mine these coins keeps the miners working, which in turn keeps the network running.
+
+#### Reclaiming Disk Space
+
+	- Lots of transactions means lots of data, which affects the speed of the network.
+	- To ensure data optimal efficiency, the network stores data in what is called a hash, which stores encrypted data in a few characters, ensuring that each transaction no matter how large is stored in 64 characters.
+	- These hashes can be used to decrypt a block if needed, which ensures that the data is compacted and small to save disk space.
+
+#### Simple payment verification
+
+	- Normally to test a transaction we need access to the entire ledger.
+	- This means you would have to download the transaction records for the ENTIRE network.
+	- Simple payment verification describes a way to verify the transaction without needing to access the entire ledger.
+	- By cross referencing and checking the previous block's hash, it ensures the authenticity.
+
+#### Combining and Splitting value
+
+	- Individually processing coins is possible, but it isn't very efficient to make a new transaction for every cent in the transfer.
+	- To deal with this, bitcoin makes it possible to split, or recombine the value of coins.
+	- This allows us to break down a large coin into many parts, or for a small coin to be combined.
+	- Similar to a cashier, where change is expected in return for a monetary transaction, or when change is expected in splitting larger bills.
+
+#### Privacy
+
+	- To ensure privacy, bitcoin changes the flow of information in comparison to a bank
+	- Your identity is used to varify transactions, which can't be hidden from the public.
+	- Bitcoin hides your identity within transactions, ensuring that all transactions are anonymous.
+
+#### Calculations:
+	
+	- Won't be reviewed in the program, but in a nutshell this section outlines the complex mathematics used to ensure the security of the blockchain.
+
+### Blockchain Core Components
+
+#### Block
+	
+	- small packages of data including transaction information
+	- each given a unique fingerprints, which is known as hashing
+	- hash is a digital fingerprint for information.
+	- hashes are created by passing data through a hash algorythm.
+	- this algorythm takes data and encrypts it into a hash.
+	- you use this hash value whenever you want to search for the original information
+	- similar to social security numbers, phone numbers or addresses. 
+	- each new block contains the hash value of the block before it.
+	- this links blocks together, which is what builds the blockchain.
+
+#### Peer to peer networks
+
+	- These connect the members of the network with one another.
+	- This allows them to send information between each other.
+	- The bitcoin and the blockchain uses this idea to create and validate new blocks.
+	- allows anyone in the network to send transactions to anyone else
+	- it allows anyone on the network to validate any blocks and transactions that happen.
+	- this allows the network to be controlled by the members rather than any large centralized system like a bank.
+	- concensus is the term of how members in the network come to an agreement to make decisions.
+
+### Simple Blockchain transactions
+
+#### Wallets
+
+	- Wallet address: used to communicate between wallets, send funds, transactions, etc.
+	- Wallet addresses are not communicated with transaction hashes, and are hidden from the public.
+	- Wallets store keys, they do not contain coins or any currency, they store your public and private keys - think of them as keychains instead of a traditional wallet.
+
+#### Keys
+	
+	- Public keys can be shared.
+	- Public keys are created USING private keys and a secure algorythm.
+	- Once the public key is created, it shouldn't be possible to determine what the original public key was.
+	- The algorythm that creates the public key is known as the one way elliptic curve digital signature (ECDSA)
+	- Private keys should not be shared, and should be handled with extreme caution.
+
+#### Address 
+	
+	- Like a public address, tells users where to send money to.
+	- Addresses are created by running the PUBLIC key through an algorythm to create the address.
+	- The public key is ran through the Secure Hash Algoyrthm (SHA-256), and the RIPEMD160 algrorythm.
+	- This is then ran through a BASE58CHECK algorythm, removing similar characters, like 0 to O or 1 to I.
+	- 
+
+#### Wallet generation seed:
+	
+	- these 12 words are needed to recover your wallet if lost.
+
+### Mnemonic Devices
+
+#### Deterministic Wallets
+
+	- A wallet that is created with the seed to generate address, public and private.
+	- Improvement over non-deterministic wallets (old versions) where one had to keep track of public and private keys.
+	- These were introduced as the standard during Bitcoin Improvement Proposal (BIP) v39.
+
+#### Bitcoin Improvement Proposals
+
+	- proposals introduced to drive improvements to the bitcoin protocols.
+
+#### Create mnemonic wallet - https://brainwallet.io/
+
+	- can create a wallet with a 12 word seed.
+	- salt can be thought of as random bits of data you can put in with your passphrase.
+	- think of salt as sprinkling data on your passphrase, like salt over your food, to increase its 'flavor' or complexity.
+
+### Restore wallet
+
+#### With wallet seeds / words
+
+	- Use these with Electrum, to restore a lost wallet.
+	- benefits are that its much simpler
+	- cons include anyone who discovers these will have access to your wallet
+
+#### Private / Public keys
+
+	- Importing: adds a new private key from the source wallet to the new wallet - any bitcoins assigned to original private key now exist in both wallets.
+	- Sweeping: adds a new private key from the source wallet into destination wallet, all the bitcoins from previous wallet are swept from the source wallet into the new wallet.
+

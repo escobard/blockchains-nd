@@ -1,0 +1,65 @@
+## Intro to Wallet types
+	
+	- wallets actually contain keys, not coins.
+	- The term wallet is a bit misleading.
+	- they can be thought of more as keychains.
+
+### Non-Deterministic
+
+	- These wallets are simply collections of randomly generated private keys.
+	- Private keys are randomly generated between 1 and 2^256
+		- These wallets are simply collections of randomly generated private keys.
+	- Private key = randomly generated between 1 and 2^256
+	- created during the first implementation of the bitcoin client
+	- keys generated randomly
+	- no way to determine how they were derived
+	- its best practice to genereate new wallet addres for each transaction so nobody can link back between our addresses and the transaction
+	- due to this a large amount of private keys are created
+	- has a collection of private keys, which due to how the wallet address is seeded is more secure than other wallets for back end services
+
+### Deterministic wallet
+
+	- all private, public keys and wallet address can be traced back to the seed 
+
+#### Sequential deterministic
+
+	- these wallets contain private keys that are derived sequentially from a single seed and can be traced back to that seed.
+	- Private keys are generated with sha256(seed+n), where seed = 128 random bits
+	- These types of waallets were first introduced in Electrum
+
+#### Hierarchical Deterministic Wallet
+
+	- HD wallet for short.
+	- This is the most complex form of sequential deterministic wallets.
+	- These wallets are created in a tree based hirerachy, where the parent keys can have children keys, and grandchildren keys.
+	- 
+
+
+#### Mnemonic Words
+
+	- were created to make it easier for the user to remember how to recover their account.
+
+## Private Keys
+
+- None of these keys are actually stored on the blockchain, these are instead presented to the blockchain.
+- A private key is just a 256-bit random number between 1 and 2^256 - this is a huge number.
+- Its best to use an industry established private key generator to ensure private key uniqueness.
+- private keys generate public keys and wallet addreses which allow us to interact with the blockchain network and other users in the network.
+
+### Different formats include:
+	
+	- all still represent the same 256 private key number, encoded differently
+	- Hex: 256 character number
+	- Wallet Import Format (WIF) with (BASE58Check): 
+	- WIF-Compressed (Base58Check added suffix 0x01 before encoding)
+
+### Creating private keys
+
+#### Bitaddress.org 
+	- create a randomly generated number based on the OS's random number generator, used for private keys.
+	- Move the mouse around to create characters / uniqueness.
+	- Its recommended to create a private key offline with this creator, in order to ensure security.
+
+#### Electrum
+	
+	- you can export your private keys in json or CSV form
