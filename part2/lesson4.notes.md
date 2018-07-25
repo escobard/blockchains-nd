@@ -12,7 +12,7 @@
 ### Block Body
 	- contains all transactions accepted / signed by the proof of work algorythm (mining)
 
-## Transaction data models - lecture 3
+## Transaction data models - lecture 4
 	- this area is super confusing, will have to review.
 	- a data structure taht encodes a transfer of value from a source of funds called an input to a destination called an output - not too clear, will review later
 	- input: An input is a reference to an output from a previous transaction. Multiple inputs are often listed in a transaction. All of the new transaction's input values (that is, the total coin value of the previous outputs referenced by the new transaction's inputs) are added up, and the total (less any transaction fee) is completely used by the outputs of the new transaction. Previous tx is a hash of a previous transaction. Index is the specific output in the referenced transaction. ScriptSig is the first half of a script.
@@ -36,3 +36,30 @@
 	- transaction input scripts contain unlocking algorythms 
 	- transaction output contains a locking algorythm
 	- if a transaction is valid, this means that the unlocking scrypt has respected the rules within the locking script
+
+## Bitcoin Scripts - lecture 5
+	- script: a list of instructions recorded in each transaction that when executed determines if the transaction is valid and the bitcoins can be spent.
+	- Script: also refers to the language used to handle bitcoin transactions, called script. 
+		- A simple lightweight language designed to be limited in scope and executable on a range of hardware.
+		- stack based language - the data is stored in a simple data structure that looks like a stack.
+		- stores numbers (data constants)
+		- uses opcodes (short for operation codes) to add, remove, access, a stack.
+		- execute from left to right.
+	- bitcoin clients validate transactions by executing unlocking and locking scripts together.
+		- Goes like this:
+		- each transaction's input (sender) has an unlocking script, which reaches out to the locking script's (receiver's) UTXO (bitcoin value) and locks the value. 
+		- the validation algyo takes the unlocking script container in the input, grabs the referencing UTXO (receiver's output) and references the two together to validate the transaction.
+		- Its important to note that the UNLOCKING script (from a transction's input) does not interact in any way with the next transaction. Instead, it UNLOCKS the OUTPUT (utxo) of the PREVIOUS transaction, validating the transaction of the SENDER, and LOCKING the RECEIVER's UTXO after.
+		- expanded description of input / output info in images/part2.lesson4.lecture.5.transaction.expanded.model.png
+
+### Bitcoin Scripts - Unlocking
+	- unlocking script - like a puzzle that sets rules that MUST be met to be validated before a transaction can ocur.
+		- these are unlocked with both the SIGNATURE and the PUBLIC KEY
+	- this is the solution necessary to satisfy the conditions of the locking script, and allows the output to be spent.
+	- scriptSig: contains the script to unlock, and sign an OUTPUT so it can be spent
+
+### Bitcoin Scripts - Locking
+	- this output is payable to whoever can present a signature from they key corresponding to the RECEIVER's public address.
+	- this means that the RECEIVER must provide the solution to the UNLOCKING script (pub key + sig) to VALIDATE the transaction, before it hits an OUTPUT (locking script) from the SENDER.
+	- this means that only brandy's wallet has the signature to redeem the output's value, meaning only brandy can send the output to a receiver's input.
+	- scriptPubKey: public script to decrypt a user's public key.
