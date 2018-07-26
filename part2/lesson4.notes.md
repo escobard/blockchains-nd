@@ -471,3 +471,22 @@
 	 ]
 	}
 	```
+
+## Embedding data in transactions
+	- its possible to store data in the bitcoin blockchain, but the protocol was not designed to allow data storage.
+	- all blockchains have methors of storing data in a transaction, including bitcoin core.
+	- to get around this, users started creating hashes with hidden data, that has nothing to do with transactions like love notes.
+	- this caused a dataoverload in the bitcoin blockchain, since it has too much obsolete data that could not be SPENT within of the protocol.
+	- this gave birth to the output OP_RETURN
+		- allows the storage of up to 40 bytes
+		- recorded in the blockchain
+		- does not bloat UTXO memory pool
+	- this is stored within the ASM property of the vout object of a transaction, transaction.vout[0].scriptPubKey.asm
+	- more on this within an rticle: http://www.righto.com/2014/02/ascii-bernanke-wikileaks-photographs.html
+	- storing data in the bitcoin blockchain is a topic of high controversy, highly explored topic.
+		- arguments for:
+			- allowing data storage in the chain will increase the longevity and growth of the bitcoin platform.
+			- these people believe that hte bitcoin blockchain should be a public resource, available to users that pay a specific fee.
+		- arguments against:
+			- should only be used for bitcoin transaction data, and any other type of data should be stored separately.
+			- I agree with this one.
