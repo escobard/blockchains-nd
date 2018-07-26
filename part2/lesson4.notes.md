@@ -410,3 +410,64 @@
 			  ]
 			}
 			```
+
+### Sending raw transaction
+	- now that our transaction has been created, let's deploy to the network.
+	- sendrawtransaction "hexstring" ( allowhighfees )
+	- arguments:
+	```
+	1. "hexstring"    (string, required) The hex string of the raw transaction)
+	2. allowhighfees    (boolean, optional, default=false) Allow high fees
+	```
+	- sendrawtransaction '0200000001de0ad37161b9cac4b115c313df13cd85a6659231862066fbe1d47b6135c0dbc80000000000ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b587506225000000000017a914a456b8139f80d472a2f2a3f80e9516a270d885ae8700000000' true
+	- txid hash is returned as a hex of the raw transaction that was submitted to the network.
+	- result: ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346 (not actual result, sending to udacity wallet returns absurdly high fees)
+
+### Query the TxID
+	- after the transaction has been deployed to the network, we can get the transaction by using the outputted hash.
+	- gettransaction "txid" ( include_watchonly )
+	- arguments:
+	```
+	1. "txid"                  (string, required) The transaction id
+	2. "include_watchonly"     (bool, optional, default=false) Whether to include watch-only addresses in balance calculation and details[]
+	```
+	- gettransaction ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346
+	- result:
+	```
+	{
+	 "amount" : 0.00000000,
+	 "fee" : -0.00050000,
+	 "confirmations" : 0,
+	 "txid" : "ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346",
+	 "time" : 1392666702,
+	 "timereceived" : 1392666702,
+	 "details" : [
+	 {
+	 "account" : "",
+	 "address" : "2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y",
+	 "category" : "send",
+	 "amount" : -0.03000000,
+	 "fee" : -0.00050000
+	 },
+	 {
+	 "account" : "",
+	 "address" : "2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy",
+	 "category" : "send",
+	 "amount" : -0.01950000,
+	 "fee" : -0.00050000
+	 },
+	 {
+	 "account" : "",
+	 "address" : "2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y",
+	 "category" : "receive",
+	 "amount" : 0.03000000
+	 },
+	 {
+	 "account" : "",
+	 "address" : "2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy",
+	 "category" : "receive",
+	"amount" : 0.01950000
+	 }
+	 ]
+	}
+	```
