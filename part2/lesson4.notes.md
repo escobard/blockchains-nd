@@ -314,3 +314,99 @@
 		  ]
 		}
 		```
+
+### Sign Raw Transaction:
+	- in the object above, you will notice that the vin[0].asm and vin[0].hex values are empty, meaning the transaction has not been signed.
+	- signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )
+	- arguments:
+		```
+		1. "hexstring"     (string, required) The transaction hex string
+		2. "prevtxs"       (string, optional) An json array of previous dependent transaction outputs
+		     [               (json array of json objects, or 'null' if none provided)
+		       {
+		         "txid":"id",             (string, required) The transaction id
+		         "vout":n,                  (numeric, required) The output number
+		         "scriptPubKey": "hex",   (string, required) script key
+		         "redeemScript": "hex",   (string, required for P2SH or P2WSH) redeem script
+		         "amount": value            (numeric, required) The amount spent
+		       }
+		       ,...
+		    ]
+		3. "privkeys"     (string, optional) A json array of base58-encoded private keys for signing
+		    [                  (json array of strings, or 'null' if none provided)
+		      "privatekey"   (string) private key in base58-encoding
+		      ,...
+		    ]
+		4. "sighashtype"     (string, optional, default=ALL) The signature hash type. Must be one of
+		       "ALL"
+		       "NONE"
+		       "SINGLE"
+		       "ALL|ANYONECANPAY"
+		       "NONE|ANYONECANPAY"
+		       "SINGLE|ANYONECANPAY"
+		```
+		- signrawtransaction '0200000001de0ad37161b9cac4b115c313df13cd85a6659231862066fbe1d47b6135c0dbc80000000000ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b587506225000000000017a914a456b8139f80d472a2f2a3f80e9516a270d885ae8700000000'
+		- skipped all optional commands, including txid
+		- result:
+		```
+		{
+		  "hex": "02000000000101de0ad37161b9cac4b115c313df13cd85a6659231862066fbe1d47b6135c0dbc800000000171600149bf6cf09dcfc7365d2c66109072723bf292fba9effffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b587506225000000000017a914a456b8139f80d472a2f2a3f80e9516a270d885ae87024730440220098baf1c3bf855cc7524b2920d8885cc6e8f6198843dd0c1b6ae877caa777b81022042cf512867c55a0c6e795c42ca8cdecf5d7122f93aefdc8b222816569d0e9c5b01210253a3ad916905a1d69a35eabbd6bb79af8810a404da5a6f8f1c0f36209d8bcce500000000",
+		  "complete": true
+		}
+		```
+		- using the decoderawtransaction command outputs the transaction again, but this time the asm and hex are filled.
+		- decoderawtransaction 02000000000101de0ad37161b9cac4b115c313df13cd85a6659231862066fbe1d47b6135c0dbc800000000171600149bf6cf09dcfc7365d2c66109072723bf292fba9effffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b587506225000000000017a914a456b8139f80d472a2f2a3f80e9516a270d885ae87024730440220098baf1c3bf855cc7524b2920d8885cc6e8f6198843dd0c1b6ae877caa777b81022042cf512867c55a0c6e795c42ca8cdecf5d7122f93aefdc8b222816569d0e9c5b01210253a3ad916905a1d69a35eabbd6bb79af8810a404da5a6f8f1c0f36209d8bcce500000000
+		- result:
+			```
+			{
+			  "txid": "0b6672b1659752a92ae109b4abc936adf7e57a97637a6231d84691bca78466d4",
+			  "hash": "51f05787e966660c2ed9cda5ef9762d336e6d7ae6f169869ee01846117e555a7",
+			  "version": 2,
+			  "size": 248,
+			  "vsize": 166,
+			  "locktime": 0,
+			  "vin": [
+			    {
+			      "txid": "e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c",
+			      "vout": 0,
+			      "scriptSig": {
+			        "asm": "0014c794ee65db89222f408dfe1728d214f2496d7a72",
+			        "hex": "160014c794ee65db89222f408dfe1728d214f2496d7a72"
+			      },
+			      "txinwitness": [
+			        "3045022100dbf89096427b02c27a799a1d42fca9066bb1706d6874e7255a89084d7c39054c02203c792d0590e068d932966a3d5a84a099492d6975d8fe76b0ca191e20d2a76e8001",
+			        "039c508c50597896b7d67efadf03864d3cee14941253fea08a7abc596479036f80"
+			      ],
+			      "sequence": 4294967295
+			    }
+			  ],
+			  "vout": [
+			    {
+			      "value": 0.03000000,
+			      "n": 0,
+			      "scriptPubKey": {
+			        "asm": "OP_HASH160 f20fe211102535e3c37bb0e659099387ddc035b5 OP_EQUAL",
+			        "hex": "a914f20fe211102535e3c37bb0e659099387ddc035b587",
+			        "reqSigs": 1,
+			        "type": "scripthash",
+			        "addresses": [
+			          "2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y"
+			        ]
+			      }
+			    },
+			    {
+			      "value": 0.01950000,
+			      "n": 1,
+			      "scriptPubKey": {
+			        "asm": "OP_HASH160 54ad1e8953876c90d3fc15798c687835ab3d3aee OP_EQUAL",
+			        "hex": "a91454ad1e8953876c90d3fc15798c687835ab3d3aee87",
+			        "reqSigs": 1,
+			        "type": "scripthash",
+			        "addresses": [
+			          "2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy"
+			        ]
+			      }
+			    }
+			  ]
+			}
+			```
