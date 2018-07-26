@@ -50,4 +50,3 @@
 			- uses a blockchain called relay, which captures transactions and activity within blockchains.
 				- uses a second blockchain called parachains, which gathers and process transactions
 			- finally, the service bridgets the gap with primary blockchains connecting the services together.
-			- 

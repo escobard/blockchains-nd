@@ -1,0 +1,14 @@
+{
+  "name": "private_blockchain",
+  "version": "1.0.0",
+  "description": "private blockchain project for the second project of the blockchains ND",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "blockchain"
+  ],
+  "author": "Daniel Escobar",
+  "license": "ISC"
+}
