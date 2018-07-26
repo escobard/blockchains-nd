@@ -63,3 +63,42 @@
 	- this means that the RECEIVER must provide the solution to the UNLOCKING script (pub key + sig) to VALIDATE the transaction, before it hits an OUTPUT (locking script) from the SENDER.
 	- this means that only brandy's wallet has the signature to redeem the output's value, meaning only brandy can send the output to a receiver's input.
 	- scriptPubKey: public script to decrypt a user's public key.
+
+## Bitcoin Scripts - lecture 6-7
+
+### Notations - input:
+	- input scripts and output script compiled files usually output the hex hashes (encrypted) to the public.
+	- input scripts generically look like this in the actual code <sig> <pubKey>
+	- input scripts output as the following: 
+	ScriptSig: PUSHDATA(71)[304402206f32f62c2ee00b9d6aaa07a0665cc76a9b840be475573aecbf982b2018397c2d0220510729285e0b061e78a899245f5069b50ba076a24f7b9aa581d8a344fb0fcb5301] PUSHDATA(33)[03416fe9ba17be8fe3f88011923135e83c6a0666fcb575de6ab337c7d6c8f41a5f]
+
+### Notations - output
+	- output scripts focus on the locking scripts.
+	- output scripts generally look like tis in the actual code: OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
+	- output scripts compile to the following: DUP HASH160 PUSHDATA(20)[07628bb59790a53711f3e9caddaa7eed89663935] EQUALVERIFY CHECKSIG
+	- more on these later
+
+### Notations - common commands:
+	- From the course material - mega confusing atm
+	- Which Unlocking Script (scriptSig) will satisfy this Locking Script (scriptPubKey)?
+	- Locking Script: OP_ADD 2 OP_MUL 1 OP_ADD 11 OP_EQUAL
+		•	OP_ADD adds the top two inputs from the stack of it and returns the result to the stack. Let's call this combine result n. From the bottom of the stack up is now n
+		•	Next, 2 is added to the stack. From the bottom up, the stack now is n 2.
+		•	OP_MUL multiplies the top 2 inputs from the stack and returns the result to the top of the stack. So 2*n is returned to the top of the stack. From the bottom of the stack, is now 2*n
+		•	1 is added to the top of the stack. From the bottom up, the stack now is 2*n 1
+		•	OP_ADD adds the top two inputs from the top of the stack and pushes the result back to the top. Add 2n + 1 and push back result onto the stack. From the bottom up, the stack has two values now - `2n+1`.
+		•	11 is added to the top of the stack. From the bottom up, the stack now is a 2*n+1 11.
+		•	OP_EQUAL compares the top 2 values from the stack and returns True if they are equal and False if they are not equal. 2n+1 and 11 are the top 2 values. They need to equal each other for the Unlocking Script to solve the Locking Script, so if we solve for n to satisfy 2n+1 = 1, n = 5.
+		•	Of all the answer choices, only 2 3 combines to equal 5.
+
+### Attributes of Scripts:
+	- Not turing complete:
+		- no loops or complex flow control
+		- completely deterministic - we know when the code starts and ends
+		- provides simplicity and security
+		- prevents the transactions from being hacked into, due to its simplistic nature
+	- Stateless Verification
+		- all information needed to complete the script are container within the script
+		- no state saved prior to running the script or after the script executes
+		- script is self-container, will run the same way anywhere in the system
+		- provides predictable behavior no matter where the script is executed
