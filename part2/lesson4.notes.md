@@ -28,7 +28,7 @@
 	- input info (script): where the input is coming from, and checks of the inputs that can be used
 	- output count: how many outputs were produced from this transaction.
 	- output info (script): where the input is coming from, how much was outputted and any conditions for future transactions
-	- locktime: earliest time or the earliest brock a transaction can use to be added to the blockchain. if this is a number that is less than 500,000,000 it will be represented as a block height.
+	- locktime - The locktime field indicates the earliest time or the earliest block a transaction can be added to the blockchain. If the locktime is non-zero and less than 500 million, it is interpreted as a block height and miners have to wait until that block height is reached before attempting to add it to a block. If the locktime is above 500 million, it is read as a unix timestamp which means the number of seconds since the date January 1st 1970. It is usually 0 which means confirm as soon as possible.
 
 ### Transaction scripts
 
@@ -102,3 +102,215 @@
 		- no state saved prior to running the script or after the script executes
 		- script is self-container, will run the same way anywhere in the system
 		- provides predictable behavior no matter where the script is executed
+
+## Raw transaction Review - lecture 8-9
+	- transaction stored in the bitcoin blockchain are stored in a double-hashed form.
+	- this means that raw transactions are put through the SHA256 (hashing algyorythm) twice to get the transaction hash we see on the block chain.
+	- SHA256(SHA256(Raw Transaction)) = Transaction hash
+	- For example, a transaction with this hash: b138360800cdc72248c3ca8dfd06de85913d1aac7f41b4fa54eb1f5a4a379081
+	- Transaction in the bitcoin blockchain are stored in a double-hashed form: SHA256(SHA256(01000…) = b138360800cdc72248c3ca8dfd06de85913d1aac7f41b4fa54eb1f5a4a379081
+	- Raw transactions are created using the Recursive length prefix algorythm.
+	- More on that here: https://github.com/ethereum/wiki/wiki/RLP
+
+### Input info - breakdown
+	- this contains a bit more information that was previously revealed.
+	- Previous output hash - All inputs reference back to an output (UTXO). This points back to the transaction containing the UTXO that will be spend in this input. The hash value of this UTXO is saved in a reverse ordered here.*
+	- Previous output index - A transaction may have more than one UTXO which are referenced by their index number. The first index is 0.
+	- Unlocking Script Size - This is the size of the Unlocking Script in bytes.
+	- Unlocking Script - This is the hash of the Unlocking Script that fulfills the conditions of the UTXO Locking Script.
+	- Sequence Number - This s a deprecated feature of bitcoin Currently set to ffffffff by default.
+	- refer to part2/images/part2.lesson4.lecture.8.inputinfo.expanded.model.png
+
+### Output info - breakdown
+	- also contains a bit more than previously established:
+	- Amount - The amount of Bitcoin outputted in Satoshis (the smallest bitcoin unit). 10^8 Satoshis = 1 Bitcoin.
+	- Locking Script Size - This is the size of the Locking Script in bytes.
+	- Locking Script - This is the hash of the Locking Script that specifies the conditions that must be met to spend this output.
+	- refer to part2/images/part2.lesson4.lecture.8.outputinfo.expanded.model.png
+
+## Raw transaction notes:
+	- listunspent: show all the unspent confirmed outputs in our wallet. These can be used as inputs in another transaction.
+	- lists all UTXO's which can be spent for other transactions, in an array liek this one:
+	```
+	[
+	  {
+	    "txid": "b55cd4dd01e387f1370f07eb404d3f1c5c5843a4e382d0194eb486f9db064cb4",
+	    "vout": 0,
+	    "address": "2NFpW9Hy9vMb5auMvbWhURVPQBR5RMpZutV",
+	    "redeemScript": "0014230c1344acdac1afcbc2c8bb9f8d36dee8a2aab5",
+	    "scriptPubKey": "a914f79dfad2a231bf0605147720c8bdc82939f53ff987",
+	    "amount": 1.09998780,
+	    "confirmations": 1255,
+	    "spendable": true,
+	    "solvable": true,
+	    "safe": true
+	  },
+	  {
+	    "txid": "b55cd4dd01e387f1370f07eb404d3f1c5c5843a4e382d0194eb486f9db064cb4",
+	    "vout": 1,
+	    "address": "2N8EAh68kLLFohbghbpYgF9kkp12QAbztUm",
+	    "account": "public faucet test",
+	    "redeemScript": "0014f81e100c1e25256666af1981576a83548f47e911",
+	    "scriptPubKey": "a914a456b8139f80d472a2f2a3f80e9516a270d885ae87",
+	    "amount": 0.00001000,
+	    "confirmations": 1255,
+	    "spendable": true,
+	    "solvable": true,
+	    "safe": true
+	  },
+	  {
+	    "txid": "c8dbc035617bd4e1fb662086319265a685cd13df13c315b1c4cab96171d30ade",
+	    "vout": 0,
+	    "address": "2NA3aX95DYrHNhmth28nvkgGu2TJHV5gPDF",
+	    "redeemScript": "00149bf6cf09dcfc7365d2c66109072723bf292fba9e",
+	    "scriptPubKey": "a914b846493984eb7e4c9b4fe5b77139cf62cebba32387",
+	    "amount": 0.54989780,
+	    "confirmations": 1255,
+	    "spendable": true,
+	    "solvable": true,
+	    "safe": true
+	  },
+	  {
+	    "txid": "c8dbc035617bd4e1fb662086319265a685cd13df13c315b1c4cab96171d30ade",
+	    "vout": 1,
+	    "address": "2N8EAh68kLLFohbghbpYgF9kkp12QAbztUm",
+	    "account": "public faucet test",
+	    "redeemScript": "0014f81e100c1e25256666af1981576a83548f47e911",
+	    "scriptPubKey": "a914a456b8139f80d472a2f2a3f80e9516a270d885ae87",
+	    "amount": 0.00010000,
+	    "confirmations": 1255,
+	    "spendable": true,
+	    "solvable": true,
+	    "safe": true
+	  }
+	]
+	```
+	•	txid - This shows us that there is a Transaction with this id.
+	•	vout - The Transaction has one output (vout at index 0).
+	•	address - The Transaction is assigned to this address.
+	•	account - This is a deprecated. It’s set to “ “ as a default.
+	•	scriptPubKey - The hash of the Locking Script
+	•	amount - Transaction amount in BTC
+	•	confirmations - At the time of viewing this Tx, it has been confirmed 7 times (6 blocks added after it was added to the blockchain).
+	- gettxout - command to get the details of the unspent output we found.
+	- full command: `gettxout "txid" n ( include_mempool )`
+	- arguments:
+		```
+		•	"txid" (string, required) The transaction id
+		•	"n" (numeric, required) vout number
+		•	"include_mempool" (boolean, optional) Whether to include the mempool. Default: true. Note that an unspent output that is spent in the mempool won't appear.
+		```
+	- used command gettxout c8dbc035617bd4e1fb662086319265a685cd13df13c315b1c4cab96171d30ade 0
+	- output:
+	```
+	{
+	  "bestblock": "000000000000000382d3554a5af16a49848659174a602dfb588dbbfeb326bf7c",
+	  "confirmations": 1255,
+	  "value": 0.54989780,
+	  "scriptPubKey": {
+	    "asm": "OP_HASH160 b846493984eb7e4c9b4fe5b77139cf62cebba323 OP_EQUAL",
+	    "hex": "a914b846493984eb7e4c9b4fe5b77139cf62cebba32387",
+	    "reqSigs": 1,
+	    "type": "scripthash",
+	    "addresses": [
+	      "2NA3aX95DYrHNhmth28nvkgGu2TJHV5gPDF"
+	    ]
+	  },
+	  "coinbase": false
+	}
+	```
+
+### Create Raw Transaction:
+	- We found a transaction with 0.55 btc
+	- Sum(Inputs) - Sum(Outputs) = Transaction Fee
+	- To calculate the cost the following must happen (not 100% sure yet):
+		- If we have 0.55 btc, and want to send 0.30, the remaining difference is 0.25.
+		- We want to pay 0.0005 btc as the transaction price.
+		- to calculate the total output we do the following:
+		- for OUTPUT calculations, using the remaining amount and the desired cost: (0.025 - 0.0005 BTC) = 0.0245 (this is the remaining amount within the output )
+	- Now we calculate the transaction fee:
+		- (0.055 BTC - the amount we currently have to spend in the input) - (0.030 + 0.0245 - the amount we are sending + the remaining amount after transaction price - these are both considered as outputs) = 0.0005 BTC (transaction fee)
+	- the raw transaction amount is as follows:
+	- createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,"data":"hex",...} ( locktime ) ( replaceable )
+	- Argument breakdown:
+		```
+		1. "inputs"                (array, required) A json array of json objects
+		     [
+		       {
+		         "txid":"id",    (string, required) The transaction id
+		         "vout":n,         (numeric, required) The output number
+		         "sequence":n      (numeric, optional) The sequence number
+		       } 
+		       ,...
+		     ]
+		2. "outputs"               (object, required) a json object with outputs
+		    {
+		      "address": x.xxx,    (numeric or string, required) The key is the bitcoin address, the numeric value (can be string) is the BTC amount
+		      "data": "hex"      (string, required) The key is "data", the value is hex encoded data
+		      ,...
+		    }
+		3. locktime                  (numeric, optional, default=0) Raw locktime. Non-0 value also locktime-activates inputs
+		4. replaceable               (boolean, optional, default=false) Marks this transaction as BIP125 replaceable.
+		                             Allows this transaction to be replaced by a transaction with higher fees. If provided, it is an error if explicit sequence numbers are incompatible.
+		```
+		- sending to udacity, need to create a receiving test wallet.
+		- used: createrawtransaction '[{"txid":"c8dbc035617bd4e1fb662086319265a685cd13df13c315b1c4cab96171d30ade","vout":0}]' '{"2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y":0.030, "2N8EAh68kLLFohbghbpYgF9kkp12QAbztUm":0.0245}'
+		- result: 0200000001de0ad37161b9cac4b115c313df13cd85a6659231862066fbe1d47b6135c0dbc80000000000ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b587506225000000000017a914a456b8139f80d472a2f2a3f80e9516a270d885ae8700000000
+
+### Decode raw transaction:
+	- the raw transaction is outputed as a raw hex string, we can decode with the decoderawtransaction command.
+	- decoderawtransaction "hexstring"
+	- arguments:
+		```
+		"hexstring"      (string, required) The transaction hex string
+		```
+	- result:
+		```
+		{
+		  "txid": "655419a854bdb808fb7cc3a68b8aab372e944ca028001ea247cead3ed00472eb",
+		  "hash": "655419a854bdb808fb7cc3a68b8aab372e944ca028001ea247cead3ed00472eb",
+		  "version": 2,
+		  "size": 115,
+		  "vsize": 115,
+		  "locktime": 0,
+		  "vin": [
+		    {
+		      "txid": "e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c",
+		      "vout": 0,
+		      "scriptSig": {
+		        "asm": "",
+		        "hex": ""
+		      },
+		      "sequence": 4294967295
+		    }
+		  ],
+		  "vout": [
+		    {
+		      "value": 0.03000000,
+		      "n": 0,
+		      "scriptPubKey": {
+		        "asm": "OP_HASH160 f20fe211102535e3c37bb0e659099387ddc035b5 OP_EQUAL",
+		        "hex": "a914f20fe211102535e3c37bb0e659099387ddc035b587",
+		        "reqSigs": 1,
+		        "type": "scripthash",
+		        "addresses": [
+		          "2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y"
+		        ]
+		      }
+		    },
+		    {
+		      "value": 0.01950000,
+		      "n": 1,
+		      "scriptPubKey": {
+		        "asm": "OP_HASH160 54ad1e8953876c90d3fc15798c687835ab3d3aee OP_EQUAL",
+		        "hex": "a91454ad1e8953876c90d3fc15798c687835ab3d3aee87",
+		        "reqSigs": 1,
+		        "type": "scripthash",
+		        "addresses": [
+		          "2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy"
+		        ]
+		      }
+		    }
+		  ]
+		}
+		```
