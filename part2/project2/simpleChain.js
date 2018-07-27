@@ -8,7 +8,7 @@
 
 // loads the SHA256 library to encrypt - SO COOL
 const SHA256 = require('crypto-js/sha256');
-const {addLevelDBData, populateBlockchain, getLevelDBData} = require('./levelSandbox')
+const {addDataToLevelDB, populateBlockchain, getLevelDBData} = require('./levelSandbox')
 // this holds the block, anything passed into the class argument
 // is fed into the data property within the constructor
 class Block{
@@ -39,27 +39,39 @@ class Blockchain{
 	constructor(){
 
 		// returns the array of data from levelDB, look at levelSanbox.js line 38-47
+		// IMPORTANT: may have to return this within the addBlock function, to ensure
+		// proper length is achieved
 		this.chain = populateBlockchain();
-		this.gen = new Block("Genesis block - First block in the chain");
-		// ensures the blockchain always contains at least a single block
-		// this is commonly refered to as the genesis block, as its the first block of the blockchain
-		this.addBlock(this.gen)
+
+		// sets global height for the blockchain
+		this.height = chain.length;
+		
+		// checks if block height is 0, creates genesis block
+		if (height === 0) {
+
+			// creates the genesis block, sets the data
+			this.gen = new Block("Genesis block - First block in the chain");
+			// ensures the blockchain always contains at least a single block
+			// this is commonly refered to as the genesis block, as its the first block of the blockchain
+			this.addBlock(this.gen)
+		}
+
 	}
 
 	// adds a block to the chain constructor, effectively creating a blockchain!
 	addBlock(newBlock){
 
-		let { chain } = this
+		let { chain, height } = this
 		// checks to see if the chain contains more than one block, to grab the previous block's hash
 
 		// adds the height to the block, based on the length of the block chain
-		newBlock.height = chain.length;
+		newBlock.height = height;
 
 		// adds the time stamp to the block
 		// this date (UTC) format was chosen due to its compatability with external resources
 		newBlock.time = new Date().getTime().toString.slice(0,-3)
 		
-		if (chain.length > 0 ) {
+		if (height > 0 ) {
 
 			// sets the property of the new block as the previous block's hash
 			newBlock.previousblockhash = 
@@ -75,11 +87,8 @@ class Blockchain{
 		// this encrypts our block data with a SHA256 algorythm, encrypting the block!!
 		newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
 
-
-
-
 		// each block is finally pushed into the chain global constructor, creating our blockchain!
-		chain.push(newBlock);
+		addDataToLevelDB(newBlock);
 	}
 
 }
