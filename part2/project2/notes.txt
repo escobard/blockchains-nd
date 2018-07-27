@@ -4,6 +4,6 @@
    "height": 0,
    "body": [
    ],
-   "time": 1529001822,
+   "time": 0,
    "previousblockhash": ""
  }
