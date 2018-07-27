@@ -8,7 +8,7 @@
 
 // loads the SHA256 library to encrypt - SO COOL
 const SHA256 = require('crypto-js/sha256');
-
+const {addLevelDBData, populateBlockchain, getLevelDBData} = require('./levelSandbox')
 // this holds the block, anything passed into the class argument
 // is fed into the data property within the constructor
 class Block{
@@ -37,11 +37,13 @@ class Blockchain{
 	
 	// creates the constructor that will hold all chain data
 	constructor(){
-		this.chain = [];
 
+		// returns the array of data from levelDB, look at levelSanbox.js line 38-47
+		this.chain = populateBlockchain();
+		this.gen = new Block("Genesis block - First block in the chain");
 		// ensures the blockchain always contains at least a single block
 		// this is commonly refered to as the genesis block, as its the first block of the blockchain
-		this.addBlock(new Block("Genesis block - First block in the chain"))
+		this.addBlock(this.gen)
 	}
 
 	// adds a block to the chain constructor, effectively creating a blockchain!
