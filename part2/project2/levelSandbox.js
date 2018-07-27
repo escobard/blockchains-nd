@@ -18,11 +18,12 @@ const getLevelDBData = (key) =>{
   db.get(key, function(err, value) {
     if (err) return console.log('Not found!', err);
     console.log('Value = ' + value);
+    return 
   })
 }
 
 // Add data to levelDB with value
-const addDataToLevelDB = (value) => {
+const addDataToLevelDB = (value, height) => {
     let i = 0;
     db.createReadStream().on('data', function(data) {
           i++;
@@ -31,6 +32,10 @@ const addDataToLevelDB = (value) => {
             return console.log('Unable to read data stream!', err)
         }).on('close', function() {
           console.log('Block #' + i);
+          console.log('data' + data);
+          if (height) {
+            return i;
+          }
           addLevelDBData(i, value);
         });
 }
