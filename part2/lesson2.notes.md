@@ -72,13 +72,13 @@
 		- public key prefix: **m** or **n**
 		- block difficulty - no difficulty
 
-## Bitcoin Core - Wallet
+### Bitcoin Core - Wallet
 	- Fully validates transactions and blocks.
 	- By downloading the bitcoin core waller, we create a node which interacts with the bitcoin network.
 	- Multiple options are available, but we are using bitcoin core for our purposes.
 	- very similar to other wallet interfaces, no need to expand.
 
-## Bitcoin Core - Networks
+### Bitcoin Core - Networks
 	- all can be accessed using the bitcoin core client
 	- to connect to other networks, we can use the bitcoin.conf file.
 		- to connect to any network, type the network name, equal sign, and a 1 like so:
@@ -87,10 +87,3 @@
 			- `#testnet=1`
 		- the bitcoin core client must be shut down in order for this to work.
 		- accessing the regnet is exactly the same as with bitcoin
-
-## Bitcoin core - test network coin faucet
-	- faucets come and go, but we can find current faucets for testnet here: https://testnet.manu.backend.hamburg/faucet
-	- copy your address into the input to get coins
-
-## Bitcoin core - transactions
-	- refer to 
