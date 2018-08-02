@@ -1,0 +1,23 @@
+{
+  "name": "blockchain-api",
+  "version": "1.0.0",
+  "description": "a node.js api to retain and handle a simple private blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/escobard/blockchains-nd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/escobard/blockchains-nd/issues"
+  },
+  "homepage": "https://github.com/escobard/blockchains-nd#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
