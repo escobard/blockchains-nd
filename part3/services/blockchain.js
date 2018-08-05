@@ -111,7 +111,7 @@ module.exports = blockchain;
 
 // runs constructor functions
 
-/* commented out for now, works great!
+commented out for now, works great!
 setTimeout(function() {
     console.log("blockchain", blockchain);
 
