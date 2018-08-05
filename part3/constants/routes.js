@@ -1,7 +1,7 @@
 const routes = {
 	port: process.env.PORT || 8000,
-	health: '/health'
-	getBlock: '/getBlock/:blockHeight',
+	health: '/health',
+	getBlock: '/getBlock/',
 	getHeight: '/getHeight'
 };
 
