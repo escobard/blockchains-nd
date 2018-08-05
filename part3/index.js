@@ -7,6 +7,8 @@ const app = express();
 
 app.use(bodyParser.json());
 
+require('./routes')(app);
+
 let server = app.listen(port, () => {
 	console.log("server listening at port %s", port);
 });
