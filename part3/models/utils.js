@@ -34,11 +34,13 @@ const addDataToLevelDB = (value) => {
 };
 
 const populateBlockchain = array => {
+  let i = 0;
   db
     .createReadStream()
     .on("data", function(data) {
-      let { value } = data;
-      console.log("DATA", value);
+      let { value, key } = data;
+      i++
+      console.log("DATA", value, i);
       array.push(JSON.parse(value));
     })
     .on("error", function(err) {
@@ -46,7 +48,9 @@ const populateBlockchain = array => {
     })
     .on("close", function() {
       // console.log(array);
+      console.log('ARRAY ON CLOSE', array)
     });
+
   return array;
 };
 
@@ -67,7 +71,5 @@ const checkHeight = (height) =>{
     });
     return height;
 }
-
-const data = populateBlockchain([])
 
 module.exports = { checkHeight, getLevelDBData, populateBlockchain, addDataToLevelDB }

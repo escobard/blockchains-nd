@@ -5,7 +5,7 @@ const router = require('express').Router();
 let blockchain = require("../services/blockchain");
 
 router.get('/', (req, res) => {
-
+	
 	let blockHeight = blockchain.getBlockHeight();
 
 	console.log('request: ', req.headers)

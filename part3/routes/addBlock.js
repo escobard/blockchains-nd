@@ -8,8 +8,8 @@ let blockchain = require("../services/blockchain");
 router.get('/:blockData', (req, res) => {
 	let {headers, params} = req,
 	blockData = blockchain.addBlock(params.blockData),
-	blockHeight = blockChain.getBlockHeight();
-	block = blockChain.getBlock(blockHeight);
+	blockHeight = blockchain.getBlockHeight(),
+	block = blockchain.getBlock(blockHeight);
 	console.log('request: ', headers)
 	console.log('request parameters: ', params)
 	console.log("block: ", block);
