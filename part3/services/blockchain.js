@@ -28,9 +28,11 @@ class Blockchain {
     this.height = this.height === 0 ? 1 : this.chain.length;
   }
 
-  addBlock(newBlock) {
+  addBlock(data) {
     let { chain, height } = this;
     console.log("HEIGHT", height);
+    // defines block with data
+    let newBlock = new Block(data);
     newBlock.height = height;
 
     newBlock.time = new Date()
@@ -119,7 +121,7 @@ setTimeout(function() {
 
 setTimeout(function() {
   if (blockchain.chain.length >= 1) {
-    blockchain.addBlock(new Block("test data"));
+    blockchain.addBlock("test data");
     console.log("getBlock(0) returns genesis block", blockchain.getBlock(0));
   }
   if (blockchain.chain.length >= 2) {
