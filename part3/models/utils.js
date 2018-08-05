@@ -63,8 +63,11 @@ const checkHeight = (height) =>{
     })
     .on("close", function() {
       console.log("Block #" + i);
+      console.log('HEIGHT:', height);
     });
-  return height;
+    return height;
 }
+
+const data = populateBlockchain([])
 
 module.exports = { checkHeight, getLevelDBData, populateBlockchain, addDataToLevelDB }
