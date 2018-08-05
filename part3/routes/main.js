@@ -7,7 +7,7 @@ let blockchain = require("../services/blockchain");
 router.get('/', (req, res) => {
 
 	console.log('request: ', req.headers)
-	console.log('blockchain: ', block)
+	console.log('blockchain: ', blockchain)
   res.status(200).json(
     {
       healthy: true,

@@ -40,7 +40,7 @@ class Blockchain {
       .toString()
       .slice(0, -3);
 
-    if (chain.length === 1 || height >= 2) {
+    if (height >= 1) {
       console.log("TRIGGERED");
       // sets the property of the new block as the previous block's hash
       newBlock.previousblockhash =
@@ -56,7 +56,9 @@ class Blockchain {
   }
 
   getBlockHeight() {
-    return this.chain.length;
+    let height;
+    height = addDataToLevelDB('', height)
+    return height;
   }
 
   getBlock(blockHeight) {
@@ -107,11 +109,12 @@ class Blockchain {
   }
 }
 
-const blockchain = new Blockchain(data);
+let blockchain = new Blockchain(data);
 
 module.exports = blockchain;
 
 // runs constructor functions
+/* 
 setTimeout(function() {
     console.log("blockchain", blockchain);
 
@@ -128,4 +131,4 @@ setTimeout(function() {
     console.log("validates second block", blockchain.validateBlock(1));
     console.log("validates chain", blockchain.validateChain());
   }
-}, 3000);
+}, 3000);*/
