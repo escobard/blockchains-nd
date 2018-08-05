@@ -2,7 +2,8 @@ const express = require("express"),
 bodyParser = require("body-parser");
 
 const { port } = require("./constants/routes");
-const blockchain = require("./services/blockchain");
+// this can be commented out to start the blockchain and test timeout functions
+// const blockchain = require("./services/blockchain");
 const app = express();
 
 app.use(bodyParser.json());

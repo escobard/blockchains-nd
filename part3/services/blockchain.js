@@ -14,7 +14,7 @@ class Block {
 }
 
 // this should be passed into the blockchain as the main argument
-let dat = populateBlockchain([]);
+let data = populateBlockchain([]);
 
 class Blockchain {
   constructor(data) {
@@ -105,7 +105,7 @@ class Blockchain {
   }
 }
 
-const blockchain = new Blockchain(dat);
+const blockchain = new Blockchain(data);
 
 module.exports = blockchain;
 
