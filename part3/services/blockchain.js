@@ -110,13 +110,12 @@ const blockchain = new Blockchain(data);
 module.exports = blockchain;
 
 // runs constructor functions
-
-commented out for now, works great!
 setTimeout(function() {
     console.log("blockchain", blockchain);
 
   console.log("getBlockHeight returns height of chain", blockchain.getBlockHeight());
-}, 2000);
+}, 1000);
+
 
 setTimeout(function() {
   if (blockchain.chain.length >= 1) {

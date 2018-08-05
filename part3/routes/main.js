@@ -6,14 +6,12 @@ let blockchain = require("../services/blockchain");
 
 router.get('/', (req, res) => {
 
-	let blockHeight = blockchain.getBlockHeight();
-
 	console.log('request: ', req.headers)
-	console.log('blockHeight: ', blockHeight)
+	console.log('blockchain: ', block)
   res.status(200).json(
     {
       healthy: true,
-      blockHeight
+      blockchain
     });
 });
 
