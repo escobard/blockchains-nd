@@ -1,5 +1,7 @@
 // import leveldb helpers here
-const { getLevelDBData, populateBlockchain, addDataToLevelDB } = require("../models/utils"),
+const SHA256 = require("crypto-js/sha256");
+
+const { getLevelDBData, populateBlockchain, addDataToLevelDB } = require("../models/utils");
 
 class Block {
   constructor(data) {
@@ -103,12 +105,13 @@ class Blockchain {
   }
 }
 
-let blockchain;
-// runs constructor functions
-setTimeout(function() {
-  blockchain = new Blockchain(dat);
-}, 1000);
+const blockchain = new Blockchain(dat);
 
+module.exports = blockchain;
+
+// runs constructor functions
+
+/* commented out for now, works great!
 setTimeout(function() {
     console.log("blockchain", blockchain);
 

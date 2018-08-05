@@ -2,8 +2,6 @@ let level = require("level");
 let chainDB = "../data";
 let db = level(chainDB);
 
-const SHA256 = require("crypto-js/sha256");
-
 // need to split up all levelDB functionality into a utils file
 function addLevelDBData(key, value) {
   db.put(key, value, function(err) {
