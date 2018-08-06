@@ -10,6 +10,8 @@ router.get('/', async (req, res) => {
 		console.log('TRIGGERED')
 		updatedChain = populateBlockchain(blockchain.chain);
 		blockchain.checkGenesis()
+		console.log('BLOCK WITHIN', blockchain)
+		console.log('CHAIN WITHIN', updatedChain);
 	}
 	
 	console.log('updatedChain', updatedChain);
