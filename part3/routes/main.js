@@ -8,8 +8,9 @@ let updatedChain = ['Loading...'];
 router.get('/', async (req, res) => {
 	// initial load, can be refactored
 	// populates blockchain data
+	let data = await blockchain.fetchBlockchain()
 	if (updatedChain[0] === 'Loading...') {
-		updatedChain = blockchain.fetchBlockchain()
+		updatedChain = data;
 		// console.log('TRIGGERED')
 		// console.log('BLOCK WITHIN', blockchain)
 		// console.log('CHAIN WITHIN', updatedChain);
