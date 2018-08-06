@@ -7,11 +7,14 @@ let blockchain = require("../services/blockchain");
 let updatedChain = ['Loading...'];
 router.get('/', async (req, res) => {
 	if (updatedChain[0] === 'Loading...') {
-		console.log('TRIGGERED')
 		updatedChain = populateBlockchain(blockchain.chain);
-		blockchain.checkGenesis()
+		console.log('TRIGGERED')
 		console.log('BLOCK WITHIN', blockchain)
 		console.log('CHAIN WITHIN', updatedChain);
+	}
+	else if (updatedChain.length === 0) {
+		console.log('TRIGGERED EMPTY CASE!')
+		blockchain.checkGenesis()
 	}
 	
 	console.log('updatedChain', updatedChain);

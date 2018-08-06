@@ -49,7 +49,8 @@ class Blockchain {
     return blockchain;
   }
   checkGenesis(height){
-    this.addBlock("Genesis block - First block in the chain");
+      this.addBlock("Genesis block - First block in the chain");
+      this.height = 1
   }
   addBlock(data) {
     let { height, chain } = this;
