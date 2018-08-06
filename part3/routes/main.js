@@ -8,9 +8,8 @@ let updatedChain = ['Loading...'];
 router.get('/', async (req, res) => {
 	// initial load, can be refactored
 	// populates blockchain data
-	let data = await blockchain.fetchBlockchain()
 	if (updatedChain[0] === 'Loading...') {
-		updatedChain = data;
+		updatedChain = blockchain.fetchBlockchain()
 		// console.log('TRIGGERED')
 		// console.log('BLOCK WITHIN', blockchain)
 		// console.log('CHAIN WITHIN', updatedChain);
@@ -28,7 +27,7 @@ router.get('/', async (req, res) => {
 		// await blockchain.fetchBlockchain([])
 		// await console.log('POST FETCH', blockchain);
 	}
-	else if (updatedChain.length > 1){
+	else if (updatedChain.length >= 1){
 		// console.log('TRIGGERED NEW BLOCK CASE')
 		blockchain.getBlockHeight(updatedChain.length)
 	}
