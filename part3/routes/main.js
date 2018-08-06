@@ -29,7 +29,9 @@ router.get('/', async (req, res) => {
 	}
 	else if (updatedChain.length >= 1){
 		// console.log('TRIGGERED NEW BLOCK CASE')
+		updatedChain = blockchain.fetchBlockchain();
 		blockchain.getBlockHeight(updatedChain.length)
+		blockchain.chain = updatedChain;
 	}
 	console.log('chain prior to route', blockchain);
 	console.log('updatedChain', updatedChain);
