@@ -17,6 +17,9 @@ class Blockchain {
   constructor(data) {
     this.chain = [];
     this.height = 0;
+    if (this.chain.length > 0) {
+      this.height = this.chain.length;
+    }
   }
   fetchBlockchain(blockchain){
     let array = new Promise((resolve, reject) => {
@@ -50,7 +53,7 @@ class Blockchain {
   }
   checkGenesis(height){
       this.addBlock("Genesis block - First block in the chain");
-      this.height = 1
+      this.height = 1;
   }
   addBlock(data) {
     let { height, chain } = this;
@@ -81,10 +84,6 @@ class Blockchain {
   }
 
   getBlockHeight(blockchain) {
-    if (this.height === 0) {
-      let height = this.chain.length;
-      // console.log('LENGTH AT 0', height);
-    }
     this.height = blockchain;
     // console.log('CHAIN LENGTH', blockchain)
     return this.height;

@@ -6,6 +6,7 @@ let blockchain = require("../services/blockchain");
 
 let updatedChain = ['Loading...'];
 router.get('/', async (req, res) => {
+	// initial load, can be refactored
 	if (updatedChain[0] === 'Loading...') {
 		updatedChain = populateBlockchain(blockchain.chain);
 		console.log('TRIGGERED')
@@ -14,9 +15,12 @@ router.get('/', async (req, res) => {
 	}
 	else if (updatedChain.length === 0) {
 		console.log('TRIGGERED EMPTY CASE!')
-		blockchain.checkGenesis()
+		blockchain.checkGenesis();
 	}
-	
+	else if (updatedChain.length > 0){
+		console.log('TRIGGERED NEW BLOCK CASE')
+		blockchain.getBlockHeight(updatedChain.length)
+	}
 	console.log('updatedChain', updatedChain);
 	console.log('Blockchain', blockchain)
 	/*
