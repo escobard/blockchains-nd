@@ -15,15 +15,19 @@ class Block {
 
 class Blockchain {
   constructor(data) {
-    this.chain = this.fetchBlockchain();
+    this.chain = [];
     this.height = 0;
+    if (this.height === 0) {
+      this.addBlock("Genesis block - First block in the chain");
+    }
   }
   fetchBlockchain(){
-    return populateBlockchain([])
+    let blockchain = populateBlockchain(this.chain)
+    console.log('BLOCKCHAIN', blockchain);
   }
   addBlock(data) {
-    let { height } = this;
-    console.log("HEIGHT", height);
+    let { height, chain } = this;
+    // console.log("HEIGHT", height);
     // defines block with data
     let newBlock = new Block(data);
     newBlock.height = height;
@@ -44,20 +48,24 @@ class Blockchain {
 
     newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
     let jsonBlock = JSON.stringify(newBlock);
-    console.log("JSON BLOCK", jsonBlock);
-    console.log("CHAIN IN BLOCK CREATION", this.chain);
+    // console.log("JSON BLOCK", jsonBlock);
+    // console.log("CHAIN IN BLOCK CREATION", this.chain);
     addDataToLevelDB(jsonBlock);
   }
 
   getBlockHeight(blockchain) {
-    this.height = blockchain;
-    console.log('CHAIN LENGTH', blockchain)
-    if (blockchain === 0) {
-      this.addBlock("Genesis block - First block in the chain");
+    if (this.height === 0) {
+      let height = this.chain.length;
+      // console.log('LENGTH AT 0', height);
     }
-    return blockchain;
+    this.height = blockchain;
+    // console.log('CHAIN LENGTH', blockchain)
+    return this.height;
   }
-
+  getHeight(){
+    let height = 0;
+    return addDataToLevelDB("", height)
+  }
   getBlock(blockHeight) {
     return this.chain[blockHeight]
   }
@@ -105,6 +113,8 @@ class Blockchain {
     }
   }
 }
+
+
 
 module.exports = new Blockchain();
 

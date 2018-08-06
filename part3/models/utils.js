@@ -17,21 +17,28 @@ const getLevelDBData = (key) => {
   })
 }
 
-const addDataToLevelDB = (value) => {
+const addDataToLevelDB = (value, height) => {
   let i = 0;
   db
     .createReadStream()
     .on("data", function(data) {
-      
+      i++
+      // console.log('DATA CREATED', data, i)
     })
     .on("error", function(err) {
       return console.log("Unable to read data stream!", err);
     })
-    .on("end", function() {
-      i++;
-      console.log("Block #" + i);
+    .on("close", function() {
+      //console.log("Block #" + i);
+
       addLevelDBData(i, value);
-    });
+    })
+    .on('end', function(){
+      if (height) {
+        height = i
+        return height
+      }
+    })
 };
 
 const populateBlockchain = array => {
@@ -40,17 +47,21 @@ const populateBlockchain = array => {
     .createReadStream()
     .on("data", function(data) {
       let { value, key } = data;
-      i++
-      console.log("DATA", data, i);
+      //console.log("DATA", data, i);
       let parsed = JSON.parse(value)
+      if (value.height === i) {
+              i++
+        // console.log('TRIGGERED', value.height, i)
+      }
+      
       array.push(parsed)
-      console.log('ARRAY', array)
+      // console.log('ARRAY', array)
     })
     .on("error", function(err) {
       return console.log("Unable to read data stream!", err);
     })
-    .on("end", function() {
-      console.log('ARRAY ON CLOSE', array)
+    .on("close", function() {
+      // console.log('ARRAY ON CLOSE', array)
     });
 
   return array;
@@ -62,7 +73,6 @@ const checkHeight = (height) =>{
     .createReadStream()
     .on("data", function(data) {
       i++;
-      height.push(i)
     })
     .on("error", function(err) {
       return console.log("Unable to read data stream!", err);

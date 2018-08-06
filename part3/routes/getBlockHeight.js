@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
 	console.log('blockHeight: ', blockHeight)
   res.send({
       healthy: true,
-      blockHeight
+      blockHeight,
+      blockchain
     })
 });
 
