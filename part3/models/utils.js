@@ -58,8 +58,7 @@ const populateBlockchain = array => {
     .on("close", function() {
       // console.log('ARRAY ON CLOSE', array)
     });
-
-  return array;
+    return array;
 };
 
 const checkHeight = (height) =>{

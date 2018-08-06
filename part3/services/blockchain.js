@@ -17,34 +17,39 @@ class Blockchain {
   constructor(data) {
     this.chain = [];
     this.height = 0;
-    if (this.height === 0) {
-      this.addBlock("Genesis block - First block in the chain");
-    }
   }
   fetchBlockchain(blockchain){
     let array = new Promise((resolve, reject) => {
-      // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
-      // In this example, we use setTimeout(...) to simulate async code. 
-      // In reality, you will probably be using something like XHR or an HTML5 API.
       let chain = populateBlockchain(blockchain)
-      console.log('CHAIN WITHIN', chain.length)
-      if (chain.length ===0) {
-        reject('Chain pending...')
-      }
-      else{
-        resolve(chain);
-      }
-      
+        if (!chain) {
+          reject('Loading data...')
+        }
+        else{
+
+          resolve(chain);
+        }
     }).then((chain) =>{
+      return chain;
+    }).catch(err =>{
+      console.log(err)
+    });
+    /*array.then((chain) =>{
       console.log('BLOCKCHAIN OUT', chain);
       console.log('BLOCKCHAIN LENGTH OUT', chain.length);
       console.log('this.chain:', this.chain);
-      console.log('this.height:', this.height)
+      test = chain.length;
+      console.log('this.height:', this.height);
     }).catch(err =>{
       console.log(err)
-    })
-    
-    
+    })*/
+
+    console.log('OUTSIDE this.chain', this.chain);
+    console.log('OUTSIDE this.height', this.height);
+    console.log('BLOCKCHAIN WIHTIN', blockchain)
+    return blockchain;
+  }
+  checkGenesis(height){
+    this.addBlock("Genesis block - First block in the chain");
   }
   addBlock(data) {
     let { height, chain } = this;
