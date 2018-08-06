@@ -16,7 +16,7 @@ class Block {
 class Blockchain {
   constructor(data) {
     this.chain = this.fetchBlockchain();
-    this.height;
+    this.height = 0;
   }
   fetchBlockchain(){
     return populateBlockchain([])
@@ -50,12 +50,12 @@ class Blockchain {
   }
 
   getBlockHeight(blockchain) {
-    
+    this.height = blockchain;
     console.log('CHAIN LENGTH', blockchain)
     if (blockchain === 0) {
       this.addBlock("Genesis block - First block in the chain");
     }
-    blockchain.length;
+    return blockchain;
   }
 
   getBlock(blockHeight) {
