@@ -6,10 +6,18 @@ let blockchain = require("../services/blockchain");
 
 let updatedChain = ['Loading...'];
 router.get('/', async (req, res) => {
+	new Promise((resolve, reject) => {
+		updatedChain = blockchain.fetchBlockchain();
+		 setTimeout(function(){
+		    resolve(updatedChain);
+		 }, 250);
+	}).then((chain) =>{
+
+		console.log('CHAIN', chain)
 	// initial load, can be refactored
 	// populates blockchain data
 	if (updatedChain[0] === 'Loading...') {
-		updatedChain = blockchain.fetchBlockchain()
+		updatedChain = chain;
 		// console.log('TRIGGERED')
 		// console.log('BLOCK WITHIN', blockchain)
 		// console.log('CHAIN WITHIN', updatedChain);
@@ -20,7 +28,7 @@ router.get('/', async (req, res) => {
 	}
 	// after genesis, updates chain data on refresh one time
 	else if(blockchain.height >= 1 && blockchain.chain.length === 0){
-		updatedChain = blockchain.fetchBlockchain()
+		updatedChain = chain;
 		blockchain.chain = updatedChain
 		// console.log('AFTER GENESIS', blockchain);
 		// await console.log('POST GENESIS', blockchain);
@@ -29,9 +37,7 @@ router.get('/', async (req, res) => {
 	}
 	else if (updatedChain.length >= 1){
 		// console.log('TRIGGERED NEW BLOCK CASE')
-		updatedChain = blockchain.fetchBlockchain();
 		blockchain.getBlockHeight(updatedChain.length)
-		blockchain.chain = updatedChain;
 	}
 	console.log('chain prior to route', blockchain);
 	console.log('updatedChain', updatedChain);
@@ -51,6 +57,9 @@ router.get('/', async (req, res) => {
       healthy: true,
       blockchain
     });
+ 	}).catch(err =>{
+ 		console.log(err)
+ 	})
 });
 
 module.exports = router;
