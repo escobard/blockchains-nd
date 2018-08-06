@@ -21,9 +21,28 @@ class Blockchain {
       this.addBlock("Genesis block - First block in the chain");
     }
   }
-  fetchBlockchain(){
-    let blockchain = populateBlockchain(this.chain)
-    console.log('BLOCKCHAIN', blockchain);
+  fetchBlockchain(blockchain){
+    let array = new Promise((resolve, reject) => {
+      // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
+      // In this example, we use setTimeout(...) to simulate async code. 
+      // In reality, you will probably be using something like XHR or an HTML5 API.
+      let chain = populateBlockchain(blockchain)
+      console.log('CHAIN WITHIN', chain.length)
+      if (chain.length ===0) {
+        reject('Chain pending...')
+      }
+      else{
+        resolve(chain);
+      }
+      
+    }).then((chain) =>{
+      console.log('BLOCKCHAIN OUT', chain);
+      console.log('BLOCKCHAIN LENGTH OUT', chain.length);
+    }).catch(err =>{
+      console.log(err)
+    })
+    
+    
   }
   addBlock(data) {
     let { height, chain } = this;

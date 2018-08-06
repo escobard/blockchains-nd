@@ -49,11 +49,6 @@ const populateBlockchain = array => {
       let { value, key } = data;
       //console.log("DATA", data, i);
       let parsed = JSON.parse(value)
-      if (value.height === i) {
-              i++
-        // console.log('TRIGGERED', value.height, i)
-      }
-      
       array.push(parsed)
       // console.log('ARRAY', array)
     })
