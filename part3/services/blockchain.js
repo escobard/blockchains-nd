@@ -17,36 +17,12 @@ class Blockchain {
   constructor(data) {
     this.chain = [];
     this.height = 0;
+    if (this.chain.length >= 1) {
+      this.height = this.chain.length;
+    }
   }
-  fetchBlockchain(blockchain){
-    let array = new Promise((resolve, reject) => {
-      let chain = populateBlockchain(blockchain)
-        if (!chain) {
-          reject('Loading data...')
-        }
-        else{
-
-          resolve(chain);
-        }
-    }).then((chain) =>{
-      return chain;
-    }).catch(err =>{
-      console.log(err)
-    });
-    /*array.then((chain) =>{
-      console.log('BLOCKCHAIN OUT', chain);
-      console.log('BLOCKCHAIN LENGTH OUT', chain.length);
-      console.log('this.chain:', this.chain);
-      test = chain.length;
-      console.log('this.height:', this.height);
-    }).catch(err =>{
-      console.log(err)
-    })*/
-
-    console.log('OUTSIDE this.chain', this.chain);
-    console.log('OUTSIDE this.height', this.height);
-    console.log('BLOCKCHAIN WIHTIN', blockchain)
-    return blockchain;
+  fetchBlockchain(){
+    return populateBlockchain([]);
   }
   checkGenesis (height){
       this.addBlock("Genesis block - First block in the chain");

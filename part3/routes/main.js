@@ -1,7 +1,7 @@
 'use strict';
 
 const router = require('express').Router();
-const { checkHeight, getLevelDBData, populateBlockchain, addDataToLevelDB } = require("../models/utils");
+
 let blockchain = require("../services/blockchain");
 
 let updatedChain = ['Loading...'];
@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 	// initial load, can be refactored
 	// populates blockchain data
 	if (updatedChain[0] === 'Loading...') {
-		updatedChain = populateBlockchain(blockchain.chain);
+		updatedChain = blockchain.fetchBlockchain()
 		// console.log('TRIGGERED')
 		// console.log('BLOCK WITHIN', blockchain)
 		// console.log('CHAIN WITHIN', updatedChain);
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 	}
 	// after genesis, updates chain data on refresh one time
 	else if(blockchain.height >= 1 && blockchain.chain.length === 0){
-		updatedChain = await populateBlockchain(blockchain.chain);
+		updatedChain = blockchain.fetchBlockchain()
 		blockchain.chain = updatedChain
 		// console.log('AFTER GENESIS', blockchain);
 		// await console.log('POST GENESIS', blockchain);
