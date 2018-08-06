@@ -17,9 +17,6 @@ class Blockchain {
   constructor(data) {
     this.chain = [];
     this.height = 0;
-    if (this.chain.length > 0) {
-      this.height = this.chain.length;
-    }
   }
   fetchBlockchain(blockchain){
     let array = new Promise((resolve, reject) => {
@@ -51,13 +48,13 @@ class Blockchain {
     console.log('BLOCKCHAIN WIHTIN', blockchain)
     return blockchain;
   }
-  checkGenesis(height){
+  checkGenesis (height){
       this.addBlock("Genesis block - First block in the chain");
       this.height = 1;
   }
   addBlock(data) {
     let { height, chain } = this;
-    // console.log("HEIGHT", height);
+    console.log("HEIGHT", height);
     // defines block with data
     let newBlock = new Block(data);
     newBlock.height = height;

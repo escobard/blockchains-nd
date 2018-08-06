@@ -7,33 +7,44 @@ let blockchain = require("../services/blockchain");
 let updatedChain = ['Loading...'];
 router.get('/', async (req, res) => {
 	// initial load, can be refactored
+	// populates blockchain data
 	if (updatedChain[0] === 'Loading...') {
 		updatedChain = populateBlockchain(blockchain.chain);
-		console.log('TRIGGERED')
-		console.log('BLOCK WITHIN', blockchain)
-		console.log('CHAIN WITHIN', updatedChain);
+		// console.log('TRIGGERED')
+		// console.log('BLOCK WITHIN', blockchain)
+		// console.log('CHAIN WITHIN', updatedChain);
 	}
-	else if (updatedChain.length === 0) {
-		console.log('TRIGGERED EMPTY CASE!')
+	else if (updatedChain.length === 0 && blockchain.height === 0) {
+		// console.log('TRIGGERED GENESIS CASE!')
 		blockchain.checkGenesis();
 	}
-	else if (updatedChain.length > 0){
-		console.log('TRIGGERED NEW BLOCK CASE')
+	// after genesis, updates chain data on refresh one time
+	else if(blockchain.height >= 1 && blockchain.chain.length === 0){
+		updatedChain = await populateBlockchain(blockchain.chain);
+		blockchain.chain = updatedChain
+		// console.log('AFTER GENESIS', blockchain);
+		// await console.log('POST GENESIS', blockchain);
+		// await blockchain.fetchBlockchain([])
+		// await console.log('POST FETCH', blockchain);
+	}
+	else if (updatedChain.length > 1){
+		// console.log('TRIGGERED NEW BLOCK CASE')
 		blockchain.getBlockHeight(updatedChain.length)
 	}
+	console.log('chain prior to route', blockchain);
 	console.log('updatedChain', updatedChain);
-	console.log('Blockchain', blockchain)
+	blockchain.chain = updatedChain;
 	/*
 	if (updatedChain.length < 1) {
 		console.log('CHAAIN LENGTH IN ROUTE', blockchain.chain.length)
 		console.log('CHAIN HEIGHT IN ROTUE', blockchain.height)
 		blockchain.checkGenesis()
 	}*/
-	// console.log('request: ', req.headers)
+	 console.log('request: ', req.headers)
 	// console.log('blockchain: ', blockchain)
 
 	// handles cases where blockchain is not defined
-  res.status(200).json(
+  res.send(
     {
       healthy: true,
       blockchain

@@ -9,5 +9,4 @@ module.exports = (app) => {
   app.use(routes.addBlock, require('../routes/addBlock'));
   app.use(routes.getBlock, require('../routes/getBlock'));
   app.use(routes.getHeight, require('../routes/getBlockHeight'));
-  return app;
 };
