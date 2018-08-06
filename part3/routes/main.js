@@ -12,29 +12,14 @@ router.get('/', async (req, res) => {
 		console.log('TRIGGERED')
 		console.log('BLOCK WITHIN', blockchain)
 		console.log('CHAIN WITHIN', updatedChain);
-		  res.status(200).json(
-    {
-      healthy: true,
-      blockchain
-    });
 	}
 	else if (updatedChain.length === 0) {
 		console.log('TRIGGERED EMPTY CASE!')
 		blockchain.checkGenesis();
-		  res.status(200).json(
-    {
-      healthy: true,
-      blockchain
-    });
 	}
 	else if (updatedChain.length > 0){
 		console.log('TRIGGERED NEW BLOCK CASE')
 		blockchain.getBlockHeight(updatedChain.length)
-		  res.status(200).json(
-    {
-      healthy: true,
-      blockchain
-    });
 	}
 	console.log('updatedChain', updatedChain);
 	console.log('Blockchain', blockchain)
