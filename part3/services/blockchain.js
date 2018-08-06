@@ -34,7 +34,7 @@ class Blockchain {
       .slice(0, -3);
 
     if (height >= 1) {
-      console.log("TRIGGERED");
+      // console.log("TRIGGERED");
       // sets the property of the new block as the previous block's hash
       newBlock.previousblockhash =
         // searches the block prior to this one via the array's index
@@ -45,6 +45,7 @@ class Blockchain {
     newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
     let jsonBlock = JSON.stringify(newBlock);
     console.log("JSON BLOCK", jsonBlock);
+    console.log("CHAIN IN BLOCK CREATION", this.chain);
     addDataToLevelDB(jsonBlock);
   }
 
@@ -54,7 +55,7 @@ class Blockchain {
     if (blockchain === 0) {
       this.addBlock("Genesis block - First block in the chain");
     }
-    return blockchain.length;
+    blockchain.length;
   }
 
   getBlock(blockHeight) {

@@ -22,12 +22,13 @@ const addDataToLevelDB = (value) => {
   db
     .createReadStream()
     .on("data", function(data) {
-      i++;
+      
     })
     .on("error", function(err) {
       return console.log("Unable to read data stream!", err);
     })
-    .on("close", function() {
+    .on("end", function() {
+      i++;
       console.log("Block #" + i);
       addLevelDBData(i, value);
     });
@@ -40,14 +41,15 @@ const populateBlockchain = array => {
     .on("data", function(data) {
       let { value, key } = data;
       i++
-      console.log("DATA", value, i);
-      array.push(JSON.parse(value));
+      console.log("DATA", data, i);
+      let parsed = JSON.parse(value)
+      array.push(parsed)
+      console.log('ARRAY', array)
     })
     .on("error", function(err) {
       return console.log("Unable to read data stream!", err);
     })
-    .on("close", function() {
-      // console.log(array);
+    .on("end", function() {
       console.log('ARRAY ON CLOSE', array)
     });
 
