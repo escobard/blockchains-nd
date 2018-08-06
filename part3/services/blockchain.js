@@ -38,6 +38,8 @@ class Blockchain {
     }).then((chain) =>{
       console.log('BLOCKCHAIN OUT', chain);
       console.log('BLOCKCHAIN LENGTH OUT', chain.length);
+      console.log('this.chain:', this.chain);
+      console.log('this.height:', this.height)
     }).catch(err =>{
       console.log(err)
     })
