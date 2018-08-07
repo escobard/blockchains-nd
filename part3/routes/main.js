@@ -11,14 +11,22 @@ router.get('/', async (req, res) => {
 		    resolve(chain);
 		 }, 250);
 	}).then((chain) =>{
+
+	// sets block height
 	blockchain.setBlockHeight(chain.length)
+
+	// sets the blockchain service data with data from leveldb
 	blockchain.chain = chain;
 
 	// checks block height, create genesis
 	if (blockchain.height === 0) {
+		console.log('Populating blockchain with genesis block...')
 		blockchain.createGenesis();
 	}
-	console.log('blockchain: ', blockchain)
+
+	// logs the blockchain
+	console.log('blockchain: ', blockchain);
+	
   res.send(
     {
       healthy: true,

@@ -1,5 +1,5 @@
-2018/08/07-16:59:56.005 ca8 Recovering log #3
-2018/08/07-16:59:56.005 ca8 Level-0 table #5: started
-2018/08/07-16:59:56.087 ca8 Level-0 table #5: 357 bytes OK
-2018/08/07-16:59:56.245 ca8 Delete type=0 #3
-2018/08/07-16:59:56.245 ca8 Delete type=3 #2
+2018/08/07-17:13:07.489 5790 Recovering log #3
+2018/08/07-17:13:07.489 5790 Level-0 table #5: started
+2018/08/07-17:13:07.524 5790 Level-0 table #5: 471 bytes OK
+2018/08/07-17:13:07.617 5790 Delete type=0 #3
+2018/08/07-17:13:07.617 5790 Delete type=3 #2
