@@ -4,54 +4,21 @@ const router = require('express').Router();
 
 let blockchain = require("../services/blockchain");
 
-let updatedChain = ['Loading...'];
 router.get('/', async (req, res) => {
 	new Promise((resolve, reject) => {
-		updatedChain = blockchain.fetchBlockchain();
+		let chain = blockchain.fetchBlockchain();
 		 setTimeout(function(){
-		    resolve(updatedChain);
+		    resolve(chain);
 		 }, 250);
 	}).then((chain) =>{
+	blockchain.setBlockHeight(chain.length)
+	blockchain.chain = chain;
 
-		console.log('CHAIN', chain)
-	// initial load, can be refactored
-	// populates blockchain data
-	if (updatedChain[0] === 'Loading...') {
-		updatedChain = chain;
-		// console.log('TRIGGERED')
-		// console.log('BLOCK WITHIN', blockchain)
-		// console.log('CHAIN WITHIN', updatedChain);
+	// checks block height, create genesis
+	if (blockchain.height === 0) {
+		blockchain.createGenesis();
 	}
-	else if (updatedChain.length === 0 && blockchain.height === 0) {
-		// console.log('TRIGGERED GENESIS CASE!')
-		blockchain.checkGenesis();
-	}
-	// after genesis, updates chain data on refresh one time
-	else if(blockchain.height >= 1 && blockchain.chain.length === 0){
-		updatedChain = chain;
-		blockchain.chain = updatedChain
-		// console.log('AFTER GENESIS', blockchain);
-		// await console.log('POST GENESIS', blockchain);
-		// await blockchain.fetchBlockchain([])
-		// await console.log('POST FETCH', blockchain);
-	}
-	else if (updatedChain.length >= 1){
-		// console.log('TRIGGERED NEW BLOCK CASE')
-		blockchain.getBlockHeight(updatedChain.length)
-	}
-	console.log('chain prior to route', blockchain);
-	console.log('updatedChain', updatedChain);
-	blockchain.chain = updatedChain;
-	/*
-	if (updatedChain.length < 1) {
-		console.log('CHAAIN LENGTH IN ROUTE', blockchain.chain.length)
-		console.log('CHAIN HEIGHT IN ROTUE', blockchain.height)
-		blockchain.checkGenesis()
-	}*/
-	 console.log('request: ', req.headers)
-	// console.log('blockchain: ', blockchain)
-
-	// handles cases where blockchain is not defined
+	console.log('blockchain: ', blockchain)
   res.send(
     {
       healthy: true,

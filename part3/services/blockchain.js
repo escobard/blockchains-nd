@@ -1,7 +1,12 @@
 // import leveldb helpers here
 const SHA256 = require("crypto-js/sha256");
 
-const { checkHeight, getLevelDBData, populateBlockchain, addDataToLevelDB } = require("../models/utils");
+const {
+  checkHeight,
+  getLevelDBData,
+  populateBlockchain,
+  addDataToLevelDB
+} = require("../models/utils");
 
 class Block {
   constructor(data) {
@@ -19,14 +24,13 @@ class Blockchain {
     this.height = 0;
     if (this.chain.length >= 1) {
       this.height = this.chain.length;
-    }
+    };
   }
-  fetchBlockchain(){
+  fetchBlockchain() {
     return populateBlockchain([]);
   }
-  checkGenesis (height){
-      this.addBlock("Genesis block - First block in the chain");
-      this.height = 1;
+  createGenesis() {
+    this.addBlock("Genesis block - First block in the chain");
   }
   addBlock(data) {
     let { height, chain } = this;
@@ -55,18 +59,17 @@ class Blockchain {
     // console.log("CHAIN IN BLOCK CREATION", this.chain);
     addDataToLevelDB(jsonBlock);
   }
-
-  getBlockHeight(blockchain) {
+  setBlockHeight(blockchain) {
     this.height = blockchain;
     // console.log('CHAIN LENGTH', blockchain)
     return this.height;
   }
-  getHeight(){
+  getHeight() {
     let height = 0;
-    return addDataToLevelDB("", height)
+    return addDataToLevelDB("", height);
   }
   getBlock(blockHeight) {
-    return this.chain[blockHeight]
+    return this.chain[blockHeight];
   }
 
   validateBlock(blockHeight) {
@@ -112,8 +115,6 @@ class Blockchain {
     }
   }
 }
-
-
 
 module.exports = new Blockchain();
 

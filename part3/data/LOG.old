@@ -1,3 +1,5 @@
-2018/08/06-13:06:08.235 36d4 Recovering log #39
-2018/08/06-13:06:08.441 36d4 Delete type=0 #39
-2018/08/06-13:06:08.441 36d4 Delete type=3 #37
+2018/08/07-16:59:56.005 ca8 Recovering log #3
+2018/08/07-16:59:56.005 ca8 Level-0 table #5: started
+2018/08/07-16:59:56.087 ca8 Level-0 table #5: 357 bytes OK
+2018/08/07-16:59:56.245 ca8 Delete type=0 #3
+2018/08/07-16:59:56.245 ca8 Delete type=3 #2
