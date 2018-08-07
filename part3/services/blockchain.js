@@ -68,6 +68,7 @@ class Blockchain {
     let height = 0;
     return addDataToLevelDB("", height);
   }
+  
   getBlock(blockHeight) {
     return this.chain[blockHeight];
   }

@@ -3,7 +3,8 @@ const routes = {
 	main: '/',
 	health: '/health',
 	addBlock: '/addBlock',
-	getBlock: '/getBlock/',
+	getBlock: '/block',
+	postBlock: '/block',
 	getHeight: '/getBlockHeight'
 };
 
