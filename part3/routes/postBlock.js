@@ -24,20 +24,25 @@ router.post("/", (req, res) => {
       if (blockchain.height === 0) {
         console.log("Populating blockchain with genesis block...");
         blockchain.createGenesis();
-      }
+        res.send({
+          healthy: true,
+          responseData: `No data! Created genesis block, send another request`
+        });
+      } 
+      // if genesis exists, proceed with post request
+      else {
+        // adds block data based on route parameters
+        blockchain.addBlock(body);
 
-      // adds block data based on route parameters
-      blockchain.addBlock(body);
-
-      new Promise((resolve, reject) => {
-        let newChain;
-        setTimeout(function() {
-          newChain = blockchain.fetchBlockchain();
-        }, 250);
-        setTimeout(function() {
-          resolve(newChain);
-        }, 500);
-      }).then(newChain => {
+        new Promise((resolve, reject) => {
+          let newChain;
+          setTimeout(function() {
+            newChain = blockchain.fetchBlockchain();
+          }, 250);
+          setTimeout(function() {
+            resolve(newChain);
+          }, 500);
+        }).then(newChain => {
           // sets the blockchain service data with data from leveldb
           blockchain.chain = newChain;
           let newBlock = blockchain.getBlock(blockchain.height);
@@ -51,7 +56,8 @@ router.post("/", (req, res) => {
             newBlock,
             blockchain
           });
-      });
+        });
+      }
     })
     .catch(err => {
       console.log(err);

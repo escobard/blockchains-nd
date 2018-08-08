@@ -1,6 +1,1 @@
-2018/08/07-18:49:51.466 5dbc Recovering log #18
-2018/08/07-18:49:51.466 5dbc Level-0 table #20: started
-2018/08/07-18:49:51.561 5dbc Level-0 table #20: 400 bytes OK
-2018/08/07-18:49:51.778 5dbc Delete type=0 #18
-2018/08/07-18:49:51.778 5dbc Delete type=3 #16
-2018/08/07-18:49:51.860 2d64 Moved #11 to level-1 400 bytes OK: files[ 3 3 0 0 0 0 0 ]
+2018/08/07-18:55:44.890 16f4 Delete type=3 #1

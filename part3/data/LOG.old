@@ -1,6 +1,0 @@
-2018/08/07-18:49:26.074 677c Recovering log #15
-2018/08/07-18:49:26.074 677c Level-0 table #17: started
-2018/08/07-18:49:26.247 677c Level-0 table #17: 400 bytes OK
-2018/08/07-18:49:26.456 677c Delete type=0 #15
-2018/08/07-18:49:26.457 677c Delete type=3 #13
-2018/08/07-18:49:26.539 5d00 Moved #8 to level-1 400 bytes OK: files[ 3 2 0 0 0 0 0 ]
