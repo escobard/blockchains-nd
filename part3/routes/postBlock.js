@@ -5,7 +5,8 @@ const router = require("express").Router();
 let blockchain = require("../services/blockchain");
 
 // the blockHeight route parameter is expted here, and passed back to the route
-router.get("/:blockData", (req, res) => {
+router.post("/", (req, res) => {
+  let { headers, params, body : {body} } = req;
   new Promise((resolve, reject) => {
     let chain = blockchain.fetchBlockchain();
     setTimeout(function() {
@@ -13,7 +14,7 @@ router.get("/:blockData", (req, res) => {
     }, 250);
   })
     .then(chain => {
-      let { headers, params } = req;
+      
       
       // sets block height
       blockchain.setBlockHeight(chain.length);
@@ -28,18 +29,31 @@ router.get("/:blockData", (req, res) => {
       }
 
       // adds block data based on route parameters
-      blockchain.addBlock(params.blockData);
+      return blockchain.addBlock(body)
+  })
+    .then((block) =>{ 
+    let chain = blockchain.fetchBlockchain();
+      return chain;
+  })
+    .then((chain) =>{
+      setTimeout(function() {
 
+      // sets the blockchain service data with data from leveldb
+      blockchain.chain = chain;
+      let newBlock = blockchain.getBlock(blockchain.height - 1);
       // logs the blockchain
-      console.log("blockchain: ", blockchain);
+      console.log("request:", body);
+      console.log("New Block:", newBlock);
 
       res.send({
         healthy: true,
-        newBLock: `added new block with the following data: ${
-          params.blockData
+        responseData: `added new block with the following data: ${
+          body
         }`,
+        newBlock,
         blockchain
       });
+    }, 500);
     })
     .catch(err => {
       console.log(err);
