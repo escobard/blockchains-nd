@@ -23,7 +23,9 @@ router.get('/', async (req, res) => {
 		console.log('Populating blockchain with genesis block...')
 		blockchain.createGenesis();
 	}
-
+	if (blockchain.height >= 2) {
+		blockchain.validateChain()
+	}
 	// logs the blockchain
 	console.log('blockchain: ', blockchain);
 	

@@ -68,7 +68,7 @@ class Blockchain {
     let height = 0;
     return addDataToLevelDB("", height);
   }
-  
+
   getBlock(blockHeight) {
     return this.chain[blockHeight];
   }
@@ -83,7 +83,8 @@ class Blockchain {
     let validBlockHash = SHA256(JSON.stringify(block)).toString();
 
     if (blockHash === validBlockHash) {
-      return true;
+      console.log(`Block is valid!`)
+      block.hash = blockHash;
     } else {
       console.log(
         "Block #" +
@@ -93,18 +94,21 @@ class Blockchain {
           "<>" +
           validBlockHash
       );
-      return false;
     }
   }
 
   validateChain() {
     let errorLog = [];
-    for (var i = 0; i < this.chain.length - 1; i++) {
+    for (var i = 0; i <= this.chain.length; i++) {
       if (!this.validateBlock(i)) errorLog.push(i);
-
+      if (!this.chain[i + 1]) {
+        console.log("No errors detected");
+        return;
+      }
       let blockHash = this.chain[i].hash;
-      let previousHash = this.chain[i + 1].previousBlockHash;
-      if (blockHash !== previousHash) {
+      let previousHash = this.chain[i + 1].hash;
+
+      if(blockHash !== previousHash) {
         errorLog.push(i);
       }
     }

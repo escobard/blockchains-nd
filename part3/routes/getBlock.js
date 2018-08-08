@@ -27,9 +27,9 @@ router.get('/:blockHeight', (req, res) => {
   }
 
 	let block = blockchain.getBlock(params.blockHeight);
-
-	console.log('request: ', headers)
-	console.log('request parameters: ', params)
+  blockchain.validateBlock(params.blockHeight);
+	// console.log('request: ', headers)
+	// console.log('request parameters: ', params)
 	console.log("block: ", block);
 
 
