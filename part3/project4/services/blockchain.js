@@ -22,7 +22,7 @@ class Blockchain {
     this.chain = [];
     this.height = 0;
   }
-  fetchBlockchain() {
+  async fetchBlockchain() {
     return populateBlockchain([]);
   }
   createGenesis() {
