@@ -1,27 +1,11 @@
 'use strict';
 
-const router = require('express').Router();
-
-let blockchain = require("../services/blockchain");
+const router = require('express').Router(),
+initChain = require('../middlewares/initChain')
 
 // the blockHeight route parameter is expted here, and passed back to the route
-router.get('/:blockHeight', async (req, res) => {
-    let chain = await blockchain.fetchBlockchain();
-
-	let {headers, params} = req;
-
-  // sets block height
-  blockchain.setBlockHeight(chain.length)
-
-  // sets the blockchain service data with data from leveldb
-  blockchain.chain = chain;
-
-  // checks block height, create genesis
-  if (blockchain.height === 0) {
-    console.log('Populating blockchain with genesis block...')
-    blockchain.createGenesis();
-  }
-
+router.get('/:blockHeight', initChain,  async (req, res) => {
+  
 	let block = blockchain.getBlock(params.blockHeight);
   blockchain.validateBlock(params.blockHeight);
 	// console.log('request: ', headers)
