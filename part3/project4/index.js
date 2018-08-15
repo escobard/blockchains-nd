@@ -1,9 +1,16 @@
 const express = require("express"),
 bodyParser = require("body-parser");
 
+const {
+  getLevelDBData,
+  populateBlockchain,
+  addDataToLevelDB
+} = require("./models/utils");
+
 const { port } = require("./constants/routes");
-// this can be commented out to start the blockchain and test timeout functions
-// const blockchain = require("./services/blockchain");
+
+global.blockchain = require("./services/blockchain");
+
 const app = express();
 
 app.use(bodyParser.json());

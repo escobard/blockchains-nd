@@ -2,8 +2,6 @@
 
 const router = require('express').Router();
 
-let blockchain = require("../services/blockchain");
-
 router.get('/', async (req, res) => {
 	let chain = await blockchain.fetchBlockchain();
 
