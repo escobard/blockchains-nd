@@ -70,3 +70,30 @@ can be more easily translated
 - turns data from information into any one of 64 characters (check any base64 table)
 - goes through the alphabet uppercase first, to lower case, 0-9, and + / being the last characters
 - can check out at base64encode.org
+
+
+## Encoding files, and other terminal commands
+
+
+### Encode and Decode Text from Terminal
+
+- this ENCODES the string
+String to hex: `xxd -p <<< "Blockchain Developer"`
+
+- this DECODES the string
+Hex to string: `echo 426c6f636b636861696e20446576656c6f7065720a|xxd -r -p`
+
+### Encode and Decode Text from Terminal Using Files
+Create file: `touch hello.txt`
+Add text to file
+
+- this creates a new file, and the new file's contents are the original file's encoded in hex 
+String to Hex: `xxd -p hello.txt helloEncoded.txt`
+
+- this decodes the file,returns the content in a new file
+Hex to String:` xxd -p -r helloEncoded.txt helloDecoded.txt`
+
+### Encode and Decode Image from Terminal Using Files
+Find image file and place in directory
+Image to Hex: `xxd -p cat.png cat.txt`
+Hex to Image:` xxd -p -r cat.txt catDecoded.png`
