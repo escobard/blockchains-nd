@@ -16,4 +16,57 @@ topics covered in the lesson:
 	
 	Blockchain Generations - You will be able to discuss digital asset management and how it fits into the overall scheme of blockchain generations.
 ```
-### Why digital assets
+### How do digital assets work?
+
+- how do computers understand the contents of a file?
+- how do they present those files to people? 
+
+## Overview of E n D
+
+Its the process of producing and interpreting information, 
+- used among many fields of study, 
+- in computer science its facilitating the sending and receiving of data, 
+- process of transalating a message between human readable data and into raw data to allow computers to read the information in a format they understand.
+- later this is decoded into a format that people can understand and work with
+- end result is computers get to communicate in a format they use to improve speed and transmission, and we get to communicate in a format we use such as live video, images, etc
+
+### Encoding
+- process of putting a sequence fo characters into a specialized format for efficient transmission or storage.
+- help us send and receive messages between each other, when speaking to another person, if you understand the language you can speak freely, and understand each other  (dummy version)
+- but if you are speaking to a computer, the computer needs to understand what you're talking about - this is known as ENCODING
+- each of these encoding schemes can take in information to encode it as RAW DATA
+- this raw data is what is then transmitted between computers
+
+#### Encoding vs encryption
+- with encryption, you are making a secret key in a way that cannot be reversed and ONLY you have access to.
+- with encoding, you're simply trying to re-format something to make it easier to transmit. 
+	- encoding isn't the same as compression either
+		- compression: aims to make files smaller
+		- encoding: may end up with a larger file, but speed in which it can be read and transmitted, is improved.
+
+### Decoding 
+- takes encoded raw unredable files, and converts them back into human readable format.
+- convert the raw data files back into the format they started as
+
+### E n D formats
+- all serve the purpose of translating human readable data into computer readable medium that
+can be more easily translated
+
+#### ASCII
+- American standard code for information exchange
+- based on the idea that you can represent text as numbers
+- and these numbers can be transalated by computers to binary code
+- matches the text we write into numbers that computers recognize, using binary code to transmit information
+- can try out some E n D with ASCII by going to: www.unit-conversion.info/texttools/ascii
+
+#### Hexadecimal
+- a more concise and human readable representation of binary code
+- uses a combination of single digit numbers, and the first 6 letters of the alphabet to represent all binary numbers (1-15)
+- more common to work with among asambly languages
+- to check out hex E n D, head to converstring.com/encodedecode/hexencode
+
+#### Base 64
+- encoding scheme meant to represent data as numbers in a string format
+- turns data from information into any one of 64 characters (check any base64 table)
+- goes through the alphabet uppercase first, to lower case, 0-9, and + / being the last characters
+- can check out at base64encode.org
