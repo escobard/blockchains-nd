@@ -95,5 +95,21 @@ Hex to String:` xxd -p -r helloEncoded.txt helloDecoded.txt`
 
 ### Encode and Decode Image from Terminal Using Files
 Find image file and place in directory
-Image to Hex: `xxd -p cat.png cat.txt`
-Hex to Image:` xxd -p -r cat.txt catDecoded.png`
+Image to Hex: `xxd -p cat.jpg cat.txt`
+Hex to Image:` xxd -p -r cat.txt catDecoded.jpg`
+
+### Verify Digital Assets
+
+- Check the integrity of the digital asset to confirm that it contains the correct sequence of bytes and has not been wrongfully accessed or altered.  
+	- integrity is only about making sure that a given file is exactly the same as it was at its source 
+	it doesnt refer to the trustworthiness of that source
+
+### Proof of existence
+- How we verify digital assets in a blockchain
+- A concept (and a service) that publicly proves and authenticates any digital asset on the blockchain by verifying its hash. 
+- different from proof of work, (for mining).
+- can be compared to a notary:
+	- in a real life notary, you go to an authorized official with a document who authorizes it, and stamps it, verifying the document
+	- in a blockchain, proof of existence verifies the authenticity of documents on a blokchain
+- when information about a digital asset is stored on a notary blockchain, only its hash is saved
+- therefore the actual documents and contents are not publically revealed

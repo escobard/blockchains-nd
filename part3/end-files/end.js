@@ -12,6 +12,8 @@ imgHexEncode = new Buffer(imgReadBuffer).toString('hex');
 // Output encoded data to console
 console.log(imgHexEncode);
 
+// comment out either the encode or decode sections 
+
 // Decode hex
 var imgHexDecode = new Buffer(imgHexEncode, 'hex');
 
