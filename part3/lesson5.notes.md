@@ -113,3 +113,15 @@ Hex to Image:` xxd -p -r cat.txt catDecoded.jpg`
 	- in a blockchain, proof of existence verifies the authenticity of documents on a blokchain
 - when information about a digital asset is stored on a notary blockchain, only its hash is saved
 - therefore the actual documents and contents are not publically revealed
+
+### POEX.IO
+- https://poex.io/
+- a notary service hat authorizes data, built on the bitcoin blockchain
+- validates digital assets, storing them in the bitcoin blockchain
+	- asset block hashes (from another blockchain, service, etc) are stored forever
+- creates an identifier based on the time the digital asset was submitted
+- uses the following steps
+	* digital asset is hashsed via sha256
+	* that has is appended to an identifier (for example 0x444f4... - the idetintifier and the 256 code outputted by the sha256 algo)
+	* the hash + identifier is put into a generated transaction
+	* TX is marked with OP_RETURN marking the transaction as unspendable
