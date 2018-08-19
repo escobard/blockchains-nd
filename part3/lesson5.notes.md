@@ -173,3 +173,20 @@ To recap, in this section we covered:
 Proof of Existence: The concept that publicly proving and authenticating any digital asset on the blockchain by verifying its hash.
 We saw a demo using the POEX online document notarization service.
 Lastly, we discussed different algorithms commonly used for proof of existence such as SHA256 and MD5.
+
+### Secure an Asset
+- Protect the resource (asset) from wrongfull access or alteration
+- Why secure an asset? 
+	- a banana is directly useful because you can eat it
+	- a document is indirectly useful because it may be useful at a later date as evidence
+- to prove that I own a photo, it is encoded into a data object with multiple properties
+	- refer to: https://app.frame.io/r/8cad91b0-341c-486a-bffc-2eeefd775a73?f=20017a87-7b4f-4e4a-877b-9e209486515b
+	- this will be super useful for project 4.
+		- maybe start with a static asset / address at first
+		- properties of the object include:
+			- image: { encodedData, TypeOfImage, bitcoinWalletAddress}
+			- Time: {'Timestamp code'}
+			- previousBlockHash: {'Previous hash'}
+- the user has included their digital identity, to SECURE the digital asset by embedding their information in the same block
+	- that's all that needs to happen to SECURE an asset on a blockchain, providing proof that it existed at one time.
+	- easily done with some tweaks to the current block class, start with an IMAGE first before taking on the star notary service
