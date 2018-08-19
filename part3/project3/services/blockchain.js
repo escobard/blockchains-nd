@@ -21,11 +21,8 @@ class Blockchain {
   constructor(data) {
     this.chain = [];
     this.height = 0;
-    if (this.chain.length >= 1) {
-      this.height = this.chain.length;
-    };
   }
-  fetchBlockchain() {
+  async fetchBlockchain() {
     return populateBlockchain([]);
   }
   createGenesis() {
