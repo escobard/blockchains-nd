@@ -10,8 +10,9 @@ const routes = {
 	requestValidation: '/requestValidation',
 	messageSignature: '/message-signature/validate',
 	block: '/block',
-	stars: '/stars',
-	address: '/address'
+	starsHash: '/stars/hash',
+	starsAddress: '/stars/address',
+	starsHeight: '/stars/height'
 };
 
 module.exports = routes;
