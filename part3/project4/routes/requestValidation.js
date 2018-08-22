@@ -21,8 +21,16 @@ router.post("/", (req, res) => {
 			// handle valid logic here
 			// using recommended number only format
 			console.log("This is a valid address");
+
+			// sets the wallet address global property
+			global.wallet = body;
+
 			let timestamp = new Date().getTime().toString().slice(0, -3);
+
+			// sets the message signature
 			let message = `${body}:${timestamp}:starRegistry`;
+
+			// starts the timer for validation time window
 			validation(message)
 			res.status(200).json({
 				status: 'Success, copy the string below to sign your block'
