@@ -6,7 +6,12 @@ const routes = {
 	addBlock: '/addBlock',
 	getBlock: '/block',
 	postBlock: '/block',
-	getHeight: '/getBlockHeight'
+	getHeight: '/getBlockHeight',
+	requestValidation: '/requestValidation',
+	messageSignature: '/message-signature/validate',
+	block: '/block',
+	stars: '/stars',
+	address: '/address'
 };
 
 module.exports = routes;
