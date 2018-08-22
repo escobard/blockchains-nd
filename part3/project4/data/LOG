@@ -1,1 +1,7 @@
-2018/08/21-13:19:26.020 940 Delete type=3 #1
+2018/08/21-18:18:55.822 1b7c Recovering log #3
+2018/08/21-18:18:55.822 1b7c Level-0 table #5: started
+2018/08/21-18:18:55.946 1b7c Level-0 table #5: 357 bytes OK
+2018/08/21-18:18:55.946 1b7c Recovering log #6
+2018/08/21-18:18:56.204 1b7c Delete type=0 #3
+2018/08/21-18:18:56.204 1b7c Delete type=0 #6
+2018/08/21-18:18:56.204 1b7c Delete type=3 #2

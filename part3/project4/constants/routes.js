@@ -1,6 +1,7 @@
 const routes = {
 	port: process.env.PORT || 8000,
 	main: '/',
+	notary: '/notary',
 	health: '/health',
 	addBlock: '/addBlock',
 	getBlock: '/block',
