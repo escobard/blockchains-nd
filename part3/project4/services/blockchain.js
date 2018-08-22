@@ -1,5 +1,6 @@
 // import leveldb helpers here
 const SHA256 = require("crypto-js/sha256");
+const Datauri = require('datauri');
 
 const {
   getLevelDBData,
@@ -68,7 +69,25 @@ class Blockchain {
   getBlock(blockHeight) {
     return this.chain[blockHeight];
   }
+  validateBlockData(blockData){
+    // contains logic to validate data
 
+    // contains the blockImage SHA256 encrypted data URI
+    let image = blockData.image;
+    // turns test image into static URI
+    let datauri = new Datauri('./assets/kitty.jpg');
+
+    // this should work, need to test, turns image data back to pure data URI
+    let decrypted = SHA256(JSON.stringify(datauri)).toString();
+
+    // checks for exact match
+    if (decrypted === image) {
+      console.log('VALIDATED')
+    }
+    else{
+      console.log('NOT VALIDATED')
+    }
+  }
   validateBlock(blockHeight) {
     let block = this.getBlock(blockHeight);
 
