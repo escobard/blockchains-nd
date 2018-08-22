@@ -20,10 +20,10 @@ router.post("/", (req, res) => {
 		if (valid) {
 			// handle valid logic here
 			// using recommended number only format
+			console.log("This is a valid address");
 			let timestamp = new Date().getTime().toString().slice(0, -3);
 			let message = `${body}:${timestamp}:starRegistry`;
 			validation(message)
-			console.log("This is a valid address");
 			res.status(200).json({
 				status: 'Success, copy the string below to sign your block'
 				message,

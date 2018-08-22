@@ -1,6 +1,6 @@
 const validation = (message) =>{
 	// sets our global validation variable
-	global.validation = true;
+	global.signature = message;
 
 	// first minute
 	setTimeout(function(){
@@ -24,7 +24,7 @@ const validation = (message) =>{
 
 	// last minute
 	setTimeout(function(){
-		delete global.validation;
+		delete global.signature;
 		console.log(`Your validation has expired, please visit the /requestValidation route to authenticate`)
 	}, 60000*5);
 }

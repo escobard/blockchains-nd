@@ -1,7 +1,3 @@
-2018/08/21-18:18:55.822 1b7c Recovering log #3
-2018/08/21-18:18:55.822 1b7c Level-0 table #5: started
-2018/08/21-18:18:55.946 1b7c Level-0 table #5: 357 bytes OK
-2018/08/21-18:18:55.946 1b7c Recovering log #6
-2018/08/21-18:18:56.204 1b7c Delete type=0 #3
-2018/08/21-18:18:56.204 1b7c Delete type=0 #6
-2018/08/21-18:18:56.204 1b7c Delete type=3 #2
+2018/08/22-15:08:50.716 542c Recovering log #7
+2018/08/22-15:08:51.050 542c Delete type=0 #7
+2018/08/22-15:08:51.050 542c Delete type=3 #4

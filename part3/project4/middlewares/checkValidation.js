@@ -1,13 +1,12 @@
 module.exports = async (req, res, next) => {
 	let { body } = req;
 	console.log("REQ BODY", body);
-	// need to tweak the logic here to actually validate data
-	let valid = global.valid;
+	// need to tweak the logic here to actually signatureate data
+	// this variable is probably unecessary to declare, should test if removing is OK
+	let signature = global.signature;
 
-	blockchain.validateBlockData();
-
-	// passed middleware logic once the valid variable = true
-	if (valid) {
+	// passed middleware logic once the signature variable = true
+	if (signature) {
 		console.log("Validation time window open, proceeding to route...");
 		next();
 	} else {
