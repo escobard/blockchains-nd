@@ -190,3 +190,22 @@ Lastly, we discussed different algorithms commonly used for proof of existence s
 - the user has included their digital identity, to SECURE the digital asset by embedding their information in the same block
 	- that's all that needs to happen to SECURE an asset on a blockchain, providing proof that it existed at one time.
 	- easily done with some tweaks to the current block class, start with an IMAGE first before taking on the star notary service
+
+## Blockchain Generations
+
+- bitcoin, litecoin, monero are known as the first generation of blockchains, or blockchain 1.0.
+	- these block chains focused on moving value, maintaining a ledger, and creating ideal payment systems.
+- blockchain 2.0 (ethereum, ethereum classic, otum, etc) were built on the concept of recording transactions on the blockchain.
+	- to do this, they implemented a way to utilize logic to implement the data in different ways
+	- this is logic is what we refer to as smart contracts, originally created by etherueum.
+
+### Smart Contracts
+
+- smart contracts written up between parties are coded into the blockchain.
+- these contracts are triggered when a transaction is initialized, and executed based to the coded terms.
+- think of smart contracts as legal contracts that are based on code.
+- smart contracts determine HOW a transaction will be spent, and can send money to multiple users within a single transaction.
+- smart contracts allow developers to create projects on top of the blockchain platform.
+- this allows developers to launch blockchain based businesses and de-centralized governments.
+- these smart contracts also give businesses the potential to automate many tasks and processes that would otherwise be impossible.
+- its allowing us to build entirely new types of applications, known as de-centralized apps.
