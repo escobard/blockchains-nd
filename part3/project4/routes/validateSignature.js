@@ -5,7 +5,13 @@ const router = require("express").Router(),
 
 router.get("/", checkSignature, async (req, res) => {
 	let { body } = req;
-	if (body === global.signature) {
+
+	// checks to see if the request signature and wallet match globals
+	if (body.signature === signature && body.address === address) {
+
+		// sets the authenticated variable to true, granting user access
+		global.authenticated = true;
+
 		console.log('`Access granted, time remaining to add data: ${authWindow}`')
 		res.status(200).json({
 			status: `Access granted, time remaining to add data: ${authWindow}`
@@ -13,7 +19,7 @@ router.get("/", checkSignature, async (req, res) => {
 	} else {
 		res.status(401).json({
 			status: "Failed, stored signature values do not match request string",
-			message: body
+			signature
 		});
 	}
 });

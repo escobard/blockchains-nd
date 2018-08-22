@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
 			console.log("This is a valid address");
 
 			// sets the wallet address global property
-			global.wallet = body;
+			global.address = body;
 
 			let timestamp = new Date().getTime().toString().slice(0, -3);
 

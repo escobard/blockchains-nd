@@ -30,7 +30,7 @@ const validation = (message) =>{
 	setTimeout(function(){
 		// deletes all authentication globals
 		delete global.signature;
-		delete global.wallet;
+		delete global.address;
 		delete global.authWindow;
 		delete global.authenticated;
 		
