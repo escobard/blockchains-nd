@@ -5,6 +5,7 @@ const routes = require('../constants/routes');
 module.exports = (app) => {
 
   app.use(routes.main, require('../routes/main'));
+  app.use(routes.block, require('../routes/block'));
   app.use(routes.health, require('../routes/health'));
   app.use(routes.notary, require('../routes/notary'));
   app.use(routes.addBlock, require('../routes/addBlock'));

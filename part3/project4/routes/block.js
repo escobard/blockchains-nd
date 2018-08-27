@@ -3,10 +3,12 @@
 const router = require("express").Router();
 
 let blockchain = require("../services/blockchain"),
-initChain = require('../middlewares/initChain')
+initChain = require('../middlewares/initChain'),
+checkValidation = require('../middlewares/checkValidation'),
+checkBlockData = require('../middlewares/checkBlockData')
 
 // the blockHeight route parameter is expted here, and passed back to the route
-router.post("/", async (req, res) => {
+router.post("/", initChain, checkValidation, checkBlockData, async (req, res) => {
   let { headers, params, body: { body } } = req;
   
         // adds block data based on route parameters
