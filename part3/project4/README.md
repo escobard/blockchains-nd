@@ -60,7 +60,7 @@ Expects a `valid BTC` address, (checked with web3), expects the following parame
 ```
 POST URL path: http://localhost:8000/requestValidation
 Content-Type: application/json
-Request body: {"body":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz"}
+Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz"}
 ```
 
 Returns the following JSON message:
