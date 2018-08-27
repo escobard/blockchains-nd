@@ -7,26 +7,26 @@ const validation = message => {
 	// first minute
 	setTimeout(function() {
 		global.authWindow = 4;
-		console.log(`4 minutes remaining, your message is: ${messsage}`);
+		console.log(`4 minutes remaining, your message is: ${message}`);
 	}, 60000);
 
 	// second minute
 	setTimeout(function() {
 		global.authWindow = 3;
-		console.log(`3 minutes remaining, your message is: ${messsage}`);
+		console.log(`3 minutes remaining, your message is: ${message}`);
 	}, 60000 * 2);
 
 	// third minute
 	setTimeout(function() {
 		global.authWindow = 2;
-		console.log(`2 minutes remaining, your message is: ${messsage}`);
+		console.log(`2 minutes remaining, your message is: ${message}`);
 	}, 60000 * 3);
 
 	// fourth minute
 	setTimeout(function() {
 		global.authWindow = 1;
 		console.log(
-			`1 minutes remaining, your authentication is about to expire! Your message is: ${messsage}`
+			`1 minutes remaining, your authentication is about to expire! Your message is: ${message}`
 		);
 	}, 60000 * 4);
 
