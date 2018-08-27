@@ -19,7 +19,7 @@ To run this application locally for development, use the following commands:
 $ npm start
 ```
 
-## Endpoints
+## Endpoints - project 3
 
 ### GET Endpoint - /
 
@@ -50,6 +50,26 @@ Returns the entire height of the the blockchain
 ### GET Endpoint - /health
 
 Returns a simple JSON response, tests API health
+
+## Enpoints - project 4 
+
+### POST endpoint - /requestValidation
+
+Expects a `valid BTC` address, (checked with web3), expects the following parameters: 
+
+```
+POST URL path: http://localhost:8000/requestValidation
+Content-Type: application/json
+Request body: {"body":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz"}
+```
+
+Returns the following JSON message:
+
+```
+[walletAddress]:[timeStamp]:starRegistry
+```
+
+Grants the user a `5 minute authentication window`, handled by `the validation util within ../utils.js`
 
 ## Contribution
 
