@@ -5,9 +5,9 @@ initChain = require('../middlewares/initChain')
 
 // the blockHeight route parameter is expted here, and passed back to the route
 router.get('/:blockHeight', initChain,  async (req, res) => {
-  
-	let block = blockchain.getBlock(params.blockHeight);
-  blockchain.validateBlock(params.blockHeight);
+  let { params: { blockHeight } } = req;
+	let block = blockchain.getBlock('height',blockHeight);
+  // blockchain.validateBlock(blockHeight);
 	// console.log('request: ', headers)
 	// console.log('request parameters: ', params)
 	console.log("block: ", block);
@@ -18,16 +18,15 @@ router.get('/:blockHeight', initChain,  async (req, res) => {
 		res.send(
     {
       healthy: true,
-      blockHeightParams: params.blockHeight,
+      blockHeightParams: blockHeight,
       block: 'Block does not exist - check the /getBlockHeight to check current chain height'
     });
 	}
 
   res.send(
     {
-      blockHeightParams: params.blockHeight,
+      blockHeightParams: `Height: ${blockHeight}`,
       block,
-      blockchain
     });
 });
 

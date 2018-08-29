@@ -71,7 +71,7 @@ class Blockchain {
     let array = []
 
     this.chain.forEach(block => {
-      let { hash, height, body: { address }}
+      let { hash, height, body: { address }} = block;
 
       // checks to see if parameters match the string, has OR case for address
       if (block[parameter] == string || block.body[parameter] == string) {
