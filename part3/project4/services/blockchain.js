@@ -31,6 +31,7 @@ class Blockchain {
   }
   addBlock(data) {
     let { height, chain } = this;
+    this.height = this.chain.length;
     console.log("HEIGHT", height);
     // defines block with data
     let newBlock = new Block(data);
@@ -68,18 +69,28 @@ class Blockchain {
 
   getBlock(parameter, string) {
     // creates an array to store multiple blocks in case of same address
-    let array = []
-
+    let array = [];
+    this.height = this.chain.length;
     this.chain.forEach(block => {
-      let { hash, height, body: { address }} = block;
-
-      // checks to see if parameters match the string, has OR case for address
-      if (block[parameter] == string || block.body[parameter] == string) {
-        array.push(block)
+      console.log("BLOCK", block);
+      if (block.height === 0 && !block.body.star) {
+        let { hash, height, body } = block;
+        if (block.height == string) {
+          array.push(block);
+        }
+      } else {
+        let { hash, height, body: { star: { address } } } = block;
+        // checks to see if parameters match the string, has OR case for address
+        console.log('BLOCK PARAMETER', block[parameter])
+        if (
+          block[parameter] == string ||
+          block.body[parameter] == string
+        ) {
+          array.push(block);
+        }
       }
-
     });
-    return array
+    return array;
   }
   validateBlockData(blockData) {
     // contains logic to validate data

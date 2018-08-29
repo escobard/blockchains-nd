@@ -1,8 +1,13 @@
 const validation = message => {
 	// sets our global validation variable
+	if (!message) {
+		console.log('Validation window reset, navigate to /requestValidation')
+		return;
+	}
 	global.signature = message;
 	global.authWindow = 5;
 	console.log(`5 minutes remaining, your message is: ${message}`);
+
 	// first minute
 	setTimeout(function() {
 		global.authWindow = 4;

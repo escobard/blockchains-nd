@@ -15,55 +15,57 @@ router.post(
   checkBlockData,
   async (req, res) => {
     let { headers, params, body } = req;
-
     // adds block data based on route parameters
+    console.log('Adding block:', body)
     blockchain.addBlock(body);
-    let chain = await blockchain.fetchBlockchain();
-    // sets the blockchain service data with data from leveldb
-    blockchain.chain = chain;
-    let newBlock = blockchain.getBlock(blockchain.height);
-    // logs the blockchain
-    delete global.address;
-    delete global.authenticated;
-    delete global.signature;
-    delete global.authWindow;
+    setTimeout(async function() {
+      // re-populating object with new data
+      console.log('Populating blockchain...')
+      let chain = await blockchain.fetchBlockchain();
+      // sets the blockchain service data with data from leveldb
+      blockchain.chain = chain;
+      let newBlock = blockchain.getBlock("height", blockchain.height);
+      // logs the blockchain
+      delete global.address;
+      delete global.authenticated;
+      delete global.signature;
+      delete global.authWindow;
 
-    console.log("Destroyed all global variables");
+      console.log("Destroyed all global variables");
 
-    res.send({
-      healthy: true,
-      responseData: `added new block with the following data: ${body}`,
-      newBlock,
-      blockchain
-    });
+      res.send({
+        healthy: true,
+        responseData: `added new block with the following data: ${body}`,
+        newBlock,
+        blockchain
+      });
+    }, 500);
   }
 );
 
 // the blockHeight route parameter is expted here, and passed back to the route
-router.get('/:blockHeight', initChain,  async (req, res) => {
+router.get("/:blockHeight", initChain, async (req, res) => {
   let { params: { blockHeight } } = req;
-  let block = blockchain.getBlock('height', blockHeight);
+  let block = blockchain.getBlock("height", blockHeight);
   // blockchain.validateBlock(blockHeight);
   // console.log('request: ', headers)
   // console.log('request parameters: ', params)
   console.log("block: ", block);
 
-
   // if block does not exist, return different response
   if (!block) {
-    res.send(
-    {
+    res.send({
       healthy: true,
       blockHeightParams: blockHeight,
-      block: 'Block does not exist - check the /getBlockHeight to check current chain height'
+      block:
+        "Block does not exist - check the /getBlockHeight to check current chain height"
     });
   }
 
-  res.send(
-    {
-      blockHeightParams: `Height: ${blockHeight}`,
-      block,
-    });
+  res.send({
+    blockHeightParams: `Height: ${blockHeight}`,
+    block
+  });
 });
 
 module.exports = router;
