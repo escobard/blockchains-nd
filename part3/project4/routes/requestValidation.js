@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
 		if (valid) {
 			// handle valid logic here
 			// using recommended number only format
-			console.log("This is a valid address", address);
+			console.log(address, " is a valid address");
 
 			// sets the wallet address global property
 			global.address = address;

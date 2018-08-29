@@ -29,16 +29,6 @@ Navigating to this page will display the entire blockchain, and populate the blo
 
 Returns the block passed into the :blockHeight parameters.
 
-### POST Endpoint - /block
-
-Adds a new block with based on the posted data, sample post request:
-
-```
-POST URL path: http://localhost:8000/block
-Content-Type: application/json
-Request body: {"body":"block body contents"}
-```
-
 ### GET Endpoint - /addblock/:blockContent
 
 Any characters preceeding the /addblock route will create a new block with the parameters. Any new blocks are immediately shown by the response.
@@ -70,6 +60,34 @@ Returns the following JSON message:
 ```
 
 Grants the user a `5 minute authentication window`, handled by `the validation util within ../utils.js`
+
+### POST endpoint - /message-signature/validate
+
+Expect a `valid BTC` address, must match the `authenticated address` returned within the `/requestValidation` endpoint.
+
+```
+POST URL path: http://localhost:8000/requestValidation
+Content-Type: application/json
+Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz", "message":"message signature hash, received from /requestValidation - 1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck:1535400871:starRegistry"}
+```
+
+Validates the user's address, allows users to register a star.
+
+### POST Endpoint - /block
+
+Expect:
+```
+- a `valid BTC` address
+- must match the `authenticated address` returned within the `/requestValidation` endpoint. 
+- must include a star and address property within the body
+- star story must be hex encoded, can only contain ascii characters, a max length of 250 must be enforced. 
+
+```
+POST URL path: http://localhost:8000/block
+Content-Type: application/json
+Request body: {star:{story:"hex encoded string, when decoded contains ascii characters only, with a max length of 250 words", coordinates}, address:"validated bitcoin address"}
+```
+
 
 ## Contribution
 

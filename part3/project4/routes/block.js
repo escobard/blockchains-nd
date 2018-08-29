@@ -9,22 +9,13 @@ checkBlockData = require('../middlewares/checkBlockData')
 
 // the blockHeight route parameter is expted here, and passed back to the route
 router.post("/", initChain, checkValidation, checkBlockData, async (req, res) => {
-  let { headers, params, body: { body } } = req;
+  let { headers, params, body } = req;
   
         // adds block data based on route parameters
         blockchain.addBlock(body);
-
-        new Promise((resolve, reject) => {
-          let newChain;
-          setTimeout(function() {
-            newChain = blockchain.fetchBlockchain();
-          }, 250);
-          setTimeout(function() {
-            resolve(newChain);
-          }, 500);
-        }).then(newChain => {
+        let chain = await blockchain.fetchBlockchain(); 
           // sets the blockchain service data with data from leveldb
-          blockchain.chain = newChain;
+          blockchain.chain = chain;
           let newBlock = blockchain.getBlock(blockchain.height);
           // logs the blockchain
           console.log("request:", body);
@@ -36,7 +27,6 @@ router.post("/", initChain, checkValidation, checkBlockData, async (req, res) =>
             newBlock,
             blockchain
           });
-        });
 });
 
 module.exports = router;

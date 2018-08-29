@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
 			console.log("Valid hex, checking ascii characters...");
 			// converts story from hex to asii
 			let convertAscii = hexToAscii(star.story);
-
+			console.log('HEX STRING DECODED', convertAscii)
 			// checks if converted string contains only ascii characters
 			let ascii = checkAscii(convertAscii);
 			if (ascii) {

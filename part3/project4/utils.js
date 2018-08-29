@@ -1,9 +1,8 @@
-const web3 = require('web3')
-
 const validation = message => {
 	// sets our global validation variable
 	global.signature = message;
 	global.authWindow = 5;
+	console.log(`5 minutes remaining, your message is: ${message}`);
 	// first minute
 	setTimeout(function() {
 		global.authWindow = 4;
@@ -39,7 +38,7 @@ const validation = message => {
 		delete global.authenticated;
 
 		console.log(
-			`Your validation has expired, please visit the /requestValidation route to authenticate`
+			`Your validation has expired, please send a post request to /requestValidation route to authenticate`
 		);
 	}, 60000 * 5);
 };
@@ -69,15 +68,16 @@ const checkAscii = string => {
 };
 
 // converts hex encode to readable string
-const hexToAscii = (hexx) =>{
-		let str = web3.toAscii(hex)
+const hexToAscii = hex => {
+    var str = '';
+    for (var i = 0; i < hex.length; i += 2) str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
     return str;
-}
+};
 
-const wordCount = (str) => {
-     return str.split(' ')
-            .filter(function(n) { return n != '' })
-            .length;
-}
+const wordCount = str => {
+	return str.split(" ").filter(function(n) {
+		return n != "";
+	}).length;
+};
 
-module.exports = { validation, checkHex, checkAscii, hexToAscii };
+module.exports = { validation, checkHex, checkAscii, hexToAscii, wordCount };
