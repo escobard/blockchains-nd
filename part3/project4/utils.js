@@ -1,9 +1,5 @@
 const validation = message => {
 	// sets our global validation variable
-	if (!message) {
-		console.log('Validation window reset, navigate to /requestValidation')
-		return;
-	}
 	global.signature = message;
 	global.authWindow = 5;
 	console.log(`5 minutes remaining, your message is: ${message}`);
@@ -41,7 +37,6 @@ const validation = message => {
 		delete global.address;
 		delete global.authWindow;
 		delete global.authenticated;
-
 		console.log(
 			`Your validation has expired, please send a post request to /requestValidation route to authenticate`
 		);

@@ -25,11 +25,6 @@ router.post(
       // sets the blockchain service data with data from leveldb
       blockchain.chain = chain;
       let newBlock = blockchain.getBlock("height", blockchain.height);
-      // logs the blockchain
-      delete global.address;
-      delete global.authenticated;
-      delete global.signature;
-      delete global.authWindow;
 
       console.log("Destroyed all global variables");
 

@@ -19,7 +19,7 @@ To run this application locally for development, use the following commands:
 $ npm start
 ```
 
-## Endpoints - project 3
+## Endpoints - project 3 - for project reviewer, ignore these.
 
 ### GET Endpoint - /
 
@@ -41,7 +41,7 @@ Returns the entire height of the the blockchain
 
 Returns a simple JSON response, tests API health
 
-## Enpoints - project 4 
+## Enpoints - project 4 - for project reviewer, test these
 
 ### POST endpoint - /requestValidation
 
@@ -97,4 +97,4 @@ For commercial or educational use, please paste a link to this repository to giv
 
 ## License
 
-As of January 9th, 2018, these files are open for all to use and contribute to. This repository is protected under the [MIT License](http://choosealicense.com/licenses/mit/).
+As of August 29th, 2018, these files are open for all to use and contribute to. This repository is protected under the [MIT License](http://choosealicense.com/licenses/mit/).

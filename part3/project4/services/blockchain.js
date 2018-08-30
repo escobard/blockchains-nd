@@ -8,6 +8,8 @@ const {
   addDataToLevelDB
 } = require("../models/utils");
 
+const { hexToAscii } = require("../utils");
+
 class Block {
   constructor(data) {
     (this.hash = ""),
@@ -72,14 +74,20 @@ class Blockchain {
     let array = [];
     this.height = this.chain.length;
     this.chain.forEach(block => {
-      console.log("BLOCK", block);
+      
+      // handles genesis
       if (block.height === 0 && !block.body.star) {
         let { hash, height, body } = block;
-        if (block.height == string) {
+        if (block.height == string || block.hash === string) {
           array.push(block);
         }
-      } else {
+      } 
+
+      // handles non-genesis
+      else {
         let { hash, height, body: { star: { address } } } = block;
+         // decodes body.start.story from hex to readable text
+        block.body.star.story = hexToAscii(block.body.star.story);
         // checks to see if parameters match the string, has OR case for address
         console.log('BLOCK PARAMETER', block[parameter])
         if (
