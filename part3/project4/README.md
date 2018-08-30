@@ -75,19 +75,33 @@ Validates the user's address, allows users to register a star.
 
 ### POST Endpoint - /block
 
+Expect a `valid BTC` address, must match the `authenticated address` returned within the `/requestValidation` endpoint.
+
 Expect:
 ```
 - a `valid BTC` address
 - must match the `authenticated address` returned within the `/requestValidation` endpoint. 
 - must include a star and address property within the body
 - star story must be hex encoded, can only contain ascii characters, a max length of 250 must be enforced. 
-
+```
 ```
 POST URL path: http://localhost:8000/block
 Content-Type: application/json
 Request body: {star:{story:"hex encoded string, when decoded contains ascii characters only, with a max length of 250 words", coordinates}, address:"validated bitcoin address"}
 ```
 
+
+### GET Endpoints - /stars/address/[ADDRESS] - deviating from address:[ADDRESS] route, but documenting as mentioned in previous project review.
+
+Returns all found blocks with the provided ADDRESS.
+
+### GET Endpoints - /stars/hash/[HASH] - deviating from hash:[HASH] route, but documenting as mentioned in previous project review.
+
+Returns the found block with the provided HASH.
+
+### GET Endpoints - /block/[HEIGHT]]
+
+Returns the found block with the provided HEIGHT.
 
 ## Contribution
 
