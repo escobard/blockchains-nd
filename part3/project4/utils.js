@@ -59,15 +59,24 @@ const checkHex = string => {
 const asciiRegex = /^[\x00-\x7F]*$/;
 
 // returns true if string contains only ascii characters
-const checkAscii = string => {
-	if (asciiRegex.test(string)) {
+const checkAscii = str => {
+	if (asciiRegex.test(str)) {
 		return true;
 	} else {
 		return false;
 	}
 };
 
-// converts hex encode to readable string
+// encodes unicode string to hex
+const asciiToHex = (str) =>{
+    var result = '';
+    for (var i=0; i<str.length; i++) {
+      result += str.charCodeAt(i).toString(16);
+    }
+    return result;
+}
+
+// decodes hex string to unicode
 const hexToAscii = hex => {
     var str = '';
     for (var i = 0; i < hex.length; i += 2) str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
@@ -80,4 +89,4 @@ const wordCount = str => {
 	}).length;
 };
 
-module.exports = { validation, checkHex, checkAscii, hexToAscii, wordCount };
+module.exports = { validation, checkHex, checkAscii, asciiToHex, hexToAscii, wordCount };
