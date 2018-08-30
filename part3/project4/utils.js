@@ -68,19 +68,20 @@ const checkAscii = str => {
 };
 
 // encodes unicode string to hex
-const asciiToHex = (str) =>{
-    var result = '';
-    for (var i=0; i<str.length; i++) {
-      result += str.charCodeAt(i).toString(16);
-    }
-    return result;
-}
+const asciiToHex = str => {
+	var result = "";
+	for (var i = 0; i < str.length; i++) {
+		result += str.charCodeAt(i).toString(16);
+	}
+	return result;
+};
 
 // decodes hex string to unicode
 const hexToAscii = hex => {
-    var str = '';
-    for (var i = 0; i < hex.length; i += 2) str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-    return str;
+	var str = "";
+	for (var i = 0; i < hex.length; i += 2)
+		str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+	return str;
 };
 
 const wordCount = str => {
@@ -89,4 +90,39 @@ const wordCount = str => {
 	}).length;
 };
 
-module.exports = { validation, checkHex, checkAscii, asciiToHex, hexToAscii, wordCount };
+let timer = (countDownDate) => {
+	setInterval(function() {
+		// Get todays date and time
+		let now = new Date().getTime();
+
+		// Find the distance between now and the count down date
+		let distance = countDownDate - now;
+
+		// Time calculations for days, hours, minutes and seconds
+		let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		let hours = Math.floor(
+			(distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+		);
+		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		// returns full date
+		return days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+		// returns expired once expired
+		if (distance < 0) {
+			clearInterval(x);
+			return 'EXPIRED'
+		}
+	}, 1000);
+};
+
+module.exports = {
+	validation,
+	checkHex,
+	checkAscii,
+	asciiToHex,
+	hexToAscii,
+	wordCount,
+	timer
+};
