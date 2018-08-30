@@ -1,12 +1,14 @@
 // import leveldb helpers here
 const SHA256 = require("crypto-js/sha256");
-const Datauri = require('datauri');
+const Datauri = require("datauri");
 
 const {
   getLevelDBData,
   populateBlockchain,
   addDataToLevelDB
 } = require("../models/utils");
+
+const { hexToAscii } = require("../utils");
 
 class Block {
   constructor(data) {
@@ -31,6 +33,7 @@ class Blockchain {
   }
   addBlock(data) {
     let { height, chain } = this;
+    this.height = this.chain.length;
     console.log("HEIGHT", height);
     // defines block with data
     let newBlock = new Block(data);
@@ -66,26 +69,53 @@ class Blockchain {
     return addDataToLevelDB("", height);
   }
 
-  getBlock(blockHeight) {
-    return this.chain[blockHeight];
+  getBlock(parameter, string) {
+    // creates an array to store multiple blocks in case of same address
+    let array = [];
+    this.height = this.chain.length;
+    this.chain.forEach(block => {
+      
+      // handles genesis
+      if (block.height === 0 && !block.body.star) {
+        let { hash, height, body } = block;
+        if (block.height == string || block.hash === string) {
+          array.push(block);
+        }
+      } 
+
+      // handles non-genesis
+      else {
+        let { hash, height, body: { star: { address } } } = block;
+         // decodes body.start.story from hex to readable text
+        block.body.star.story = hexToAscii(block.body.star.story);
+        // checks to see if parameters match the string, has OR case for address
+        console.log('BLOCK PARAMETER', block[parameter])
+        if (
+          block[parameter] == string ||
+          block.body[parameter] == string
+        ) {
+          array.push(block);
+        }
+      }
+    });
+    return array;
   }
-  validateBlockData(blockData){
+  validateBlockData(blockData) {
     // contains logic to validate data
 
     // contains the blockImage SHA256 encrypted data URI
     let image = blockData.image;
     // turns test image into static URI
-    let datauri = new Datauri('./assets/kitty.jpg');
+    let datauri = new Datauri("./assets/kitty.jpg");
 
     // this should work, need to test, turns image data back to pure data URI
     let decrypted = SHA256(JSON.stringify(datauri)).toString();
 
     // checks for exact match
     if (decrypted === image) {
-      console.log('VALIDATED')
-    }
-    else{
-      console.log('NOT VALIDATED')
+      console.log("VALIDATED");
+    } else {
+      console.log("NOT VALIDATED");
     }
   }
   validateBlock(blockHeight) {
@@ -98,7 +128,7 @@ class Blockchain {
     let validBlockHash = SHA256(JSON.stringify(block)).toString();
 
     if (blockHash === validBlockHash) {
-      console.log(`Block is valid!`)
+      console.log(`Block is valid!`);
       block.hash = blockHash;
     } else {
       console.log(
@@ -123,7 +153,7 @@ class Blockchain {
       let blockHash = this.chain[i].hash;
       let previousHash = this.chain[i + 1].hash;
 
-      if(blockHash !== previousHash) {
+      if (blockHash !== previousHash) {
         errorLog.push(i);
       }
     }

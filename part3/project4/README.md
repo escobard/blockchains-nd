@@ -19,7 +19,7 @@ To run this application locally for development, use the following commands:
 $ npm start
 ```
 
-## Endpoints
+## Endpoints - project 3 - for project reviewer, ignore these.
 
 ### GET Endpoint - /
 
@@ -28,16 +28,6 @@ Navigating to this page will display the entire blockchain, and populate the blo
 ### GET Endpoint - /block/:blockHeight
 
 Returns the block passed into the :blockHeight parameters.
-
-### POST Endpoint - /block
-
-Adds a new block with based on the posted data, sample post request:
-
-```
-POST URL path: http://localhost:8000/block
-Content-Type: application/json
-Request body: {"body":"block body contents"}
-```
 
 ### GET Endpoint - /addblock/:blockContent
 
@@ -51,6 +41,54 @@ Returns the entire height of the the blockchain
 
 Returns a simple JSON response, tests API health
 
+## Enpoints - project 4 - for project reviewer, test these
+
+### POST endpoint - /requestValidation
+
+Expects a `valid BTC` address, (checked with web3), expects the following parameters: 
+
+```
+POST URL path: http://localhost:8000/requestValidation
+Content-Type: application/json
+Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz"}
+```
+
+Returns the following JSON message:
+
+```
+[walletAddress]:[timeStamp]:starRegistry
+```
+
+Grants the user a `5 minute authentication window`, handled by `the validation util within ../utils.js`
+
+### POST endpoint - /message-signature/validate
+
+Expect a `valid BTC` address, must match the `authenticated address` returned within the `/requestValidation` endpoint.
+
+```
+POST URL path: http://localhost:8000/requestValidation
+Content-Type: application/json
+Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz", "message":"message signature hash, received from /requestValidation - 1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck:1535400871:starRegistry"}
+```
+
+Validates the user's address, allows users to register a star.
+
+### POST Endpoint - /block
+
+Expect:
+```
+- a `valid BTC` address
+- must match the `authenticated address` returned within the `/requestValidation` endpoint. 
+- must include a star and address property within the body
+- star story must be hex encoded, can only contain ascii characters, a max length of 250 must be enforced. 
+
+```
+POST URL path: http://localhost:8000/block
+Content-Type: application/json
+Request body: {star:{story:"hex encoded string, when decoded contains ascii characters only, with a max length of 250 words", coordinates}, address:"validated bitcoin address"}
+```
+
+
 ## Contribution
 
 All files in this repository are protected under the MIT license, but feel free to contribute, fork, star, or share this application as you see fit.
@@ -59,4 +97,4 @@ For commercial or educational use, please paste a link to this repository to giv
 
 ## License
 
-As of January 9th, 2018, these files are open for all to use and contribute to. This repository is protected under the [MIT License](http://choosealicense.com/licenses/mit/).
+As of August 29th, 2018, these files are open for all to use and contribute to. This repository is protected under the [MIT License](http://choosealicense.com/licenses/mit/).
