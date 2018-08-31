@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
 
 			// sets the message signature
 			let message = `${address}:${timestamp}:starRegistry`;
-
+			global.message = message;
 			// starts the timer for validation time window
 			console.log(authWindow)
 			timer(countDownDate);

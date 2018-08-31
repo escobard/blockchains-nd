@@ -8,7 +8,7 @@ const {
   addDataToLevelDB
 } = require("../models/utils");
 
-const { hexToAscii } = require("../utils");
+const { hexToAscii, asciiToHex } = require("../utils");
 
 class Block {
   constructor(data) {
@@ -51,7 +51,10 @@ class Blockchain {
         // searches the block prior to this one via the array's index
         // then grabs the hash from the .hash property of the previous block
         chain[height - 1].hash;
+      newBlock.body.star.story = asciiToHex(newBlock.body.star.story);
     }
+
+    // encodes star story
 
     newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
     let jsonBlock = JSON.stringify(newBlock);
@@ -69,7 +72,7 @@ class Blockchain {
     return addDataToLevelDB("", height);
   }
 
-  getBlock(parameter, string) {
+  getBlock(parameter, string, ignoreDecode) {
     // creates an array to store multiple blocks in case of same address
     let array = [];
     this.height = this.chain.length;
@@ -86,8 +89,14 @@ class Blockchain {
       // handles non-genesis
       else {
         let { hash, height, body: { star: { address } } } = block;
-         // decodes body.start.story from hex to readable text
-        block.body.star.story = hexToAscii(block.body.star.story);
+        
+        // checks if ignoreDecode case is in effect
+        if(!ignoreDecode){
+
+          // decodes body.start.story from hex to readable text
+          block.body.star.story = hexToAscii(block.body.star.story);
+        }
+        
         // checks to see if parameters match the string, has OR case for address
         console.log('BLOCK PARAMETER', block[parameter])
         if (

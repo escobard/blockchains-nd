@@ -73,7 +73,7 @@ Expect a `valid BTC` address, must match the `authenticated address` returned wi
 ```
 POST URL path: http://localhost:8000/requestValidation
 Content-Type: application/json
-Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz", "message":"message signature hash, received from /requestValidation - 1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck:1535400871:starRegistry"}
+Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz", "signature":"signed message from Electrum, matching the message and address globally stored within the API"}
 ```
 
 Returns the following JSON message:
@@ -131,7 +131,6 @@ Response: {
 "previousBlockHash": "49cce61ec3e6ae664514d5fa5722d86069cf981318fc303750ce66032d0acff3"
 }
 ```
-
 
 ### GET Endpoints - /stars/address/[ADDRESS] - deviating from address:[ADDRESS] route, but documenting as mentioned in previous project review.
 

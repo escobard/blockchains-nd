@@ -19,7 +19,6 @@ router.post("/", checkSignature, async (req, res) => {
 			registerStar: true,
 
 			status:{
-				success: `Access granted, time remaining to add data: ${global.authWindow}`,
 				address: global.address,
 				requestTimestamp: global.timestamp,
 				message: global.message,

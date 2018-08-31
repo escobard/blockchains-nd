@@ -24,15 +24,10 @@ router.post(
       let chain = await blockchain.fetchBlockchain();
       // sets the blockchain service data with data from leveldb
       blockchain.chain = chain;
-      let newBlock = blockchain.getBlock("height", blockchain.height);
-
-      console.log("Destroyed all global variables");
+      let newBlock = blockchain.getBlock("height", blockchain.height, true);
 
       res.send({
-        healthy: true,
-        responseData: `added new block with the following data: ${body}`,
         newBlock,
-        blockchain
       });
     }, 500);
   }

@@ -100,6 +100,7 @@ const timer = countDownDate => {
 				delete global.authenticated;
 				delete global.timestamp;
 				delete global.countDownDate;
+				delete global.message;
 				console.log(
 					`Your validation has expired, please send a post request to /requestValidation route to authenticate`
 				);
@@ -118,7 +119,7 @@ const timer = countDownDate => {
 
 const validation = message => {
 	// sets our global validation variable
-	global.signature = message;
+	
 	console.log("global countdown", global.countDownDate);
 	console.log(
 		`${timer(
