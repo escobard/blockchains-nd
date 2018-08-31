@@ -18,6 +18,15 @@ router.post(
     // adds block data based on route parameters
     console.log("Adding block:", body);
     blockchain.addBlock(body);
+
+    console.log('Destroyed global variables, authentication is required to post a new block.')
+    delete global.signature;
+    delete global.address;
+    delete global.authWindow;
+    delete global.authenticated;
+    delete global.timestamp;
+    delete global.countDownDate;
+    delete global.message;
     setTimeout(async function() {
       // re-populating object with new data
       console.log("Populating blockchain...");
@@ -48,7 +57,6 @@ router.get("/:blockHeight", initChain, async (req, res) => {
       healthy: true,
       block:
         "Block does not exist - check the /getBlockHeight to check current chain height",
-      blockHeightParams: blockHeight
     });
   }
 

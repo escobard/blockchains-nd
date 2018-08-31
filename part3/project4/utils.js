@@ -1,3 +1,6 @@
+const bitcoin = require("bitcoinjs-lib"), // v3.x.x
+	bitcoinMessage = require("bitcoinjs-message");
+
 // sets regex to test if stored value is in hex encoding
 const hexRegex = /[0-9A-Fa-f]{6}/g;
 
@@ -123,11 +126,11 @@ const validateProperties = star => {
 	// maps through the object keys, checks that only valid properties are passed in request
 	Object.keys(star).map(function(key, index) {
 		if (
-			key === "dec" ||
-			key === "ra" ||
-			key === "mag" ||
-			key === "con" ||
-			key === "star_story"
+			key == "dec" ||
+			key == "ra" ||
+			key == "mag" ||
+			key == "con" ||
+			key == "star_story"
 		) {
 			console.log("Valid property!");
 		} else {
@@ -137,7 +140,18 @@ const validateProperties = star => {
 	});
 };
 
+const validateSignature = (message, address, signature) => {
+	try {
+		let signatureCheck = bitcoinMessage.verify(message, address, signature);
+		return signatureCheck;
+	} catch (err) {
+		console.log('Signature validation error:', err);
+		return false;
+	}
+};
+
 module.exports = {
+	validateSignature,
 	validateProperties,
 	checkHex,
 	checkAscii,

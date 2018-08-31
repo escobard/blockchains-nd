@@ -2,8 +2,9 @@
 
 const router = require("express").Router(),
 	checkSignature = require("../middlewares/checkSignature"),
-	bitcoin = require("bitcoinjs-lib"), // v3.x.x
-	bitcoinMessage = require("bitcoinjs-message");
+	{
+		validateSignature
+	} = require("../utils");
 
 router.post("/", checkSignature, async (req, res) => {
 	let { body } = req;
@@ -14,12 +15,8 @@ router.post("/", checkSignature, async (req, res) => {
 		global.authenticated = true;
 
 		// checking message signature
-		let checkSignature = bitcoinMessage.verify(
-			global.message,
-			body.address,
-			body.signature
-		);
-		if (checkSignature) {
+		let validSignature = validateSignature(global.message, body.address, body.signature);
+		if (validSignature) {
 			console.log(
 				`Access granted, time remaining to add data: ${global.authWindow}`
 			);
@@ -33,14 +30,10 @@ router.post("/", checkSignature, async (req, res) => {
 					validationWindow: global.authWindow,
 
 					// checks the message signature, with the stored message, addres and signature from the request
-					messageSignature: bitcoinMessage.verify(
-						global.message,
-						body.address,
-						body.signature
-					)
+					messageSignature: validSignature
 				}
 			});
-		} else if (!checkSignature) {
+		} else {
 			console.log(`Access denied, invalid signature`);
 			res.status(401).json({
 				registerStar: false,
