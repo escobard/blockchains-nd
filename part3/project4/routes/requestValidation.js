@@ -25,11 +25,12 @@ router.post("/", (req, res) => {
 			// sets the wallet address global property
 			global.address = address;
 
-			let timestamp, countDownDate;
+			let timestamp, countDownDate, authWindow;
 			// creates logic to add timestamp global letiable for authentication window
 			if (global.timestamp) {
 				timestamp = global.timestamp;
 				countDownDate = global.countDownDate;
+				authWindow = global.authWindow
 			} 
 			// creates the timestamp && countDownDate variables
 			else {
@@ -39,22 +40,26 @@ router.post("/", (req, res) => {
 					.slice(0, -3);
 
 				// Set the date we're counting down to 5 minutes
-				countDownDate = new Date(oldDateObj.getTime() + 5*60000);
-
+				let newDate = new Date()
+				countDownDate = new Date( newDate.getTime()+ 5*60000);
+				authWindow = `New star registration requests valid for another 299 seconds`;
 				// sets global variables
 				global.timestamp = timestamp;
 				global.countDownDate = countDownDate;
+				global.authWindow = authWindow;
 			}
 
 			// sets the message signature
 			let message = `${address}:${timestamp}:starRegistry`;
 
 			// starts the timer for validation time window
-			validation(message);
+			console.log(authWindow)
+			timer(countDownDate);
 			res.status(200).json({
-				status: "Success, copy the string below to sign your block",
+				status: "Success, copy the string basdfsfsdelow to sign your block",
 				message,
-				validationWindow: timer(countDownDate)
+				timestamp,
+				validationWindow: authWindow
 			});
 		} else {
 			console.log("Failed, address is invalid", address);

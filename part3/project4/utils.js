@@ -1,48 +1,3 @@
-const validation = message => {
-	// sets our global validation variable
-	global.signature = message;
-	global.authWindow = 5;
-	console.log(`5 minutes remaining, your message is: ${message}`);
-
-	// first minute
-	setTimeout(function() {
-		global.authWindow = 4;
-		console.log(`4 minutes remaining, your message is: ${message}`);
-	}, 60000);
-
-	// second minute
-	setTimeout(function() {
-		global.authWindow = 3;
-		console.log(`3 minutes remaining, your message is: ${message}`);
-	}, 60000 * 2);
-
-	// third minute
-	setTimeout(function() {
-		global.authWindow = 2;
-		console.log(`2 minutes remaining, your message is: ${message}`);
-	}, 60000 * 3);
-
-	// fourth minute
-	setTimeout(function() {
-		global.authWindow = 1;
-		console.log(
-			`1 minutes remaining, your authentication is about to expire! Your message is: ${message}`
-		);
-	}, 60000 * 4);
-
-	// last minute
-	setTimeout(function() {
-		// deletes all authentication globals
-		delete global.signature;
-		delete global.address;
-		delete global.authWindow;
-		delete global.authenticated;
-		console.log(
-			`Your validation has expired, please send a post request to /requestValidation route to authenticate`
-		);
-	}, 60000 * 5);
-};
-
 // sets regex to test if stored value is in hex encoding
 const hexRegex = /[0-9A-Fa-f]{6}/g;
 
@@ -90,7 +45,7 @@ const wordCount = str => {
 	}).length;
 };
 
-let timer = (countDownDate) => {
+const timer = countDownDate => {
 	setInterval(function() {
 		// Get todays date and time
 		let now = new Date().getTime();
@@ -107,16 +62,120 @@ let timer = (countDownDate) => {
 		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 		// returns full date
-		return days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+		let time = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+		
+		let secondsLeft = (distance / 1000) | 0;
+		let message = `New star registration requests valid for another ${secondsLeft} seconds`;
+		// sets global variable for remaining seconds
+		global.authWindow = message;
 
+		switch (secondsLeft) {
+			case 299: {
+				console.log(message);
+				return global.message;
+			}
+			case 240: {
+				console.log(message);
+				return global.message;
+			}
+			case 180: {
+				console.log(message);
+				return global.message;
+			}
+			case 120: {
+				console.log(message);
+				return global.message;
+			}
+			case 60: {
+				console.log(message);
+				return global.message;
+			}
+			case 0: {
+				console.log(message);
+
+				// deletes all authentication globals
+				delete global.signature;
+				delete global.address;
+				delete global.authWindow;
+				delete global.authenticated;
+				delete global.timestamp;
+				delete global.countDownDate;
+				console.log(
+					`Your validation has expired, please send a post request to /requestValidation route to authenticate`
+				);
+				return global.message;
+			}
+			default:
+				return "default case";
+		}
 		// returns expired once expired
 		if (distance < 0) {
 			clearInterval(x);
-			return 'EXPIRED'
+			return "EXPIRED";
 		}
 	}, 1000);
 };
 
+const validation = message => {
+	// sets our global validation variable
+	global.signature = message;
+	console.log("global countdown", global.countDownDate);
+	console.log(
+		`${timer(
+			global.countDownDate
+		)} seconds remaining, your message is: ${message}`
+	);
+
+	// first minute
+	setTimeout(function() {
+		console.log(
+			`${timer(
+				global.countDownDate
+			)} seconds remaining, your message is: ${message}`
+		);
+	}, 60000);
+
+	// second minute
+	setTimeout(function() {
+		console.log(
+			`${timer(
+				global.countDownDate
+			)} seconds remaining, your message is: ${message}`
+		);
+	}, 60000 * 2);
+
+	// third minute
+	setTimeout(function() {
+		console.log(
+			`${timer(
+				global.countDownDate
+			)} seconds remaining, your message is: ${message}`
+		);
+	}, 60000 * 3);
+
+	// fourth minute
+	setTimeout(function() {
+		console.log(
+			`${timer(
+				global.countDownDate
+			)} seconds remaining, your authentication is about to expire! Your message is: ${message}`
+		);
+	}, 60000 * 4);
+
+	// last minute
+	setTimeout(function() {
+		// deletes all authentication globals
+		delete global.signature;
+		delete global.address;
+		delete global.message;
+		delete global.authenticated;
+		delete global.timestamp;
+		delete global.countDownDate;
+		console.log(
+			`Your validation has expired, please send a post request to /requestValidation route to authenticate`
+		);
+	}, 60000 * 5);
+};
 module.exports = {
 	validation,
 	checkHex,
