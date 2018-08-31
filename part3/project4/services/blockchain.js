@@ -51,7 +51,7 @@ class Blockchain {
         // searches the block prior to this one via the array's index
         // then grabs the hash from the .hash property of the previous block
         chain[height - 1].hash;
-      newBlock.body.star.story = asciiToHex(newBlock.body.star.story);
+      newBlock.body.star.star_story = asciiToHex(newBlock.body.star.star_story);
     }
 
     // encodes star story
@@ -94,7 +94,7 @@ class Blockchain {
         if(!ignoreDecode){
 
           // decodes body.start.story from hex to readable text
-          block.body.star.story = hexToAscii(block.body.star.story);
+          block.body.star.star_story = hexToAscii(block.body.star.star_story);
         }
         
         // checks to see if parameters match the string, has OR case for address

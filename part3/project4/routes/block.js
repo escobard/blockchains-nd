@@ -16,18 +16,18 @@ router.post(
   async (req, res) => {
     let { headers, params, body } = req;
     // adds block data based on route parameters
-    console.log('Adding block:', body)
+    console.log("Adding block:", body);
     blockchain.addBlock(body);
     setTimeout(async function() {
       // re-populating object with new data
-      console.log('Populating blockchain...')
+      console.log("Populating blockchain...");
       let chain = await blockchain.fetchBlockchain();
       // sets the blockchain service data with data from leveldb
       blockchain.chain = chain;
       let newBlock = blockchain.getBlock("height", blockchain.height, true);
 
       res.send({
-        newBlock,
+        newBlock
       });
     }, 500);
   }
@@ -46,9 +46,9 @@ router.get("/:blockHeight", initChain, async (req, res) => {
   if (!block) {
     res.send({
       healthy: true,
-      blockHeightParams: blockHeight,
       block:
-        "Block does not exist - check the /getBlockHeight to check current chain height"
+        "Block does not exist - check the /getBlockHeight to check current chain height",
+      blockHeightParams: blockHeight
     });
   }
 

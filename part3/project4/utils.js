@@ -63,7 +63,7 @@ const timer = countDownDate => {
 
 		// returns full date
 		let time = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-		
+
 		let secondsLeft = (distance / 1000) | 0;
 		let message = `New star registration requests valid for another ${secondsLeft} seconds`;
 		// sets global variable for remaining seconds
@@ -117,68 +117,28 @@ const timer = countDownDate => {
 	}, 1000);
 };
 
-const validation = message => {
-	// sets our global validation variable
-	
-	console.log("global countdown", global.countDownDate);
-	console.log(
-		`${timer(
-			global.countDownDate
-		)} seconds remaining, your message is: ${message}`
-	);
+const validateProperties = star => {
+	let checkProperties = true;
 
-	// first minute
-	setTimeout(function() {
-		console.log(
-			`${timer(
-				global.countDownDate
-			)} seconds remaining, your message is: ${message}`
-		);
-	}, 60000);
-
-	// second minute
-	setTimeout(function() {
-		console.log(
-			`${timer(
-				global.countDownDate
-			)} seconds remaining, your message is: ${message}`
-		);
-	}, 60000 * 2);
-
-	// third minute
-	setTimeout(function() {
-		console.log(
-			`${timer(
-				global.countDownDate
-			)} seconds remaining, your message is: ${message}`
-		);
-	}, 60000 * 3);
-
-	// fourth minute
-	setTimeout(function() {
-		console.log(
-			`${timer(
-				global.countDownDate
-			)} seconds remaining, your authentication is about to expire! Your message is: ${message}`
-		);
-	}, 60000 * 4);
-
-	// last minute
-	setTimeout(function() {
-		// deletes all authentication globals
-		delete global.signature;
-		delete global.address;
-		delete global.message;
-		delete global.authenticated;
-		delete global.timestamp;
-		delete global.countDownDate;
-		console.log(
-			`Your validation has expired, please send a post request to /requestValidation route to authenticate`
-		);
-	}, 60000 * 5);
+	// maps through the object keys, checks that only valid properties are passed in request
+	Object.keys(star).map(function(key, index) {
+		if (
+			key === "dec" ||
+			key === "ra" ||
+			key === "mag" ||
+			key === "con" ||
+			key === "star_story"
+		) {
+			console.log("Valid property!");
+		} else {
+			console.log("Invalid property, returning error");
+			checkProperties = false;
+		}
+	});
 };
+
 module.exports = {
-	validation,
+	validateProperties,
 	checkHex,
 	checkAscii,
 	asciiToHex,
