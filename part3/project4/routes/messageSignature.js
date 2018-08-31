@@ -1,12 +1,12 @@
 "use strict";
 
 const router = require("express").Router(),
-	checkSignature = require("../middlewares/checkSignature"),
+	checkAddress = require("../middlewares/checkAddress"),
 	{
 		validateSignature
 	} = require("../utils");
 
-router.post("/", checkSignature, async (req, res) => {
+router.post("/", checkAddress, async (req, res) => {
 	let { body } = req;
 
 	// checks to see if the request signature and wallet match globals

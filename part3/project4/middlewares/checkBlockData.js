@@ -24,13 +24,15 @@ module.exports = async (req, res, next) => {
 
 	// ensures required properties are sent on the request
 	if (star.star_story && star.dec && star.ra && address) {
+
 		// ensures only the allowed properties are introduced
 		let checkProperties = validateProperties(star);
+		
 		if (checkProperties) {
 			console.log("Valid object properties, checking story encoding...");
 
 			// encodes unicode to hex
-			let ascii = asciiToHex(star.story);
+			let ascii = asciiToHex(star.star_story);
 			console.log("ENCODED STRING", ascii);
 			if (ascii) {
 				console.log("Valid hex, checking ascii characters...");
@@ -53,30 +55,30 @@ module.exports = async (req, res, next) => {
 						console.log("Success, block data is valid, creating new block...");
 						next();
 					} else {
-						console.log("Failed, star.story contains more than 250 words!");
+						console.log("Failed, star.star_story contains more than 250 words!");
 
 						res.status(401).json({
-							status: "Failed, star.story contains more than 250 words!",
+							status: "Failed, star.star_story contains more than 250 words!",
 							authenticated: false
 						});
 					}
 				} else {
-					console.log("Failed, star.story contains invalid ascii characters!");
+					console.log("Failed, star.star_story contains invalid ascii characters!");
 
 					res.status(401).json({
-						status: "Failed, star.story contains invalid ascii characters!",
+						status: "Failed, star.star_story contains invalid ascii characters!",
 						authenticated: false
 					});
 				}
 			} else {
 				res.status(401).json({
-					status: "Failed, invalid properties!",
+					status: "Failed, star.star_story is not hex encoded!",
 					authenticated: false
 				});
 			}
 		} else {
 			res.status(401).json({
-				status: "Failed, star.story is not hex encoded!",
+				status: "Failed, invalid properties!",
 				authenticated: false
 			});
 		}

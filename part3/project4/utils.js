@@ -134,10 +134,11 @@ const validateProperties = star => {
 		) {
 			console.log("Valid property!");
 		} else {
-			console.log("Invalid property, returning error");
+			console.log("Invalid property:", key);
 			checkProperties = false;
 		}
 	});
+	return checkProperties;
 };
 
 const validateSignature = (message, address, signature) => {
