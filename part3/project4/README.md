@@ -56,7 +56,12 @@ Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz
 Returns the following JSON message:
 
 ```
-[walletAddress]:[timeStamp]:starRegistry
+{
+    "status": "Success, copy the string basdfsfsdelow to sign your block",
+    "message": "1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck:1535673774:starRegistry",
+    "timestamp": "1535673774",
+    "validationWindow": "New star registration requests valid for another 291 seconds"
+}
 ```
 
 Grants the user a `5 minute authentication window`, handled by `the validation util within ../utils.js`
@@ -69,6 +74,21 @@ Expect a `valid BTC` address, must match the `authenticated address` returned wi
 POST URL path: http://localhost:8000/requestValidation
 Content-Type: application/json
 Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz", "message":"message signature hash, received from /requestValidation - 1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck:1535400871:starRegistry"}
+```
+
+Returns the following JSON message:
+
+```
+{
+    "registerStar": true,
+     "status": {
+        "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
+        "requestTimeStamp": "1532296090",
+        "message": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ:1532296090:starRegistry",
+        "validationWindow": 193,
+        "messageSignature": "valid"
+    }
+}
 ```
 
 Validates the user's address, allows users to register a star.
