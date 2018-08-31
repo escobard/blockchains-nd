@@ -23,6 +23,8 @@ router.post("/", checkSignature, async (req, res) => {
 				requestTimestamp: global.timestamp,
 				message: global.message,
 				validationWindow: global.authWindow,
+
+				// checks the message signature, with the stored message, addres and signature from the request
 				messageSignature: bitcoinMessage.verify(global.message, body.address, body.signature)
 			} 
 		});
