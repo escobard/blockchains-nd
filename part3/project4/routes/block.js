@@ -14,7 +14,9 @@ router.post(
   checkValidation,
   checkBlockData,
   async (req, res) => {
+
     let { headers, params, body } = req;
+    
     // adds block data based on route parameters
     console.log("Adding block:", body);
     blockchain.addBlock(body);
@@ -27,6 +29,8 @@ router.post(
     delete global.timestamp;
     delete global.countDownDate;
     delete global.message;
+
+    // sets a small timeout to display new block data
     setTimeout(async function() {
       // re-populating object with new data
       console.log("Populating blockchain...");

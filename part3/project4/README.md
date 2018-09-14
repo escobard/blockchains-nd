@@ -18,20 +18,11 @@ To run this application locally for development, use the following commands:
 ```
 $ npm start
 ```
-
-## Endpoints - project 3 - for project reviewer, ignore these.
+## Endpoints
 
 ### GET Endpoint - /
 
 Navigating to this page will display the entire blockchain, and populate the blockchain with a genesis block if there is no data
-
-### GET Endpoint - /block/:blockHeight
-
-Returns the block passed into the :blockHeight parameters.
-
-### GET Endpoint - /addblock/:blockContent
-
-Any characters preceeding the /addblock route will create a new block with the parameters. Any new blocks are immediately shown by the response.
 
 ### GET Endpoint - /getblockheight
 
@@ -40,8 +31,6 @@ Returns the entire height of the the blockchain
 ### GET Endpoint - /health
 
 Returns a simple JSON response, tests API health
-
-## Enpoints - project 4 - for project reviewer, test these
 
 ### POST endpoint - /requestValidation
 

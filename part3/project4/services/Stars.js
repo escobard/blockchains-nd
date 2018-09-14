@@ -29,15 +29,15 @@ class Stars {
 
 		// checks to make sure the object has the correct object values
 		/*{
-    "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
-    "star": {
-        "dec": "-26° 29' 24.9",  // declination
-        "ra": "16h 29m 1.0s",  // right ascension
-        "mag": "magniture string, optional",
-        "con: "constellation string, optional"
-        "star_story": "Hex encoded string, limited to 250 words"
-    }
-	}*/
+	    "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
+	    "star": {
+	        "dec": "-26° 29' 24.9",  // declination
+	        "ra": "16h 29m 1.0s",  // right ascension
+	        "mag": "magniture string, optional",
+	        "con: "constellation string, optional"
+	        "star_story": "Hex encoded string, limited to 250 words"
+	    }
+		}*/
 
 		// ensures required properties are sent on the request
 		if (star.star_story && star.dec && star.ra && address) {
