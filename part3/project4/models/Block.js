@@ -8,4 +8,4 @@ class Block {
   }
 }
 
-module.exports = new Block()
+module.exports = Block;

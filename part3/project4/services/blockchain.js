@@ -2,12 +2,6 @@
 const SHA256 = require("crypto-js/sha256");
 const Datauri = require("datauri");
 
-const {
-  getLevelDBData,
-  populateBlockchain,
-  addDataToLevelDB
-} = require("../models/utils");
-
 const { hexToAscii, asciiToHex } = require("../utils");
 
 const Block = require('../models/block')
@@ -18,7 +12,7 @@ class Blockchain {
     this.height = 0;
   }
   async fetchBlockchain() {
-    return populateBlockchain([]);
+    return level.populateBlockchain([]);
   }
   createGenesis() {
     this.addBlock("Genesis block - First block in the chain");
@@ -52,7 +46,7 @@ class Blockchain {
     let jsonBlock = JSON.stringify(newBlock);
     // console.log("JSON BLOCK", jsonBlock);
     // console.log("CHAIN IN BLOCK CREATION", this.chain);
-    addDataToLevelDB(jsonBlock);
+    level.addDataToLevelDB(jsonBlock);
   }
   setBlockHeight(blockchain) {
     this.height = blockchain;
@@ -61,7 +55,7 @@ class Blockchain {
   }
   getHeight() {
     let height = 0;
-    return addDataToLevelDB("", height);
+    return level.addDataToLevelDB("", height);
   }
 
   getBlock(parameter, string, ignoreDecode) {

@@ -1,3 +1,5 @@
-2018/09/14-08:50:01.121 88c Recovering log #51
-2018/09/14-08:50:01.300 88c Delete type=0 #51
-2018/09/14-08:50:01.300 88c Delete type=3 #50
+2018/09/14-09:11:17.048 bf4 Recovering log #19
+2018/09/14-09:11:17.070 bf4 Level-0 table #21: started
+2018/09/14-09:11:17.204 bf4 Level-0 table #21: 357 bytes OK
+2018/09/14-09:11:17.410 bf4 Delete type=0 #19
+2018/09/14-09:11:17.410 bf4 Delete type=3 #18

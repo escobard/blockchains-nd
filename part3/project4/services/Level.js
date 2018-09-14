@@ -3,14 +3,14 @@ let chainDB = "./data";
 let db = level(chainDB);
 
 class Level {
-  
-  addLevelDBData = (key, value) => {
+
+  addLevelDBData(key, value){
     db.put(key, value, function(err) {
       if (err) return console.log("Block " + key + " submission failed", err);
     });
   };
 
-  getLevelDBData = key => {
+  getLevelDBData(key){
     db.get(key, function(err, value) {
       if (err) return console.log("Not found!", err);
       console.log("Value = " + value);
@@ -18,7 +18,8 @@ class Level {
     });
   };
 
-  addDataToLevelDB = async (value, height) => {
+  addDataToLevelDB(value, height){
+    let parent = this;
     let i = 0;
     db
       .createReadStream()
@@ -32,7 +33,7 @@ class Level {
       .on("close", function() {
         //console.log("Block #" + i);
 
-        addLevelDBData(i, value);
+        parent.addLevelDBData(i, value);
       })
       .on("end", function() {
         if (height) {
@@ -42,7 +43,7 @@ class Level {
       });
   };
 
-  populateBlockchain = array => {
+  populateBlockchain(array){
     return new Promise((resolve, reject) => {
       let i = 0;
       db
