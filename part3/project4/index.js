@@ -9,7 +9,7 @@ const {
 
 const { port } = require("./constants/routes");
 
-global.blockchain = require("./services/blockchain");
+global.blockchain = require("./services/Blockchain");
 
 const app = express();
 
