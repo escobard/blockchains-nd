@@ -72,7 +72,7 @@ Grants the user a `5 minute authentication window`, handled by `the validation u
 Expect a `valid BTC` address, must match the `authenticated address` returned within the `/requestValidation` endpoint.
 
 ```
-POST URL path: http://localhost:8000/requestValidation
+POST URL path: http://localhost:8000/message-signature/validate
 Content-Type: application/json
 Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz", "signature":"signed message from Electrum, matching the message and address globally stored within the API"}
 ```

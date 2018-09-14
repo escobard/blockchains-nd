@@ -10,15 +10,7 @@ const {
 
 const { hexToAscii, asciiToHex } = require("../utils");
 
-class Block {
-  constructor(data) {
-    (this.hash = ""),
-      (this.height = 0),
-      (this.body = data),
-      (this.time = 0),
-      (this.previousblockhash = "");
-  }
-}
+const Block = require('../models/block')
 
 class Blockchain {
   constructor(data) {
@@ -176,23 +168,3 @@ class Blockchain {
 }
 
 module.exports = new Blockchain();
-
-// runs constructor functions
-/* 
-setTimeout(function() {
-    console.log("blockchain", blockchain);
-
-  console.log("getBlockHeight returns height of chain", blockchain.getBlockHeight());
-}, 1000);
-
-
-setTimeout(function() {
-  if (blockchain.chain.length >= 1) {
-    blockchain.addBlock("test data");
-    console.log("getBlock(0) returns genesis block", blockchain.getBlock(0));
-  }
-  if (blockchain.chain.length >= 2) {
-    console.log("validates second block", blockchain.validateBlock(1));
-    console.log("validates chain", blockchain.validateChain());
-  }
-}, 3000);*/
