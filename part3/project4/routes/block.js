@@ -14,20 +14,33 @@ router.post(
   checkValidation,
   checkBlockData,
   async (req, res) => {
+
     let { headers, params, body } = req;
+    
     // adds block data based on route parameters
-    console.log('Adding block:', body)
+    console.log("Adding block:", body);
     blockchain.addBlock(body);
+
+    console.log('Destroyed global variables, authentication is required to post a new block.')
+    delete global.signature;
+    delete global.address;
+    delete global.authWindow;
+    delete global.authenticated;
+    delete global.timestamp;
+    delete global.countDownDate;
+    delete global.message;
+
+    // sets a small timeout to display new block data
     setTimeout(async function() {
       // re-populating object with new data
-      console.log('Populating blockchain...')
+      console.log("Populating blockchain...");
       let chain = await blockchain.fetchBlockchain();
       // sets the blockchain service data with data from leveldb
       blockchain.chain = chain;
       let newBlock = blockchain.getBlock("height", blockchain.height, true);
 
       res.send({
-        newBlock,
+        newBlock
       });
     }, 500);
   }
@@ -46,9 +59,8 @@ router.get("/:blockHeight", initChain, async (req, res) => {
   if (!block) {
     res.send({
       healthy: true,
-      blockHeightParams: blockHeight,
       block:
-        "Block does not exist - check the /getBlockHeight to check current chain height"
+        "Block does not exist - check the /getBlockHeight to check current chain height",
     });
   }
 

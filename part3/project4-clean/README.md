@@ -1,4 +1,4 @@
-# README - Quiz Book - react-native && react-redux  
+# Project 4 - Blockchains ND - Star registration notary service
 
 ## Project Criteria
 
@@ -58,6 +58,7 @@ Returns the following JSON message:
 ```
 {
     "status": "Success, copy the string basdfsfsdelow to sign your block",
+    "address": "sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz",
     "message": "1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck:1535673774:starRegistry",
     "timestamp": "1535673774",
     "validationWindow": "New star registration requests valid for another 291 seconds"
@@ -71,7 +72,7 @@ Grants the user a `5 minute authentication window`, handled by `the validation u
 Expect a `valid BTC` address, must match the `authenticated address` returned within the `/requestValidation` endpoint.
 
 ```
-POST URL path: http://localhost:8000/requestValidation
+POST URL path: http://localhost:8000/message-signature/validate
 Content-Type: application/json
 Request body: {"address":"sampleAddressHash - 1PzeKjDk2gZwyW1UJ1QHB6vRe46szektWz", "signature":"signed message from Electrum, matching the message and address globally stored within the API"}
 ```
@@ -112,9 +113,11 @@ Request body: {
     "star": {
         "dec": "-26° 29' 24.9",  // declination
         "ra": "16h 29m 1.0s",  // right ascension
-        "story": "Found star using https://www.google.com/sky/"
+        "mag": "magniture string, optional",
+        "con: "constellation string, optional"
+        "star_story": "Found star using https://www.google.com/sky/"
     }
-}
+	}
 
 Response: {
     "hash": "a59e9e399bc17c2db32a7a87379a8012f2c8e08dd661d7c0a6a4845d4f3ffb9f",

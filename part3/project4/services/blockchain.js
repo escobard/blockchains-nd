@@ -2,23 +2,9 @@
 const SHA256 = require("crypto-js/sha256");
 const Datauri = require("datauri");
 
-const {
-  getLevelDBData,
-  populateBlockchain,
-  addDataToLevelDB
-} = require("../models/utils");
-
 const { hexToAscii, asciiToHex } = require("../utils");
 
-class Block {
-  constructor(data) {
-    (this.hash = ""),
-      (this.height = 0),
-      (this.body = data),
-      (this.time = 0),
-      (this.previousblockhash = "");
-  }
-}
+const Block = require('../models/block')
 
 class Blockchain {
   constructor(data) {
@@ -26,7 +12,7 @@ class Blockchain {
     this.height = 0;
   }
   async fetchBlockchain() {
-    return populateBlockchain([]);
+    return level.populateBlockchain([]);
   }
   createGenesis() {
     this.addBlock("Genesis block - First block in the chain");
@@ -51,7 +37,7 @@ class Blockchain {
         // searches the block prior to this one via the array's index
         // then grabs the hash from the .hash property of the previous block
         chain[height - 1].hash;
-      newBlock.body.star.story = asciiToHex(newBlock.body.star.story);
+      newBlock.body.star.star_story = asciiToHex(newBlock.body.star.star_story);
     }
 
     // encodes star story
@@ -60,7 +46,7 @@ class Blockchain {
     let jsonBlock = JSON.stringify(newBlock);
     // console.log("JSON BLOCK", jsonBlock);
     // console.log("CHAIN IN BLOCK CREATION", this.chain);
-    addDataToLevelDB(jsonBlock);
+    level.addDataToLevelDB(jsonBlock);
   }
   setBlockHeight(blockchain) {
     this.height = blockchain;
@@ -69,7 +55,7 @@ class Blockchain {
   }
   getHeight() {
     let height = 0;
-    return addDataToLevelDB("", height);
+    return level.addDataToLevelDB("", height);
   }
 
   getBlock(parameter, string, ignoreDecode) {
@@ -94,7 +80,7 @@ class Blockchain {
         if(!ignoreDecode){
 
           // decodes body.start.story from hex to readable text
-          block.body.star.story = hexToAscii(block.body.star.story);
+          block.body.star.star_story = hexToAscii(block.body.star.star_story);
         }
         
         // checks to see if parameters match the string, has OR case for address
@@ -176,23 +162,3 @@ class Blockchain {
 }
 
 module.exports = new Blockchain();
-
-// runs constructor functions
-/* 
-setTimeout(function() {
-    console.log("blockchain", blockchain);
-
-  console.log("getBlockHeight returns height of chain", blockchain.getBlockHeight());
-}, 1000);
-
-
-setTimeout(function() {
-  if (blockchain.chain.length >= 1) {
-    blockchain.addBlock("test data");
-    console.log("getBlock(0) returns genesis block", blockchain.getBlock(0));
-  }
-  if (blockchain.chain.length >= 2) {
-    console.log("validates second block", blockchain.validateBlock(1));
-    console.log("validates chain", blockchain.validateChain());
-  }
-}, 3000);*/

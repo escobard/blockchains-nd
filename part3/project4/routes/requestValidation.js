@@ -57,6 +57,7 @@ router.post("/", (req, res) => {
 			timer(countDownDate);
 			res.status(200).json({
 				status: "Success, copy the string basdfsfsdelow to sign your block",
+				address,
 				message,
 				timestamp,
 				validationWindow: authWindow
