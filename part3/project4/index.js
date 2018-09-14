@@ -1,22 +1,18 @@
 const express = require("express"),
-bodyParser = require("body-parser");
-
-const {
-  getLevelDBData,
-  populateBlockchain,
-  addDataToLevelDB
-} = require("./models/utils");
+	bodyParser = require("body-parser");
 
 const { port } = require("./constants/routes");
 
+// sets the global variable for the API services
 global.blockchain = require("./services/Blockchain");
 global.level = require("./services/Level");
+global.stars = require("./services/Stars");
 
 const app = express();
 
 app.use(bodyParser.json());
 
-require('./routes')(app);
+require("./routes")(app);
 
 let server = app.listen(port, () => {
 	console.log("server listening at port %s", port);
