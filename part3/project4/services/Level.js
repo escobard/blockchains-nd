@@ -3,7 +3,6 @@ let chainDB = "./data";
 let db = level(chainDB);
 
 class Level {
-
   addLevelDBData(key, value){
     db.put(key, value, function(err) {
       if (err) return console.log("Block " + key + " submission failed", err);
