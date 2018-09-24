@@ -109,4 +109,21 @@
 - less chances of a 51% attack, as there are economic penalties.
 	- the majority of the power used for mining is owned by a single malicious entity. 
 	- once they have control, they are able to take over the network and limit the ability of the blocks in the chain
-	- in proof of stake, this is impossible since even if someone were to own the majority of a network it would be in their best interest to take actions that benefit the protocol as a whole. 
+	- in proof of stake, this is impossible since even if someone were to own the majority of a network it would be in their best interest to take actions that benefit the protocol as a whole.  
+
+
+### Ethereum networks - ethstats.net
+
+- Best block: highest block number of the longest valid chain - easiest block to mine at the time.
+- Uncles: are often blocks that are included and rewarded, along block mining protocols.
+- Last block: Time of the last mined block in seconds.
+- Avg block: Avarage minetime between blocks, not including uncles.
+- Avg network hashrate: The number of hash rate spent by miners to sign a new block.
+- Difficulty: Difficulty to find a new block.
+- Active nodes: This is the nodes connected to the dashboard / ethstats.net ui.
+- Gas price: Price miners are currently accepting, 46.375 gwei, default is 20 gwei.
+- Gas limit: limit for a block - miners can add transactions to the block, until the gas limit is met, then a new block is found.
+- Page latency: Lag on dashboard.
+- Uptime: Uptime for the dashboard.
+- All charts correspond to the stats listed above.
+- 
