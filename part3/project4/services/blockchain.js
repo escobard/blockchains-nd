@@ -12,9 +12,13 @@ class Blockchain {
     this.height = 0;
     this.initChain()
   }
+
+  // populates the blockchain with data fetched from leveldb
   async fetchBlockchain() {
     return level.populateBlockchain([]);
   }
+
+  // creates genesis block if blockchain is empty
   createGenesis() {
     this.addBlock("Genesis block - First block in the chain");
   }
@@ -32,7 +36,6 @@ class Blockchain {
       .slice(0, -3);
 
     if (height >= 1) {
-      // console.log("TRIGGERED");
       // sets the property of the new block as the previous block's hash
       newBlock.previousblockhash =
         // searches the block prior to this one via the array's index
@@ -49,17 +52,16 @@ class Blockchain {
     // console.log("CHAIN IN BLOCK CREATION", this.chain);
     level.addDataToLevelDB(jsonBlock);
   }
+
+  // populates the class with the fetched chain properties.
   async populateBlockchain(blockchain) {
     this.height = blockchain.length;
     this.chain = blockchain;
-      console.log(this)
+
+    // creates genesis block if blockchain length is 0
     if(!blockchain.length){
       this.createGenesis();
     }
-  }
-  getHeight() {
-    let height = 0;
-    return level.addDataToLevelDB("", height);
   }
 
   getBlock(parameter, string, ignoreDecode) {
@@ -163,6 +165,8 @@ class Blockchain {
       console.log("No errors detected");
     }
   }
+
+  // initializes blockchain, fetches data from leveldb and populates class properties
   async initChain(){
     let fetchedChain = await this.fetchBlockchain();
     if (!fetchedChain){

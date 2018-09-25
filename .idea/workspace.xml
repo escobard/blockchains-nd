@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8f3ebc7-8ced-41c0-8345-8989d8d114c5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/part3/project4/data/000019.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/data/000032.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/part3/project4/data/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/data/CURRENT" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part3/project4/data/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/data/LOG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part3/project4/data/LOG.old" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/data/LOG.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part3/project4/data/MANIFEST-000018" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/part3/project4/routes/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/routes/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/data/MANIFEST-000031" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/routes/block.js" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/routes/block.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/routes/getBlockHeight.js" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/routes/getBlockHeight.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/routes/requestValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/routes/requestValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/routes/stars.js" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/routes/stars.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part3/project4/services/blockchain.js" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/services/blockchain.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,22 +33,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="315" />
+          <entry key="js" value="731" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="315" />
+          <entry key="JavaScript" value="731" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="js" value="1" />
+          <entry key="js" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JavaScript" value="1" />
+          <entry key="JavaScript" value="11" />
         </counts>
       </usages-collector>
     </session>
@@ -55,24 +58,36 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/part3/project4/services/blockchain.js">
+            <entry file="file://$PROJECT_DIR$/part3/project4/routes/stars.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="587">
-                  <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
-                  <folding>
-                    <element signature="n#!!block;n#getBlock#0;n#Blockchain#0" />
-                    <element signature="n#!!block;n#validateBlockData#0;n#Blockchain#0" />
-                  </folding>
+                <state relative-caret-position="176">
+                  <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/part3/project4/routes/main.js">
+            <entry file="file://$PROJECT_DIR$/part3/project4/routes/requestValidation.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="110">
-                  <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+                <state relative-caret-position="198">
+                  <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
                 </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/part3/project4/routes/block.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="726">
+                  <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/part3/project4/routes/messageSignature.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-188" />
               </provider>
             </entry>
           </file>
@@ -115,8 +130,12 @@
       <list>
         <option value="$PROJECT_DIR$/part3/project4/models/Block.js" />
         <option value="$PROJECT_DIR$/part3/project4/index.js" />
-        <option value="$PROJECT_DIR$/part3/project4/services/blockchain.js" />
         <option value="$PROJECT_DIR$/part3/project4/routes/main.js" />
+        <option value="$PROJECT_DIR$/part3/project4/services/blockchain.js" />
+        <option value="$PROJECT_DIR$/part3/project4/routes/getBlockHeight.js" />
+        <option value="$PROJECT_DIR$/part3/project4/routes/stars.js" />
+        <option value="$PROJECT_DIR$/part3/project4/routes/block.js" />
+        <option value="$PROJECT_DIR$/part3/project4/routes/requestValidation.js" />
       </list>
     </option>
   </component>
@@ -756,7 +775,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6417000" />
+    <option name="totallyTimeSpent" value="6818000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -811,19 +830,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/part3/project4/services/blockchain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
+        <state relative-caret-position="2904">
+          <caret line="168" column="85" selection-start-line="168" selection-start-column="85" selection-end-line="168" selection-end-column="85" />
           <folding>
             <element signature="n#!!block;n#getBlock#0;n#Blockchain#0" />
-            <element signature="n#!!block;n#validateBlockData#0;n#Blockchain#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/routes/health.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/routes/getBlockHeight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/part3/project4/routes/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        <state relative-caret-position="330">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/routes/stars.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/routes/block.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/routes/messageSignature.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-188" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/routes/requestValidation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
     </entry>

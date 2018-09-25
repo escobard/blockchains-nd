@@ -6,7 +6,7 @@ let blockchain = require("../services/blockchain"),
   initChain = require("../middlewares/initChain")
 
 // the blockHeight route parameter is expted here, and passed back to the route
-router.get('/:parameter/:string', initChain,  async (req, res) => {
+router.get('/:parameter/:string', async (req, res) => {
   let { params: { parameter, string } } = req;
 
   // returns an error if the :parameters does not match our expected values
