@@ -178,3 +178,23 @@
 			- this ranges widely based on the type of operation executed in the contract.
 		- Total value of contract execution is summed, as an ether value.
 		- The total ether cost of the contract execution, is then paid to the miner for signing the block.
+
+### Ethereum Virtual Machine
+
+- EVM is the machine that powers and runs the ethereum platform.
+- It's what powers the thousands of nodes spread across the world.
+- All nodes on the ethereum network use the EVM.
+- This world wide set of nodes running in unison, utilizing the EVM to communicate is what we refer to as the world computer.
+- Technical definition: A virtual machine that executes code. A runtime environment for Smart Contracts.
+- There are many different EVEM frameworks, all listed in the ethereum github repo.
+
+#### Go-ethereum 
+
+- Allows you to run a node to build and deploy a smart contract with the support of an ethereum client.
+- In our case, we are using geth, which is built on go-ethereum.
+- In essense, same process as udemy course to deploy smart contracts.
+- Compiles smart contract into bytecode and assembly view.
+	- Assembly is used to interact via APIs / interfaces.
+	- Bytecode is combiled code used by the EVM for deployment.
+- The compiled code is used by the EVM which executes the logic of your program, sending the transaction off to the network.
+- There are EVM's used specifically for testing. 
