@@ -9,6 +9,7 @@ const router = require("express").Router(),
 router.post("/", checkAddress, async (req, res) => {
 	let { body } = req;
 
+	// need to refactor into the star class
 	// checks to see if the request signature and wallet match globals
 	if (body.address == global.address) {
 		// sets the authenticated variable to true, granting user access

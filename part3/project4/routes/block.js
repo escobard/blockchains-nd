@@ -3,7 +3,6 @@
 const router = require("express").Router();
 
 let blockchain = require("../services/blockchain"),
-  initChain = require("../middlewares/initChain"),
   checkValidation = require("../middlewares/checkValidation"),
   checkBlockData = require("../middlewares/checkBlockData");
 
