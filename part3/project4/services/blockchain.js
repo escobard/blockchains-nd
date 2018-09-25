@@ -10,6 +10,7 @@ class Blockchain {
   constructor(data) {
     this.chain = [];
     this.height = 0;
+    this.initChain()
   }
   async fetchBlockchain() {
     return level.populateBlockchain([]);
@@ -48,10 +49,10 @@ class Blockchain {
     // console.log("CHAIN IN BLOCK CREATION", this.chain);
     level.addDataToLevelDB(jsonBlock);
   }
-  setBlockHeight(blockchain) {
-    this.height = blockchain;
-    // console.log('CHAIN LENGTH', blockchain)
-    return this.height;
+  async populateBlockchain(blockchain) {
+    this.height = blockchain.length;
+    this.chain = blockchain;
+      console.log(this)
   }
   getHeight() {
     let height = 0;
@@ -63,26 +64,26 @@ class Blockchain {
     let array = [];
     this.height = this.chain.length;
     this.chain.forEach(block => {
-      
+
       // handles genesis
       if (block.height === 0 && !block.body.star) {
         let { hash, height, body } = block;
         if (block.height == string || block.hash === string) {
           array.push(block);
         }
-      } 
+      }
 
       // handles non-genesis
       else {
         let { hash, height, body: { star: { address } } } = block;
-        
+
         // checks if ignoreDecode case is in effect
         if(!ignoreDecode){
 
           // decodes body.start.story from hex to readable text
           block.body.star.star_story = hexToAscii(block.body.star.star_story);
         }
-        
+
         // checks to see if parameters match the string, has OR case for address
         console.log('BLOCK PARAMETER', block[parameter])
         if (
@@ -158,6 +159,11 @@ class Blockchain {
     } else {
       console.log("No errors detected");
     }
+  }
+  async initChain(){
+    let fetchedChain = await this.fetchBlockchain();
+    this.populateBlockchain(fetchedChain);
+
   }
 }
 
