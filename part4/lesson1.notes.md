@@ -126,4 +126,42 @@
 - Page latency: Lag on dashboard.
 - Uptime: Uptime for the dashboard.
 - All charts correspond to the stats listed above.
+
+## Transaction Lifecycle
+
+The following steps are taken in ethereum to generate a private key:
+
+1. Create a random private key (64 hex characters | 256 bits | 32 bytes).
+2. Derive a public key from the above private key (of 128 hex characters | 512 bits | 64 bytes)
+3. Derive an address from the above derived publick key ( 40 hex characters | 160 bits | 20 bytes)
+
+### Generate a private key:
+
+Commands
+```
+Generate a Private Key
+$ openssl ecparam -name secp256k1 -genkey -noout
+Generate 'Key' file
+$ openssl ecparam -name secp256k1 -genkey -noout | openssl ec -text -noout > Key
+
+$ cat Key
+Extract the Private key, remove leading zero, and save to a file 'priv'
+$ cat Key | grep priv -A 3 | tail -n +2 | tr -d '\n[:space:]:' | sed 's/^00//' > priv
+
+$ cat priv
+Extract the Public Key, remove EC prefix 0x04, and save to a file 'pub'
+$ cat Key | grep pub -A 5 | tail -n +2 |tr -d '\n[:space:]:' | sed 's/^04//' > pub
+
+$ cat pub
+Generate the hash, and save to a file 'address'
+// this doesn't work with UBUNTU terminals, need to be on linux or windows terminals
+$ cat pub | keccak-256sum -x -l | tr -d ' -' | tail -c 41 > address
+
+$ cat address
+```
+
+### Geth
+
+- CMI (Command Line Interface) for communicating with ethereum networks.
+- A pain to install on Windows, but works great once installed, need to make sure the env path variables are pointing towards the correct location.
 - 
