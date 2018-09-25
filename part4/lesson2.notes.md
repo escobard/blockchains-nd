@@ -110,3 +110,45 @@
 	- Specific to CA accounts only.
 	- this cannot be changed, enforces smart contract immutability.
 
+### Transaction Types
+
+- Can only be initiated by an externally owned account (maybe not for contract creation)
+- Can be between a person to another person or a person to a contract.
+
+#### Message Calls
+
+- Can be used to send a message to EOA or CA accounts.
+- Each transaction must be signed with the user's private key.
+
+#### Contract Creation
+
+- Creates a contract on the ethereum network.
+
+### Transaction properties
+
+#### Nonce
+
+- Transaction count
+- iterating number based on how many transactions the account has
+
+#### Gas Price
+
+- This is the price the sender is willing to pay this fee per computational step
+
+#### Gas Limit
+
+- Specifies the max number of computation steps the transaction is allowed.
+	- Tells the network the maximum amount of gas you are willing to pay.
+	- This theoretically allows for quicker miner / signing of transactions.
+
+#### To
+
+- The recipient's address.
+
+#### Value
+
+- Amount we are sending for the transaction.
+
+#### Data, init
+
+- Handles the information used to manage smart contracts.
