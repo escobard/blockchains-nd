@@ -53,6 +53,9 @@ class Blockchain {
     this.height = blockchain.length;
     this.chain = blockchain;
       console.log(this)
+    if(!blockchain.length){
+        console.log(this)
+    }
   }
   getHeight() {
     let height = 0;
