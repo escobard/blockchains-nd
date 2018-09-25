@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8f3ebc7-8ced-41c0-8345-8989d8d114c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/part3/project4/data/000019.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/data/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/data/CURRENT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/data/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/data/LOG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/data/LOG.old" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/data/LOG.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/data/MANIFEST-000018" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3/project4/routes/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/routes/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part3/project4/services/blockchain.js" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/services/blockchain.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -24,12 +30,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="250" />
+          <entry key="js" value="315" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="250" />
+          <entry key="JavaScript" value="315" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -48,13 +54,12 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/part3/project4/services/blockchain.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="301">
-                  <caret line="56" column="25" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+                <state relative-caret-position="587">
+                  <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
                   <folding>
-                    <element signature="n#!!block;n#addBlock#0;n#Blockchain#0" />
                     <element signature="n#!!block;n#getBlock#0;n#Blockchain#0" />
                     <element signature="n#!!block;n#validateBlockData#0;n#Blockchain#0" />
                   </folding>
@@ -62,9 +67,13 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/part3/project4/routes/main.js">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="110">
+                  <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+                </state>
+              </provider>
             </entry>
           </file>
         </leaf>
@@ -74,8 +83,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/part3/project4/middlewares/initChain.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="418">
-                  <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+                <state relative-caret-position="572">
+                  <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -93,6 +102,11 @@
       </split-second>
     </splitter>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>HEIGHT</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -102,6 +116,7 @@
         <option value="$PROJECT_DIR$/part3/project4/models/Block.js" />
         <option value="$PROJECT_DIR$/part3/project4/index.js" />
         <option value="$PROJECT_DIR$/part3/project4/services/blockchain.js" />
+        <option value="$PROJECT_DIR$/part3/project4/routes/main.js" />
       </list>
     </option>
   </component>
@@ -741,7 +756,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6240000" />
+    <option name="totallyTimeSpent" value="6417000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -789,20 +804,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/part3/project4/middlewares/initChain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        <state relative-caret-position="572">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/part3/project4/services/blockchain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="56" column="25" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+        <state relative-caret-position="587">
+          <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
           <folding>
-            <element signature="n#!!block;n#addBlock#0;n#Blockchain#0" />
             <element signature="n#!!block;n#getBlock#0;n#Blockchain#0" />
             <element signature="n#!!block;n#validateBlockData#0;n#Blockchain#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/routes/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
         </state>
       </provider>
     </entry>

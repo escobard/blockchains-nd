@@ -3,7 +3,7 @@
 const router = require('express').Router(),
 initChain = require('../middlewares/initChain')
 
-router.get('/', initChain, async (req, res) => {
+router.get('/', async (req, res) => {
 	console.log('blockchain: ', blockchain);
 	
   res.send(

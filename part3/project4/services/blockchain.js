@@ -54,7 +54,7 @@ class Blockchain {
     this.chain = blockchain;
       console.log(this)
     if(!blockchain.length){
-        console.log(this)
+      this.createGenesis();
     }
   }
   getHeight() {
@@ -165,6 +165,9 @@ class Blockchain {
   }
   async initChain(){
     let fetchedChain = await this.fetchBlockchain();
+    if (!fetchedChain){
+      return 'Chain is undefined!'
+    }
     this.populateBlockchain(fetchedChain);
 
   }
