@@ -133,13 +133,23 @@
 
 #### Gas Price
 
-- This is the price the sender is willing to pay this fee per computational step
+- This is the price the sender is willing to pay this fee per computational step.
+- This is not the total gas utilized to computate the application, rather the PRICE your are willing to pay miners per computational step.
+- Essentially the higher the gas price, the faster your transaction will be signed / added to a block.
+	- Its important to find a balance the gas price for the contract. 
 
 #### Gas Limit
 
 - Specifies the max number of computation steps the transaction is allowed.
 	- Tells the network the maximum amount of gas you are willing to pay.
 	- This theoretically allows for quicker miner / signing of transactions.
+- Maximum amount of gas a sender is willing to pay for a given transaction.
+	- The sender will not pay more than this amount for each given transaction.
+	- Can be thought of as a spending budget.
+		- Prevents extreme transaction costs from infinite loops, as an extreme example.
+	- if you don't specify enough gas to run your code, you will get an error.
+		- in these cases you will spend the gas, and output nothing useful for the code.
+		- its usually best to specify a higher than necessary gas limit, to minimize such errors.
 
 #### To
 
@@ -152,3 +162,19 @@
 #### Data, init
 
 - Handles the information used to manage smart contracts.
+
+### Gas
+
+- Lifecycle of an ethereum transactionis not much different from ether.
+	- Gas is the eqivalent of miner fees with bitcoin, in a basic sense.
+- Is the count for the cost of doing the transaction in the first place.
+	- The total sum of these fees, is converted to its equivalent value in ether at the end of the transaction.
+	- Think of this as actual gas in a car.
+		- You require a certain amount of gas (which holds its own value) to fill up the tank.
+		- Gas holds its own value, so the total cost of the gas is the sum of the value of each gallon you buy.
+		- The total cost is then paid to a casheer, ending the transaction.
+	- In Ether:
+		- A certain amount of gas is necessary to execute a contract.
+			- this ranges widely based on the type of operation executed in the contract.
+		- Total value of contract execution is summed, as an ether value.
+		- The total ether cost of the contract execution, is then paid to the miner for signing the block.
