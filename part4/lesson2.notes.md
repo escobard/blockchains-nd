@@ -61,3 +61,52 @@
 						- allows ethereum to store values in a way that extends the state outside of the ledger.
 
 
+### Accounts
+
+- These are known as objects.
+- Represents an identity used by people, mining nodes, or contracts.
+
+#### Externally owned accounts (EOA's)
+
+- Managed by individuals who own a private key (actual user)
+	- contains the transaction count - how many transactions have taken place on the account.
+	- and the account balance.
+- Send transactions, initiate a smart contract, transfer value from a wallet to another account.
+
+#### Contract accounts (CA's)
+
+- Contract accounts are accounts controlled by the code within a smart contract.
+	- Contains:
+		- Account balance - can transfer other value, and initiate a smart contract.
+			- When receiving transactions, a CA has the ability to execute associated smart contracts, and in some cases manipulate storage. 
+		- Transaction count - in this case it tracks the times it has deployed other smart contracts.
+		- Smart contract code. 
+- Contract accounts can be created by another CA account or an EOA.
+- Executes code when triggered by transactions or messages.
+
+### Account Properties
+
+#### Nonce
+
+- Number of transactions on the account. 
+	- EOA: Number of transactions sent from this accounts address.
+	- CA: Number of contracts created by the account.
+
+#### Account Balance
+
+- Total value of ether in the account.
+- This is shown in wei, smaller denomination of ether.
+	- 1 ether is 10^18 wey
+
+#### Storage Hash
+
+- Root node of the patricia tree.
+- This hash contains the contents of the account.
+
+#### Code Hash
+
+- Hash of the code within the smart contract.
+- This is the code that is executed every time a call is made to the contract.
+	- Specific to CA accounts only.
+	- this cannot be changed, enforces smart contract immutability.
+
