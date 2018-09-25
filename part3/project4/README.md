@@ -124,11 +124,11 @@ Response: {
 }
 ```
 
-### GET Endpoints - /stars/address/[ADDRESS] - deviating from address:[ADDRESS] route, but documenting as mentioned in previous project review.
+### GET Endpoints - /stars/address/[ADDRESS]
 
 Returns all found blocks with the provided ADDRESS.
 
-### GET Endpoints - /stars/hash/[HASH] - deviating from hash:[HASH] route, but documenting as mentioned in previous project review.
+### GET Endpoints - /stars/hash/[HASH]
 
 Returns the found block with the provided HASH.
 

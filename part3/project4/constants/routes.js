@@ -5,7 +5,7 @@ const routes = {
 	notary: '/notary',
 	health: '/health',
 	addBlock: '/addBlock',
-	getHeight: '/getBlockHeight',
+	getBlockHeight: '/getBlockHeight',
 	requestValidation: '/requestValidation',
 	messageSignature: '/message-signature/validate',
 	block: '/block',

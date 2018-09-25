@@ -3,14 +3,12 @@
 const router = require("express").Router();
 
 let blockchain = require("../services/blockchain"),
-  initChain = require("../middlewares/initChain"),
   checkValidation = require("../middlewares/checkValidation"),
   checkBlockData = require("../middlewares/checkBlockData");
 
 // the blockHeight route parameter is expted here, and passed back to the route
 router.post(
   "/",
-  initChain,
   checkValidation,
   checkBlockData,
   async (req, res) => {
@@ -47,7 +45,7 @@ router.post(
 );
 
 // the blockHeight route parameter is expted here, and passed back to the route
-router.get("/:blockHeight", initChain, async (req, res) => {
+router.get("/:blockHeight", async (req, res) => {
   let { params: { blockHeight } } = req;
   let block = blockchain.getBlock("height", blockHeight);
   // blockchain.validateBlock(blockHeight);

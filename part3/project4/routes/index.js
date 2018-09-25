@@ -7,7 +7,7 @@ module.exports = (app) => {
 	// project 3 routes
   app.use(routes.main, require('../routes/main'));
   app.use(routes.health, require('../routes/health'));
-  app.use(routes.getHeight, require('../routes/getBlockHeight'));
+  app.use(routes.getBlockHeight, require('../routes/getBlockHeight'));
 
   // project 4 routes
   app.use(routes.requestValidation, require('../routes/requestValidation'))

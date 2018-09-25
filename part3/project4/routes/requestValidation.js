@@ -8,7 +8,7 @@ const router = require("express").Router(),
 router.post("/", (req, res) => {
 	let { body: { address } } = req;
 
-	// should handle this via a class function instance, to keep all logic centralized
+	// need to refactor into the star class
 	if (!address) {
 		console.log("Wallet address is undefined!");
 		res.status(401).json({

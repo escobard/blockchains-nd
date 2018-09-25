@@ -10,10 +10,15 @@ class Blockchain {
   constructor(data) {
     this.chain = [];
     this.height = 0;
+    this.initChain()
   }
+
+  // populates the blockchain with data fetched from leveldb
   async fetchBlockchain() {
     return level.populateBlockchain([]);
   }
+
+  // creates genesis block if blockchain is empty
   createGenesis() {
     this.addBlock("Genesis block - First block in the chain");
   }
@@ -31,7 +36,6 @@ class Blockchain {
       .slice(0, -3);
 
     if (height >= 1) {
-      // console.log("TRIGGERED");
       // sets the property of the new block as the previous block's hash
       newBlock.previousblockhash =
         // searches the block prior to this one via the array's index
@@ -48,14 +52,16 @@ class Blockchain {
     // console.log("CHAIN IN BLOCK CREATION", this.chain);
     level.addDataToLevelDB(jsonBlock);
   }
-  setBlockHeight(blockchain) {
-    this.height = blockchain;
-    // console.log('CHAIN LENGTH', blockchain)
-    return this.height;
-  }
-  getHeight() {
-    let height = 0;
-    return level.addDataToLevelDB("", height);
+
+  // populates the class with the fetched chain properties.
+  async populateBlockchain(blockchain) {
+    this.height = blockchain.length;
+    this.chain = blockchain;
+
+    // creates genesis block if blockchain length is 0
+    if(!blockchain.length){
+      this.createGenesis();
+    }
   }
 
   getBlock(parameter, string, ignoreDecode) {
@@ -63,26 +69,26 @@ class Blockchain {
     let array = [];
     this.height = this.chain.length;
     this.chain.forEach(block => {
-      
+
       // handles genesis
       if (block.height === 0 && !block.body.star) {
         let { hash, height, body } = block;
         if (block.height == string || block.hash === string) {
           array.push(block);
         }
-      } 
+      }
 
       // handles non-genesis
       else {
         let { hash, height, body: { star: { address } } } = block;
-        
+
         // checks if ignoreDecode case is in effect
         if(!ignoreDecode){
 
           // decodes body.start.story from hex to readable text
           block.body.star.star_story = hexToAscii(block.body.star.star_story);
         }
-        
+
         // checks to see if parameters match the string, has OR case for address
         console.log('BLOCK PARAMETER', block[parameter])
         if (
@@ -158,6 +164,16 @@ class Blockchain {
     } else {
       console.log("No errors detected");
     }
+  }
+
+  // initializes blockchain, fetches data from leveldb and populates class properties
+  async initChain(){
+    let fetchedChain = await this.fetchBlockchain();
+    if (!fetchedChain){
+      return 'Chain is undefined!'
+    }
+    this.populateBlockchain(fetchedChain);
+
   }
 }
 

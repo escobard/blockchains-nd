@@ -4,9 +4,10 @@ const express = require("express"),
 const { port } = require("./constants/routes");
 
 // sets the global variable for the API services
-global.blockchain = require("./services/Blockchain");
 global.level = require("./services/Level");
 global.stars = require("./services/Stars");
+global.blockchain = require("./services/Blockchain");
+
 
 const app = express();
 

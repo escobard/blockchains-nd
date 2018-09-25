@@ -1,9 +1,8 @@
 'use strict';
 
-const router = require('express').Router(),
-initChain = require('../middlewares/initChain')
+const router = require('express').Router()
 
-router.get('/', initChain, async (req, res) => {
+router.get('/', async (req, res) => {
 	
 	let blockHeight = blockchain.getBlockHeight(blockchain.chain.length);
 
