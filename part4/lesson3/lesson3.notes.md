@@ -35,5 +35,3 @@
 - mostly compared to javascript and c++
 
 ### Remix
-
-- To save time, refer to udemy repo for solidity and remix syntax basics
