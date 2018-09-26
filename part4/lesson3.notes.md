@@ -33,7 +33,25 @@
 ### Solidity
 
 - mostly compared to javascript and c++
+- https://solidity.readthedocs.io/en/v0.4.24/units-and-global-variables.html?highlight=msg.sender
 
 ### Remix
 
 - To save time, refer to udemy repo for solidity and remix syntax basics
+
+### CryptoPunks
+
+- https://www.larvalabs.com/cryptopunks
+- cool application that has unique characters with proof of ownership stored on the ethereum blockchain.
+
+### Etherscan
+
+- We can view more information about users, by grabbing the users address.
+- https://etherscan.io/address/0xc352b534e8b987e036a93539fd6897f53488e56a#tokentxns
+- allows us to see transactions, values, tokens purchased.
+- is great for general information of an account, but does not allow great information of which token the account wallet holds.
+
+### Rarebits
+
+- Allows for browsing of crypto tokens / assets in any given account.
+- https://rarebits.io/address/0xC352B534e8b987e036A93539Fd6897F53488e56a
