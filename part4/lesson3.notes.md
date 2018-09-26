@@ -55,3 +55,27 @@
 
 - Allows for browsing of crypto tokens / assets in any given account.
 - https://rarebits.io/address/0xC352B534e8b987e036A93539Fd6897F53488e56a
+
+### Ethereum and private networks
+
+- As a brief reminder, public and private chains are structurally very similar.
+- Primary difference is private chains do not grand access to just anyone, only to verified users.
+- Having a private version of the the ethereum blockchain, means that it cannot be part of the main public blockchain.
+- Some developers are creating private ethereum networks, such a quorum: https://www.jpmorgan.com/global/Quorum
+- Private blockchains have entirely different use cases, to allow ethereum like capabilities, with authentication and restrictive capabilities.
+	- This allows for SECURE access to sensitive data.
+	- The applications are fairly diverse, but the main underlying point is that only trusted nodes can participate and operate on the sensitive data within the private blockchains.
+
+
+### Ganache
+
+- local (therefore private) ethereum protocol, for local testing of the ethereum protocol.
+- https://truffleframework.com/ganache
+- downloaded interface, and the CLI.
+- cli can be initated with:
+	`ganache-cli`
+	- initates a private ether network, with 9 accounts, each with 100 ether.
+- can connect to this network via the remix client from:
+	- Run > web3 provider> enter ganache local port
+- Deploying the contract onto the ganache network will display the transaction information, within its corresponding block.
+- 
