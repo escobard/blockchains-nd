@@ -16,8 +16,32 @@ contract('StarNotary', accounts =>{
     })
 
     describe('StarNotary basics', () =>{
+        
         it('has correct name', async ()=>{
             assert.equal(await contractInstance.starName(), 'Awesome Udacity Star');
+        })
+
+        it('can be claimed', async ()=>{
+            assert.equal(await contractInstance.starOwner(), 0);
+
+            await contractInstance.claimStar({from: owner})
+
+            // ensures the star has been claimed by user account[0]
+            assert.equal(await contractInstance.starOwner(), owner)
+        })
+    })
+
+    describe('Star can change owners', () =>{
+        beforeEach(async ()=>{
+            assert.equal(await contractInstance.starOwner(), 0);
+
+            await contractInstance.claimStar({from: owner})
+        })
+
+        it('can be claimed by a second user', async ()=>{
+            let secondUser = accounts[1];
+            await contractInstance.claimStar({from: secondUser})
+            assert.equal(await contractInstance.starOwner(), secondUser)
         })
     })
 })
