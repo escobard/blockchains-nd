@@ -34,7 +34,9 @@
         // What happens ehre when you choose another account, say, at accounts[1], and 
         // claim the star with that account?
         web3.eth.defaultAccount = web3.eth.accounts[0];
+
         // The interface definition for your smart contract (the ABI)
+        // this is grabbed from the contract details with remix
         var StarNotary = web3.eth.contract(
             [
                 {
@@ -82,18 +84,41 @@
                 }
             ]
         );
+
         // Grab the contract at specified deployed address with the interface defined by the ABI
-        var starNotary = StarNotary.at('<PASTE STAR NOTARY CONTRACT ADDRESS HERE>');
+        // also grabbed from remix
+        var starNotary = StarNotary.at('0x6c7032833609d5f02f149d8f61c6db0666e843bc');
 
         // Get and display star name
-        // CODE FOR GETTING STAR NAME FROM THE SMART CONTRACT
+        starNotary.starName((err, result) => {
+            if (!err) {
+                document.getElementById('star-name').innerText = result;
+            }
+            else {
+                console.log(('there has been an error getting the name'))
+            }
+        })
 
         // Get and display star owner
-        // CODE FOR GETTING STAR OWNER FROM THE SMART CONTRACT
+        starNotary.starOwner((err, result) => {
+            if (!err) {
+                document.getElementById('star-owner').innerText = result;
+            } else {
+                console.log(("there has been an error getting the star owner's address"))
+            }
+        })
 
         // Enable claim button being clicked
         function claimButtonClicked() {
-            // CODE FOR CLAIMING STAR 
+            starNotary.claimStar((err, result) => {
+            if (!err) {
+                // this is due to the async. nature of web3 promises
+                // by reloading, we just reload the page to display the results
+                location.reload()
+            } else {
+                console.log(("there has been an error getting the star owner's address"))
+            }
+        })
         }
     </script>
 
