@@ -27,7 +27,14 @@
     </div>
 
     <script>
-
+        // checks for metamask identity on browser, sets the web3 version metamask is using
+        // to elminate conflicts 
+        if (typeof web3 != 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        }
+        else {
+            web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'))
+        }
         // Instantiate and set Ganache as your provider
         web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
         // The default (top) wallet account from a list of test accounts 
@@ -123,27 +130,34 @@
 
         // Enable claim button being clicked
         function claimButtonClicked() {
-            starNotary.claimStar((err, result) => {
-                if (!err) {
-                    // this is due to the async. nature of web3 promises
-                    // by reloading, we just reload the page to display the results
-
-                    // checks the event status
-                    let starClaimedEvent = starNotary.starClaimed();
-
-                    // watches for the event, if fired will reload
-                    starClaimedEvent.watch((error, result) => {
-                        if (!error) {
-                            location.reload()
-                        } else {
-                            console.log(("there has been an error firing the claimStar() event"))
-                        }
-                    })
-
-                } else {
-                    console.log(("there has been an error getting the star owner's address"))
+            web3.eth.getAccounts((e, accounts) => {
+                if (e) {
+                    console.log(e)
+                    return e
                 }
+                starNotary.claimStar((err, result) => {
+                    if (!err) {
+                        // this is due to the async. nature of web3 promises
+                        // by reloading, we just reload the page to display the results
+
+                        // checks the event status
+                        let starClaimedEvent = starNotary.starClaimed();
+
+                        // watches for the event, if fired will reload
+                        starClaimedEvent.watch((error, result) => {
+                            if (!error) {
+                                location.reload()
+                            } else {
+                                console.log(("there has been an error firing the claimStar() event"))
+                            }
+                        })
+
+                    } else {
+                        console.log(("there has been an error getting the star owner's address"))
+                    }
+                })
             })
+
         }
     </script>
 
