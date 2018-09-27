@@ -118,4 +118,8 @@
 - When deployed, click on the details button.
 	- this displays all relevant information about the smart contract.
 	- The ABI tab (ABI is the compiled interface code for JS to use) we can see every function in the contract, and their purpose.
-	- 
+	
+### Truffle
+
+- https://truffleframework.com/
+- makes testing smart contracts w/ js easier (apparently)
