@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +26,8 @@
         <button id="claim-button" onclick="claimButtonClicked()">Claim Star</button>
     </div>
 
-    <script>    
-     
+    <script>
+
         // Instantiate and set Ganache as your provider
         web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
         // The default (top) wallet account from a list of test accounts 
@@ -35,19 +36,68 @@
         web3.eth.defaultAccount = web3.eth.accounts[0];
         // The interface definition for your smart contract (the ABI)
         var StarNotary = web3.eth.contract(
-            // PASTE CONTRACT ABI HERE
+            [
+                {
+                    "constant": true,
+                    "inputs": [],
+                    "name": "starName",
+                    "outputs": [
+                        {
+                            "name": "",
+                            "type": "string"
+                        }
+                    ],
+                    "payable": false,
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "constant": true,
+                    "inputs": [],
+                    "name": "starOwner",
+                    "outputs": [
+                        {
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "payable": false,
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "constant": false,
+                    "inputs": [],
+                    "name": "claimStar",
+                    "outputs": [],
+                    "payable": false,
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "payable": false,
+                    "stateMutability": "nonpayable",
+                    "type": "constructor"
+                }
+            ]
         );
         // Grab the contract at specified deployed address with the interface defined by the ABI
-        var starNotary = StarNotary.at('<PASTE STAR NOTARY CONTRACT ADDRESS HERE>'); 
-        
+        var starNotary = StarNotary.at('<PASTE STAR NOTARY CONTRACT ADDRESS HERE>');
+
         // Get and display star name
         // CODE FOR GETTING STAR NAME FROM THE SMART CONTRACT
+
         // Get and display star owner
         // CODE FOR GETTING STAR OWNER FROM THE SMART CONTRACT
+
         // Enable claim button being clicked
-        function claimButtonClicked() { 
+        function claimButtonClicked() {
             // CODE FOR CLAIMING STAR 
         }
     </script>
 
-<script type="text/javascript" src="chrome-extension://aalppolilappfakpmdfdkpppdnhpgifn/build/installHook.js"></script></body></html>
+    <script type="text/javascript" src="chrome-extension://aalppolilappfakpmdfdkpppdnhpgifn/build/installHook.js"></script>
+</body>
+
+</html>
