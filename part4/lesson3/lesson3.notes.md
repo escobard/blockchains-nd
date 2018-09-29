@@ -123,3 +123,8 @@
 
 - https://truffleframework.com/
 - makes testing smart contracts w/ js easier (apparently)
+
+## EIPS
+
+- https://eips.ethereum.org/
+- Standards for forking and creating our own tokens off the ethereum network
