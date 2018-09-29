@@ -6,6 +6,37 @@ import './ERC721.sol';
 // creates an instance of the ERC721 interface
 // its important to note that this will convert the file name, into a variable
 contract ERC721Token is ERC721{
+    
+    // these aren't too clear yet, but more on mapping functions here: 
+    // https://solidity.readthedocs.io/en/v0.4.21/types.html#mappings
+    // it maps the values ito an array then assigns the array to a variable
+    // these are helpful when trying to isolate data
+    mapping(uint256 => address) tokenToOwner;
+    mapping(address => uint256) ownerToBalance;
+
+    // the function here will actually create the new token for us to use
+    // these functions are generally called 'mints'
+    // all a token really is, is a reference of ownership
+    // this function can also be used to TRANSFER ownership to another user
+    // technically, what this function is doing is transfering ownership form one user to another
+    // where the default user is the contract
+    function mint(uint256 _tokenId) public {
+        // this only allows the owner of the address[0] account to access this function
+        // first argument is the condition, ensuring the owner.token property contains the same
+        // hash as address[0]
+        // second argument is the message, if  the first condition is false
+        require(tokenToOwner[_tokenId] == address(0), "This token already belongs to someone else!");
+
+        // this sets the owner of the token to the user's address
+        tokenToOwner[_tokenId] = msg.sender;
+
+        // this updates the user's balance with the new token
+        ownerToBalance[msg.sender] += 1;
+        
+        // fires the pre-established transfer event from ERC721 boilerplate
+        // returns original owner's address, users's address, and token ID
+        emit Transfer(address(0), msg.sender, _tokenId);
+    }
 
     /// @notice Count all NFTs assigned to an owner
     /// @dev NFTs assigned to the zero address are considered invalid, and this
@@ -13,7 +44,11 @@ contract ERC721Token is ERC721{
     /// @param _owner An address for whom to query the balance
     /// @return The number of NFTs owned by `_owner`, possibly zero
     function balanceOf(address _owner) external view returns (uint256){
-        return 0;
+        // ensures the user cannot check their own balance, as that is nonsensical
+        require(_owner != address(0), "Cannot ask for your own balance!");
+
+        // returns the balance of the owner, when the owner's address is entered
+        return ownerToBalance[_owner];
     }
 
     /// @notice Find the owner of an NFT
@@ -22,7 +57,9 @@ contract ERC721Token is ERC721{
     /// @param _tokenId The identifier for an NFT
     /// @return The address of the owner of the NFT
     function ownerOf(uint256 _tokenId) external view returns (address){
-        return address(0)
+
+        // returns owner of the token, once the tokenID is entered
+        return tokenToOwner[_tokenId];
     }
 
     /// @notice Transfers the ownership of an NFT from one address to another address
@@ -99,5 +136,5 @@ contract ERC721Token is ERC721{
     /// @return True if `_operator` is an approved operator for `_owner`, false otherwise
     function isApprovedForAll(address _owner, address _operator) external view returns (bool){
         return false;
-    };
+    }
 }
