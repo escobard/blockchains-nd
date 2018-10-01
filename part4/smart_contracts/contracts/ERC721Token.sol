@@ -14,12 +14,17 @@ contract ERC721Token is ERC721{
     mapping(uint256 => address) tokenToOwner;
     mapping(address => uint256) ownerToBalance;
 
+    // creates a new array for the approved addresses for a particular token
+    mapping(uint256 => address) tokenToApproved;
+
+
     // another function type, more on that here: 
     // https://solidity.readthedocs.io/en/v0.4.24/common-patterns.html
     // ensures no tokens get stolen
     modifier hasPermission(address _caller, uint256 _tokenId){
         // requires any transfer call to only be allowed the FROM acount to be the owner of the token
-        require(_caller == tokenToOwner[_tokenId]);
+        // secondary condition checks if caller address is in the list of APPROVED callers for a given token
+        require(_caller == tokenToOwner[_tokenId] || getApproved(_tokenId) == _caller);
 
         // continues the rest of the function, as long as the call meets the above require statement
         _;
@@ -133,7 +138,16 @@ contract ERC721Token is ERC721{
     ///  operator of the current owner.
     /// @param _approved The new approved NFT controller
     /// @param _tokenId The NFT to approve
+
+    // gives another address APPROVAL to transfer the token
     function approve(address _approved, uint256 _tokenId) external payable{
+        require(tokenToOwner[_tokenId] == msg.sender);
+
+        // sets the approved property of the token to the approved address argument
+        tokenToApproved[_tokenId] = _approved;
+
+        // emits the approval event
+        emit Approval(msg.sender, _approved, _tokenId);
 
     }
 
@@ -151,8 +165,12 @@ contract ERC721Token is ERC721{
     /// @dev Throws if `_tokenId` is not a valid NFT.
     /// @param _tokenId The NFT to find the approved address for
     /// @return The approved address for this NFT, or the zero address if there is none
-    function getApproved(uint256 _tokenId) external view returns (address){
-        return address(0);
+
+    // changed from external function type, so we can use it in this function
+    function getApproved(uint256 _tokenId) public view returns (address){
+
+        // returns the approved address of the argument's token;
+        return tokenToApproved[_tokenId];
     }
 
     /// @notice Query if an address is an authorized operator for another address

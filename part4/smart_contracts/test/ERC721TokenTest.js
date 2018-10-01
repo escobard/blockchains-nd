@@ -72,4 +72,38 @@ contract('ERC721Token', accounts =>{
             assert.equal(tx.logs[0].args._from, user1)
         })
     })
+
+    describe('can grant approval to transfer', () =>{
+        let tokenId = 1;
+        let tx
+
+        beforeEach(async ()=>{
+
+            // mints a token to user1
+            await this.contract.mint(tokenId, {from: user1});
+
+            // user1 approves user2 for the transfer of the token
+            tx = await this.contract.approve(user2, tokenId, {from:user1})
+        })
+
+        it('sets user 2 as an approved address', async () =>{
+            assert.equal(await this.contract.getApproved(tokenId), user2)
+        })
+
+        it('user2 can now transfer token', async () =>{
+            
+            // transfers token
+            await this.contract.transferFrom(user1, user2, tokenId, {from: user2})
+
+            // checks that the new owner of the token is user2
+            assert.equal(await this.contract.ownerOf(tokenId), user2)
+
+        })
+
+        it('emits the correct events', async ()=>{
+            assert.equal(tx.logs[0].event, 'Approval')
+        })
+    })
+
+
 })
