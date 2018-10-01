@@ -17,6 +17,8 @@ contract ERC721Token is ERC721{
     // creates a new array for the approved addresses for a particular token
     mapping(uint256 => address) tokenToApproved;
 
+    // mapping to grant transfer approval to all available tokens to operator
+    mapping(address => mapping(address => bool)) ownerToOperator;
 
     // another function type, more on that here: 
     // https://solidity.readthedocs.io/en/v0.4.24/common-patterns.html
@@ -157,8 +159,15 @@ contract ERC721Token is ERC721{
     ///  multiple operators per owner.
     /// @param _operator Address to add to the set of authorized operators
     /// @param _approved True if the operator is approved, false to revoke approval
+
+    // grants permission to operator to transfer ALL tokens within a given account
     function setApprovalForAll(address _operator, bool _approved) external{
-        
+
+        // gives the operator access to transfer ALL the tokens in the users account
+        ownerToOperator[msg.sender][_operator] = _approved;
+
+        // emits the approvalForAll event
+        emit ApprovalForAll(msg.sender, _operator, _approved);
     }
 
     /// @notice Get the approved address for a single NFT
@@ -177,7 +186,12 @@ contract ERC721Token is ERC721{
     /// @param _owner The address that owns the NFTs
     /// @param _operator The address that acts on behalf of the owner
     /// @return True if `_operator` is an approved operator for `_owner`, false otherwise
-    function isApprovedForAll(address _owner, address _operator) external view returns (bool){
-        return false;
+
+    // changes from external to public, so it can be used internally by the contract
+    function isApprovedForAll(address _owner, address _operator) public view returns (bool){
+
+        // returns the status of the permission, is true if the operator is approved to transfer all of the
+        // user's token
+        return ownerToOperator[_owner][_operator];
     }
 }

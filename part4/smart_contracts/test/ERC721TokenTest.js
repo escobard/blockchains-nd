@@ -105,5 +105,17 @@ contract('ERC721Token', accounts =>{
         })
     })
 
+    describe('can set an operator', () =>{
+        let tokenId = 1;
+        let tx;
 
+        beforeEach(async ()=>{
+            await this.contract.mint(tokenId, {from:user1});
+            tx = await this.contract.setApprovalForAll(operator, true, {from: user1})
+        })
+
+        it('can set an operator', async () =>{
+            assert.equal(await this.contract.isApprovedForAll(user1, operator), true)
+        })
+    })
 })
