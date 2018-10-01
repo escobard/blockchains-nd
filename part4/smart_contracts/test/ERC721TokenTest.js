@@ -71,6 +71,12 @@ contract('ERC721Token', accounts =>{
             assert.equal(tx.logs[0].args._to, user2)
             assert.equal(tx.logs[0].args._from, user1)
         })
+
+        it('only permissioned users can transfer tokens', async ()=>{
+            let randomFoolTryingToStealTokens = accounts[4];
+
+            await expectThrow(this.contract.transferFrom(user1, randomFoolTryingToStealTokens, tokenId, {from: randomFoolTryingToStealTokens}))
+        })
     })
 
     describe('can grant approval to transfer', () =>{
@@ -119,3 +125,17 @@ contract('ERC721Token', accounts =>{
         })
     })
 })
+
+// checks for expected behavior when an error is thrown with the transaction
+// useful to test in case of malicios attacks, or unexpected behavior
+let expectThrow = async (promise) =>{
+    try{
+        await promise;
+    }catch(e){
+        assert.exists(e);
+        return
+    }
+
+    // throws this fail if no errors are found
+    assert.fail("Expected an error but didn't see one!")
+}
