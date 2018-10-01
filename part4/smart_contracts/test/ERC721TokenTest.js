@@ -11,7 +11,7 @@ contract('ERC721Token', accounts =>{
     let operator = accounts[3];
 
     // loads our contract prior to each test
-    beforeEach(async, () =>{
+    beforeEach(async () =>{
         // assigns contract to the constructor .this variable
         this.contract = await ERC721Token.new({from: defaultAccount})
     })
@@ -39,7 +39,7 @@ contract('ERC721Token', accounts =>{
             // this returns the user's balance, wrapped in a JS object
             let balance = await this.contract.balanceOf(user1);
 
-            assert.equal(balanceToNumber(), 1);
+            assert.equal(balance.toNumber(), 1);
         })
 
         it('emits the correct event during creation of a new token', async () =>{
