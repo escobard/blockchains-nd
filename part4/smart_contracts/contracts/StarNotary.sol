@@ -1,21 +1,31 @@
 pragma solidity ^0.4.23;
 
-contract StarNotary { 
+import './ERC721Token.sol';
 
-    string public starName; 
-    address public starOwner;
+contract StarNotary is ERC721Token { 
 
-    // logs the new owner of the star, by creating an event, which is a type of function
-    event starClaimed(address owner);
-    
-    constructor() public { 
-        starName = "Awesome Udacity Star";
+    // defines the additional metadata we need for a star
+    // the struct callback is similar to a json schema
+    // more here: https://solidity.readthedocs.io/en/v0.4.24/structure-of-a-contract.html#struct-types
+    struct Star {
+        string name;
     }
 
-    function claimStar() public { 
-        starOwner = msg.sender;
+    // maps the starId to it additional metadata
+    mapping(uint256 => Star) public tokenIdToStarInfo;
 
-        // this is the callback syntax for the event function type
-        emit starClaimed(msg.sender);
+    function createStar(string _name, uint256 _tokenId) public {
+        // this is a type that will be deleted after the function call
+
+        // assigns the current Star to a new variable called memory
+        Star memory newStar = Star(_name);
+
+        // saves the new star name under the tokenId
+        tokenIdToStarInfo[_tokenId] = newStar;
+
+        // calls the mint function established in earlier lessons, mega cool
+        ERC721Token.mint(_tokenId);
+
     }
+
 }
