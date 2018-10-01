@@ -48,4 +48,28 @@ contract('ERC721Token', accounts =>{
             assert.equal(tx.logs[0].event, "Transfer");
         })
     })
+
+    describe('can transfer a token', () =>{
+        let tokenId = 1;
+        let tx
+
+        beforeEach(async () =>{
+            // mints a token to user1
+            await this.contract.mint(tokenId, {from: user1});
+
+            // transfers token from user1 to user2
+            tx = await this.contract.transferFrom(user1, user2, tokenId, {from: user1})
+        })
+
+        it('token has new owner', async () =>{
+            assert.equal(await this.contract.ownerOf(tokenId), user2)
+        })
+
+        it('emits the correct events', async ()=>{
+            assert.equal(tx.logs[0].event, 'Transfer')
+            assert.equal(tx.logs[0].args._tokenId, tokenId)
+            assert.equal(tx.logs[0].args._to, user2)
+            assert.equal(tx.logs[0].args._from, user1)
+        })
+    })
 })
