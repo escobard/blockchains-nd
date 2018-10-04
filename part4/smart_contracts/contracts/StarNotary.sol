@@ -65,7 +65,14 @@ contract StarNotary is ERC721Token {
 
         // uses the transferFrom helper from ERC721Token
         // expects ownerAddress, receiverAddress, and tokenId
-        transferFromHelper(_from, _to, _tokenId);
+        transferFromHelper(starOwner, msg.sender, _tokenId);
+
+        // ensures that if the transaction value is greater than the starCost, returns extra to sender
+        if(msg.value > starCost){
+
+            // transfers the cost back to the sender, very helpful util!
+            msg.sender.transfer(msg.value - starCost);
+        }
     }
 
     // private functions cannot be called outside of the contract, can only be invoked and used by
