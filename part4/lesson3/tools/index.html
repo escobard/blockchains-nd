@@ -1,0 +1,167 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Notary</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Star Notary</h1>
+
+        <div class="row">
+            <label class="bold">Star Name:</label>
+            <label id="star-name"></label>
+        </div>
+
+        <div class="row">
+            <label class="bold">Star Owner:</label>
+            <label id="star-owner"></label>
+        </div>
+
+        <button id="claim-button" onclick="claimButtonClicked()">Claim Star</button>
+    </div>
+
+    <script>
+        // checks for metamask identity on browser, sets the web3 version metamask is using
+        // to elminate conflicts 
+        if (typeof web3 != 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        }
+        else {
+            web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'))
+        }
+        // Instantiate and set Ganache as your provider
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+        // The default (top) wallet account from a list of test accounts 
+        // What happens ehre when you choose another account, say, at accounts[1], and 
+        // claim the star with that account?
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+
+        // The interface definition for your smart contract (the ABI)
+        // this is grabbed from the contract details with remix
+        var StarNotary = web3.eth.contract(
+            [
+                {
+                    "constant": false,
+                    "inputs": [],
+                    "name": "claimStar",
+                    "outputs": [],
+                    "payable": false,
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "anonymous": false,
+                    "inputs": [
+                        {
+                            "indexed": false,
+                            "name": "owner",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "starClaimed",
+                    "type": "event"
+                },
+                {
+                    "inputs": [],
+                    "payable": false,
+                    "stateMutability": "nonpayable",
+                    "type": "constructor"
+                },
+                {
+                    "constant": true,
+                    "inputs": [],
+                    "name": "starName",
+                    "outputs": [
+                        {
+                            "name": "",
+                            "type": "string"
+                        }
+                    ],
+                    "payable": false,
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "constant": true,
+                    "inputs": [],
+                    "name": "starOwner",
+                    "outputs": [
+                        {
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "payable": false,
+                    "stateMutability": "view",
+                    "type": "function"
+                }
+            ]
+        );
+
+        // Grab the contract at specified deployed address with the interface defined by the ABI
+        // also grabbed from remix
+        var starNotary = StarNotary.at('0xa7cddd58843eaed67034f9d38b24d2edf58ae6ce');
+
+        // Get and display star name
+        starNotary.starName((err, result) => {
+            if (!err) {
+                // by default, this will return the first address in the test network
+                document.getElementById('star-name').innerText = result;
+            }
+            else {
+                console.log(('there has been an error getting the name'))
+            }
+        })
+
+        // Get and display star owner
+        starNotary.starOwner((err, result) => {
+            if (!err) {
+                document.getElementById('star-owner').innerText = result;
+            } else {
+                console.log(("there has been an error getting the star owner's address"))
+            }
+        })
+
+        // Enable claim button being clicked
+        function claimButtonClicked() {
+            web3.eth.getAccounts((e, accounts) => {
+                if (e) {
+                    console.log(e)
+                    return e
+                }
+                starNotary.claimStar((err, result) => {
+                    if (!err) {
+                        // this is due to the async. nature of web3 promises
+                        // by reloading, we just reload the page to display the results
+
+                        // checks the event status
+                        let starClaimedEvent = starNotary.starClaimed();
+
+                        // watches for the event, if fired will reload
+                        starClaimedEvent.watch((error, result) => {
+                            if (!error) {
+                                location.reload()
+                            } else {
+                                console.log(("there has been an error firing the claimStar() event"))
+                            }
+                        })
+
+                    } else {
+                        console.log(("there has been an error getting the star owner's address"))
+                    }
+                })
+            })
+
+        }
+    </script>
+
+    <script type="text/javascript" src="chrome-extension://aalppolilappfakpmdfdkpppdnhpgifn/build/installHook.js"></script>
+</body>
+
+</html>

@@ -164,4 +164,9 @@ $ cat address
 
 - CMI (Command Line Interface) for communicating with ethereum networks.
 - A pain to install on Windows, but works great once installed, need to make sure the env path variables are pointing towards the correct location.
-- 
+
+
+### Web3
+
+- node.js based service to connect to ethereum networks.
+- already pretty familiar thanks to udemy courses.
