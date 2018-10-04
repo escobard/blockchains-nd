@@ -17,3 +17,10 @@
 
 ## Infura
 
+- useful interface to track smart contract deployment, and data on any given network
+- need to update `maindir/truffle.js` file with address, mnemonic, and other meta data.
+- need to request funds to deploy contracts to test network: https://faucet.rinkeby.io/
+- https://infura.io/register
+- https://infura.io/dashboard
+- command to actually deploy is `truffle deploy --network rinkeby`
+- not working too well, neet to check again tonight if worth deploying
