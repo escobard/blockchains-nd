@@ -14,3 +14,6 @@
 - using V2.0.0 of openzeppelin for now
 - https://github.com/OpenZeppelin/openzeppelin-solidity
 - helpful for using pre-determined contracts, will choose not to use for now
+
+## Infura
+
