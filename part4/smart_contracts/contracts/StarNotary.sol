@@ -72,7 +72,11 @@ contract StarNotary is ERC721Token {
 
             // transfers the cost back to the sender, very helpful util!
             msg.sender.transfer(msg.value - starCost);
+
         }
+
+        // rewards the starOwner with the value of the price, after the star is sold
+        starOwner.transfer(starCost);
     }
 
     // private functions cannot be called outside of the contract, can only be invoked and used by

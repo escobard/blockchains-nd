@@ -37,6 +37,29 @@ contract('StarNotary', accounts =>{
             await this.contract.createStar('awesome star', starId, {from: user1})
         })
 
+        describe('user1 can sell a star', () =>{
+            it('user1 can put up their star for sale', async ()=>{
+
+                await this.contract.putStarUpForSale(starId, starPrice, {from: user1})
+                assert.equal(await this.contract.starsForSale(starId), starPrice)
+            })
+
+            it('user1 gets the funds after selling a star', async () =>{
+            
+                let starPrice = web3.toWei(.05, 'ether');
+
+                await this.contract.putStarUpForSale(starId, starPrice, {from: user1});
+
+                let balBefTrans = web3.eth.getBalance(user1);
+                await this.contract.buyStar(starId, {from: user2, value: starPrice})
+                let balAftTrans = web3.eth.getBalance(user1)
+
+                // checks balanceBeforeTransaction + starPrice = balanceAfterTransaction
+                // ensures user1 is awarded with the value of the price of the star, after the star is sold
+                assert.equal(balBefTrans.add(starPrice).toNumber(), balAftTrans.toNumber())
+            })
+        })
+
         it('user1 can put up their star for sale', async () => {
 
             // puts star up for sale, function REQUIRES the seller to be the OWNER of the star
