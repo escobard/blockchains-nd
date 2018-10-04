@@ -124,6 +124,14 @@ contract ERC721Token is ERC721{
     // this is used to transfer tokens FROM one address TO another
     function transferFrom(address _from, address _to, uint256 _tokenId) external payable hasPermission(msg.sender, _tokenId){
         
+        transferFromHelper(_from, _to, _tokenId);
+    }
+
+        // this is used to transfer tokens FROM one address TO another
+        // calling this method privately, without authentication since this can only be
+        // called internally, more on that here = https://solidity.readthedocs.io/en/v0.4.24/contracts.html#visibility-and-getters
+    function transferFromHelper(address _from, address _to, uint256 _tokenId) internal {
+        
         // changes the owner's address fo the token to the _to argument
         tokenToOwner[_tokenId] = _to;
 
