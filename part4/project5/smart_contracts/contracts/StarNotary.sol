@@ -17,6 +17,7 @@ contract StarNotary is ERC721Token {
     struct Coordinates {
         string dec;
         string mag;
+        // this property MAY be wrong, COULD be ra but project rubric is unclear
         string cent;
         // helpful for checking existence
         bool exist;
@@ -58,16 +59,19 @@ contract StarNotary is ERC721Token {
 
     mapping(uint256 => uint256) public starsForSale;
 
+    /// super important to note that these comments affect the actual TESTING output
     /// @notice Checks if a star exists 
     /// @dev may need to tweak further with the actual data
-    /// @param name string, contains star name
+    /// @param coordsString string, contains star name
     /// @return boolean, true if star exists, false if it doesnt
-    function checkIfStarExists(string coordsString) public returns(bool){
+    function checkIfStarExists(string coordsString) public view returns(bool){
         
         // checks if star exists, returns true if it does
         if(coords[coordsString].exist){
             return true;
         }
+
+        // returns false if 
         return false;
     }
 
