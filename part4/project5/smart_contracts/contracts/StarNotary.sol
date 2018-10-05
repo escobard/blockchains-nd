@@ -35,9 +35,13 @@ contract StarNotary is ERC721Token {
         // this contains a unique string that joins dec, mag, and cent into a string to create uniqueness
         string coordsString;
 
-        // creates a mapping using coordString to enforce coord uniqueness
-        mapping ( string => Coordinates) coords;
+
     }
+
+    /// @notice Contains the mapping for the coordinates data
+    /// @dev key of structure is the merged coordinates string, this was fragmented out of the Star structure to simplify checkIfStarExists()
+    /// @param Star structure, contains star metadata 
+    mapping ( string => Coordinates) coords;
 
     /// @notice Contains the mapping for the star data
     /// @dev key of structure is the provided tokenId - this logic could be improved
@@ -69,16 +73,12 @@ contract StarNotary is ERC721Token {
 
         // saves the new star name under the tokenId
         tokenIdToStarInfo[tokenId] = newStar;
-
-        // fetches our saved star from the mapping, needs to be in this order in order to add child mapping
-        Star storage createdStar = tokenIdToStarInfo[tokenId];
         
-        // adds unique coordinates to new Coordinates structure within our new Star structure
-        createdStar.coords[coordsString] = Coordinates(dec, mag, cent);
+        // adds unique coordinates to coordinates mapping
+        coords[coordsString] = Coordinates(dec, mag, cent);
 
         // calls the mint function established in earlier lessons, mega cool
         ERC721Token.mint(tokenId);
-
     }
 
     // puts a star up for sale, with the tokenId and the price
