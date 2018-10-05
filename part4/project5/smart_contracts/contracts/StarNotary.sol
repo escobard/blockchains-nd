@@ -33,7 +33,7 @@ contract StarNotary is ERC721Token {
         string story;
 
         // this contains a unique string that joins dec, mag, and cent into a string to create uniqueness
-        string coordString;
+        string coordsString;
 
         // creates a mapping using coordString to enforce coord uniqueness
         mapping ( string => Coordinates) coords;
@@ -49,19 +49,35 @@ contract StarNotary is ERC721Token {
     /// @param tokenId uint256, contains tokenId
     mapping(uint256 => uint256) public starsForSale;
 
-    // creates a star with a name, and a tokenId
-    function createStar(string _name, uint256 _tokenId) public {
+    /// @notice Handles the creation of a star, and its metadata logic, could be refactored into several more functions
+    /// @dev extremely logic heavy, need to introduce gradual improvements. Writes star metadat to stars, enforces uniqueness, ensures no existing stars (by token or by coordinates) are allowed 
+    /// @param name string, contains star name
+    /// @param story string, contains star story
+    /// @param dec string, contains dec meta data
+    /// @param mag string, contains mag meta data
+    /// @param cent string, contains cent meta data 
+    /// @param tokenId number, contains tokenId - logic could be improved 
+    function createStar(string name, string story, string dec, string mag, string cent, uint256 tokenId) public {
 
-        
+        // creates unique coord string from the dec, string, and cent functions, could be split into more functions
+        // more on the used function here: https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity
+        string memory coordsString = string(abi.encodePacked(dec,mag,cent));
+
         // this is a type that will be deleted after the function call
-        // assigns the current Star to a new variable called memory
-        Star memory newStar = Star(_name);
+        // assigns the current Star to a new variable called newStar
+        Star memory newStar = Star( name, story, coordsString);
 
         // saves the new star name under the tokenId
-        tokenIdToStarInfo[_tokenId] = newStar;
+        tokenIdToStarInfo[tokenId] = newStar;
+
+        // fetches our saved star from the mapping, needs to be in this order in order to add child mapping
+        Star storage createdStar = tokenIdToStarInfo[tokenId];
+        
+        // adds unique coordinates to new Coordinates structure within our new Star structure
+        createdStar.coords[coordsString] = Coordinates(dec, mag, cent);
 
         // calls the mint function established in earlier lessons, mega cool
-        ERC721Token.mint(_tokenId);
+        ERC721Token.mint(tokenId);
 
     }
 
