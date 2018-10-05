@@ -64,6 +64,7 @@ contract StarNotary is ERC721Token {
     /// @dev may need to tweak further with the actual data
     /// @param coordsString string, contains star name
     /// @return boolean, true if star exists, false if it doesnt
+    
     function checkIfStarExists(string coordsString) public view returns(bool){
         
         // checks if star exists, returns true if it does
