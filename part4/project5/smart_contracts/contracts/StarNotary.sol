@@ -7,15 +7,24 @@ contract StarNotary is ERC721Token {
     // defines the additional metadata we need for a star
     // the struct callback is similar to a json schema
     // more here: https://solidity.readthedocs.io/en/v0.4.24/structure-of-a-contract.html#struct-types
-
-    // contains the structure for the Coordinates
+    
+    /// @notice Contains the stucture of the star coordinates
+    /// @dev key of structure is the string of the combined star coordinates
+    /// @param dec string, contains dec meta data
+    /// @param mag string, contains mag meta data
+    /// @param cent string, contains cent meta data
     struct Coordinates {
-        string Dec;
-        string Mag;
-        string Cent;
+        string dec;
+        string mag;
+        string cent;
     }
 
-    // contains the primary structure for the Star
+    /// @notice Contains the stucture of the star metadata
+    /// @dev key of structure is the provided tokenId - this logic could be improved
+    /// @param name string, contains star name
+    /// @param story string, contains star story
+    /// @param coordString string, contains unique coordinate string, composed of all coordinates
+    /// @param coord mapping, argument is coordString, contain Coordinates structure
     struct Star {
         // contains the name of the star, not necessary for the project but cool
         string name;
@@ -30,16 +39,21 @@ contract StarNotary is ERC721Token {
         mapping ( string => Coordinates) coords;
     }
 
-    // maps the starId to it additional metadata
+    /// @notice Contains the mapping for the star data
+    /// @dev key of structure is the provided tokenId - this logic could be improved
+    /// @param Star structure, contains star metadata 
     mapping(uint256 => Star) public tokenIdToStarInfo;
 
-    // create a mapping to hold all stars for sale
+    /// @notice Contains the mapping for available stars for sale
+    /// @dev key of structure is the provided tokenId - this logic could be improved
+    /// @param tokenId uint256, contains tokenId
     mapping(uint256 => uint256) public starsForSale;
 
     // creates a star with a name, and a tokenId
     function createStar(string _name, uint256 _tokenId) public {
-        // this is a type that will be deleted after the function call
 
+        
+        // this is a type that will be deleted after the function call
         // assigns the current Star to a new variable called memory
         Star memory newStar = Star(_name);
 
