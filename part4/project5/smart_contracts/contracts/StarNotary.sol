@@ -7,8 +7,27 @@ contract StarNotary is ERC721Token {
     // defines the additional metadata we need for a star
     // the struct callback is similar to a json schema
     // more here: https://solidity.readthedocs.io/en/v0.4.24/structure-of-a-contract.html#struct-types
+
+    // contains the structure for the Coordinates
+    struct Coordinates {
+        string Dec;
+        string Mag;
+        string Cent;
+    }
+
+    // contains the primary structure for the Star
     struct Star {
+        // contains the name of the star, not necessary for the project but cool
         string name;
+
+        // contains the story 
+        string story;
+
+        // this contains a unique string that joins dec, mag, and cent into a string to create uniqueness
+        string coordString;
+
+        // creates a mapping using coordString to enforce coord uniqueness
+        mapping ( string => Coordinates) coords;
     }
 
     // maps the starId to it additional metadata
