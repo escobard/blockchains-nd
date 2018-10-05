@@ -13,10 +13,13 @@ contract StarNotary is ERC721Token {
     /// @param dec string, contains dec meta data
     /// @param mag string, contains mag meta data
     /// @param cent string, contains cent meta data
+
     struct Coordinates {
         string dec;
         string mag;
         string cent;
+        // helpful for checking existence
+        bool exist;
     }
 
     /// @notice Contains the stucture of the star metadata
@@ -25,6 +28,7 @@ contract StarNotary is ERC721Token {
     /// @param story string, contains star story
     /// @param coordString string, contains unique coordinate string, composed of all coordinates
     /// @param coord mapping, argument is coordString, contain Coordinates structure
+
     struct Star {
         // contains the name of the star, not necessary for the project but cool
         string name;
@@ -34,24 +38,38 @@ contract StarNotary is ERC721Token {
 
         // this contains a unique string that joins dec, mag, and cent into a string to create uniqueness
         string coordsString;
-
-
     }
 
     /// @notice Contains the mapping for the coordinates data
     /// @dev key of structure is the merged coordinates string, this was fragmented out of the Star structure to simplify checkIfStarExists()
     /// @param Star structure, contains star metadata 
+
     mapping ( string => Coordinates) coords;
 
     /// @notice Contains the mapping for the star data
     /// @dev key of structure is the provided tokenId - this logic could be improved
     /// @param Star structure, contains star metadata 
+
     mapping(uint256 => Star) public tokenIdToStarInfo;
 
     /// @notice Contains the mapping for available stars for sale
     /// @dev key of structure is the provided tokenId - this logic could be improved
     /// @param tokenId uint256, contains tokenId
+
     mapping(uint256 => uint256) public starsForSale;
+
+    /// @notice Checks if a star exists 
+    /// @dev may need to tweak further with the actual data
+    /// @param name string, contains star name
+    /// @return boolean, true if star exists, false if it doesnt
+    function checkIfStarExists(string coordsString) public returns(bool){
+        
+        // checks if star exists, returns true if it does
+        if(coords[coordsString].exist){
+            return true;
+        }
+        return false;
+    }
 
     /// @notice Handles the creation of a star, and its metadata logic, could be refactored into several more functions
     /// @dev extremely logic heavy, need to introduce gradual improvements. Writes star metadat to stars, enforces uniqueness, ensures no existing stars (by token or by coordinates) are allowed 
@@ -61,6 +79,7 @@ contract StarNotary is ERC721Token {
     /// @param mag string, contains mag meta data
     /// @param cent string, contains cent meta data 
     /// @param tokenId number, contains tokenId - logic could be improved 
+
     function createStar(string name, string story, string dec, string mag, string cent, uint256 tokenId) public {
 
         // creates unique coord string from the dec, string, and cent functions, could be split into more functions
@@ -71,11 +90,14 @@ contract StarNotary is ERC721Token {
         // assigns the current Star to a new variable called newStar
         Star memory newStar = Star( name, story, coordsString);
 
+        // creates a temporary variable with the coordinate data to store in mapping
+        Coordinates memory newCoords = Coordinates(dec, mag, cent, true);
+
         // saves the new star name under the tokenId
         tokenIdToStarInfo[tokenId] = newStar;
         
-        // adds unique coordinates to coordinates mapping
-        coords[coordsString] = Coordinates(dec, mag, cent);
+        // saves the new coordinates under the coordsString
+        coords[coordsString] = newCoords;
 
         // calls the mint function established in earlier lessons, mega cool
         ERC721Token.mint(tokenId);
