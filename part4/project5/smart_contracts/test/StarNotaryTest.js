@@ -15,16 +15,21 @@ contract("StarNotary", accounts => {
         mag = "mag_245.978",
         cent = "dec_121.874",
         tokenId = 1;
+      coordsString = dec + mag + cent;
 
       // creates star with the provided name, and tokenId, from the first account.
       await this.contract.createStar(name, story, dec, mag, cent, tokenId, {
         from: accounts[0]
       });
-
-      assert.equal(
-        await this.contract.tokenIdToStarInfo(tokenId),
-        "Awesome Star!"
+      let sampleStar = [name, story, dec];
+      console.log(
+        "STUPID ASS STRUCTURE",
+        await this.contract.tokenIdToStarInfo(tokenId)
       );
+      assert.equal(await this.contract.tokenIdToStarInfo(tokenId), [ 'New star',
+      'Amazing demo star story, building this project was fun',
+      'dec_121.874mag_245.978dec_121.874' ]
+    );
     });
   });
 
@@ -35,7 +40,7 @@ contract("StarNotary", accounts => {
       mag = "mag_245.978",
       cent = "dec_121.874",
       tokenId = 1;
-
+    (coordsString = dec), mag, cent;
     beforeEach(async () => {
       // creates star with the provided name, and tokenId, for the first account.
       await this.contract.createStar(name, story, dec, mag, cent, tokenId, {
@@ -45,26 +50,15 @@ contract("StarNotary", accounts => {
 
     it("can check if a star exists, testing exist case", async () => {
       // merges all coords together to enforce uniqueness
-      let coordsString = dec,
-        mag,
-        cent;
 
-      assert.equal(
-        await this.contract.checkIfStarExists(coordsString, {
-          from: accounts[0]
-        }, true)
-      );
+      assert.equal(await this.contract.checkIfStarExists(coordsString), true);
     });
 
     it("can check if a star exists, testing non exist case", async () => {
       // merges all coords together to enforce uniqueness
-      let coordsString = "random string"
+      let coordsString = "random string";
 
-      assert.equal(
-        await this.contract.checkIfStarExists(coordsString, {
-          from: accounts[0]
-        }, false)
-      );
+      assert.equal(await this.contract.checkIfStarExists(coordsString), false);
     });
   });
 
