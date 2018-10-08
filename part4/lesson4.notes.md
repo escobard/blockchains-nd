@@ -22,5 +22,6 @@
 - need to request funds to deploy contracts to test network: https://faucet.rinkeby.io/
 - https://infura.io/register
 - https://infura.io/dashboard
-- command to actually deploy is `truffle deploy --network rinkeby`
+- command to actually deploy is `truffle deploy --network rinkeby --reset`
+    - the --reset flag is necessary, if accounts change, should run every time just in case
 - not working too well, neet to check again tonight if worth deploying
