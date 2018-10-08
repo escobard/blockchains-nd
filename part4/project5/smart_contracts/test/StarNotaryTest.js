@@ -80,7 +80,7 @@ contract("StarNotary", accounts => {
 
       // creates star with the provided name, and tokenId, from the first account.
       await this.contract.createStar(name, story, dec, mag, cent, tokenId, {
-        from: accounts[0]
+        from: user1
       });
     });
 
