@@ -22,13 +22,9 @@ contract("StarNotary", accounts => {
         from: accounts[0]
       });
       let sampleStar = [name, story, dec];
-      console.log(
-        "STUPID ASS STRUCTURE",
-        await this.contract.tokenIdToStarInfo(tokenId)
-      );
-      assert.equal(await this.contract.tokenIdToStarInfo(tokenId), [ 'New star',
-      'Amazing demo star story, building this project was fun',
-      'dec_121.874mag_245.978dec_121.874' ]
+      assert.deepEqual(await this.contract.tokenIdToStarInfo(tokenId), [ name,
+      story,
+      coordsString ]
     );
     });
   });
