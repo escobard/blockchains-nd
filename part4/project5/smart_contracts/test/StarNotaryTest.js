@@ -75,7 +75,7 @@ contract("StarNotary", accounts => {
         story = "Amazing demo star story, building this project was fun",
         dec = "dec_121.874",
         mag = "mag_245.978",
-        cent = "dec_121.874",
+        cent = "cent_121.874",
         tokenId = 1;
 
       // creates star with the provided name, and tokenId, from the first account.
