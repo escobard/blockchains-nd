@@ -1,16 +1,13 @@
 if (typeof web3 != "undefined") {
   web3 = new Web3(web3.currentProvider); // what Metamask injected
 } else {
-  // Instantiate and set Ganache as your provider
+  // Instantiate and set Infura as provider
   web3 = new Web3(
     new Web3.providers.HttpProvider(
       "https://rinkeby.infura.io/v3/8f06b06788e046f9ba989b606c0574f1"
     )
   );
 }
-
-// The default (top) wallet account from a list of test accounts
-web3.eth.defaultAccount = web3.eth.accounts[0];
 
 // The interface definition for your smart contract (the ABI)
 var StarNotary = web3.eth.contract([
@@ -367,45 +364,93 @@ var StarNotary = web3.eth.contract([
 // Grab the contract at specified deployed address with the interface defined by the ABI
 var starNotary = StarNotary.at("0xd7bd75459e31151ab54164a6fa1cd8729c8f26be");
 
-// Get and display star name
-starNotary.starName(function(error, result) {
-  if (!error) {
-    document.getElementById("star-name").innerText = result;
-  } else {
-    console.log(error);
-  }
-});
+// uses my own address if the user does not have an account
+var accounts = web3.eth.accounts[0] ? web3.eth.accounts[0] : "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
 
-// Get and display star owner
-starNotary.starOwner(function(error, result) {
-  if (!error) {
-    document.getElementById("star-owner").innerText = result;
-  } else {
-    console.log(error);
-  }
-});
-
-// Enable claim button being clicked
-function claimButtonClicked() {
-  web3.eth.getAccounts(function(error, accounts) {
-    if (error) {
-      console.log(error);
-      return;
-    }
-    var account = accounts[0];
-    starNotary.claimStar(function(error, result) {
+// creates a new star, returns star value after function is done
+const newStar = async (name, story, dec, mag, cent, tokenId) => {
+  // creates star with the provided name, and tokenId, from the first account.
+  await starNotary.createStar(
+    name,
+    story,
+    dec,
+    mag,
+    cent,
+    tokenId,
+    {
+      from: accounts
+    },
+    function(error, result) {
       if (!error) {
-        var starClaimedEvent = starNotary.starClaimed({ from: account });
-        starClaimedEvent.watch(function(error, result) {
-          if (!error) {
-            location.reload();
-          } else {
-            console.log("watching for star claimed event is failing");
-          }
-        });
+        console.log("transaction Hash", result);
+        return result;
+      } else {
+        console.log(error);
+      }
+    }
+  );
+};
+
+// returns the meta values of the star
+const tokenIdToStarInfo = async tokenId => {
+  return new Promise(async (resolve, reject) =>{
+    await starNotary.tokenIdToStarInfo(tokenId, function(error, result) {
+      if (!error) {
+        console.log('RESULT:', result);
+        resolve(result);
       } else {
         console.log(error);
       }
     });
-  });
+  })
+  .then((results) =>{
+    return results;
+  })
+
+};
+
+// handles the fetching of star data
+async function handleStarLookup(e) {
+  e.preventDefault();
+
+  let tokenId = document.getElementById('tokenLookup').value;
+
+  // creates the star, returns the values of the tokens
+  let results = await tokenIdToStarInfo(tokenId);
+  document.getElementById("starInfo").innerHTML = "Loading...";
+  if (results) {
+    document.getElementById("starInfo").innerHTML = results;
+    console.log("Found star:", results);
+  }
 }
+
+// handles the creation of a new star
+async function handleNewStar(e) {
+  e.preventDefault();
+
+  let name = document.getElementById('name').value,
+  story = document.getElementById('story').value,
+  dec = document.getElementById('dec').value,
+  mag = document.getElementById('mag').value,
+  cent = document.getElementById('cent').value,
+  tokenId = document.getElementById('tokenId').value;
+
+  // creates the star, returns the values of the tokens
+
+  await newStar(name, story, dec, mag, cent, tokenId);
+
+  document.getElementById("starStatus").innerHTML =
+    "Star created! Find your token via tokenId after transaction has been mined.";
+  console.log(
+    "Star created! Find your token via tokenId after transaction has been mined."
+  );
+}
+
+// handles new star creation based on user input
+document
+  .getElementById("newStar")
+  .addEventListener("submit", handleNewStar, false);
+
+document
+  .getElementById("findStar")
+  .addEventListener("submit", handleStarLookup, false);
