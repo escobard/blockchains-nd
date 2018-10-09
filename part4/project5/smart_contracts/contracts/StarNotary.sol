@@ -91,18 +91,11 @@ contract StarNotary is ERC721Token {
         // more on the used function here: https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity
         string memory coordsString = string(abi.encodePacked(dec,mag,cent));
 
-        // this is a type that will be deleted after the function call
-        // assigns the current Star to a new variable called newStar
-        Star memory newStar = Star( name, story, coordsString);
-
-        // creates a temporary variable with the coordinate data to store in mapping
-        Coordinates memory newCoords = Coordinates(dec, mag, cent, true);
-
         // saves the new star name under the tokenId
-        tokenIdToStarInfo[tokenId] = newStar;
+        tokenIdToStarInfo[tokenId] = Star( name, story, coordsString);
         
         // saves the new coordinates under the coordsString
-        coords[coordsString] = newCoords;
+        coords[coordsString] = Coordinates(dec, mag, cent, true);
 
         // calls the mint function established in earlier lessons, mega cool
         ERC721Token.mint(tokenId);
