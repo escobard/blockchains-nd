@@ -364,6 +364,9 @@ var StarNotary = web3.eth.contract([
 // Grab the contract at specified deployed address with the interface defined by the ABI
 var starNotary = StarNotary.at("0xd7bd75459e31151ab54164a6fa1cd8729c8f26be");
 
+// uses my own address if the user does not have an account
+var accounts = web3.eth.accounts[0] ? web3.eth.accounts[0] : "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
+
 // creates a new star, returns star value after function is done
 const newStar = async (name, story, dec, mag, cent, tokenId) => {
   // creates star with the provided name, and tokenId, from the first account.
@@ -375,7 +378,7 @@ const newStar = async (name, story, dec, mag, cent, tokenId) => {
     cent,
     tokenId,
     {
-      from: "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
+      from: accounts
     },
     function(error, result) {
       if (!error) {
@@ -409,10 +412,8 @@ const tokenIdToStarInfo = async tokenId => {
 // handles the fetching of star data
 async function handleStarLookup(e) {
   e.preventDefault();
-  /*
-  let tokenId = document.getElementById('tokenId').value.Number();
-  */
-  let tokenId = 3;
+
+  let tokenId = document.getElementById('tokenLookup').value;
 
   // creates the star, returns the values of the tokens
   let results = await tokenIdToStarInfo(tokenId);
@@ -426,20 +427,14 @@ async function handleStarLookup(e) {
 // handles the creation of a new star
 async function handleNewStar(e) {
   e.preventDefault();
-  /*
+
   let name = document.getElementById('name').value,
   story = document.getElementById('story').value,
   dec = document.getElementById('dec').value,
   mag = document.getElementById('mag').value,
   cent = document.getElementById('cent').value,
-  tokenId = document.getElementById('tokenId').value.Number();
-  */
-  let name = "New star",
-    story = "Amazing demo star story, building this project was fun",
-    dec = "c_121.874",
-    mag = "ma_245.978",
-    cent = "cet_121.874",
-    tokenId = 3;
+  tokenId = document.getElementById('tokenId').value;
+
   // creates the star, returns the values of the tokens
 
   await newStar(name, story, dec, mag, cent, tokenId);
