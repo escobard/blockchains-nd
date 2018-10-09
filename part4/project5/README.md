@@ -4,13 +4,13 @@ This project was built as part of the BCND beta, to fulfill the criteria of `Pro
 
 ## Transaction information:
 
-New Star Transaction hash: `0xf5c1908963d040c7d96520874ff4a8e0a11e96730xd7bd75459e31151ab54164a6fa1cd8729c8f26be0x6352211e000000000000000000000000000000000000000000000000000000000000000c`
+New Star Transaction hash: `0x655e5e4d04688e84932b2203cb8b31ce3870262a222e29628c13e33be39013ce`
 
 Star tokenId:`12`
 
-Contract address: `0xD7Bd75459E31151Ab54164A6Fa1CD8729c8F26be`
+Contract address: `0xd7bd75459e31151ab54164a6fa1cd8729c8f26be`
 
-Contract hash: ` 0xa4c7cc8b07b8bdc71b9e9fe483e022a0a2a83f6567fc46fce7fe2129d1d4c63f`
+Contract hash: `0xD7Bd75459E31151Ab54164A6Fa1CD8729c8F26be`
 
 ## Installation and usage
 
@@ -19,7 +19,8 @@ Contract hash: ` 0xa4c7cc8b07b8bdc71b9e9fe483e022a0a2a83f6567fc46fce7fe2129d1d4c
 3) Navigate to the parent directory.
 5) Open the index.html file with Chrome.
 6) Navigate to this file `./README.md`.
-7) Use the transaction hash, tokenId, contractAddress, and contract hash provided.
+7) Use the transaction hash, tokenId, contractAddress, and contract hash provided to look up the star.
+8) Create your own star by filling out the form.
 
 ## Testing
 
