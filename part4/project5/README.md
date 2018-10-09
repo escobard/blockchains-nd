@@ -17,7 +17,6 @@ Contract hash: ` 0xa4c7cc8b07b8bdc71b9e9fe483e022a0a2a83f6567fc46fce7fe2129d1d4c
 1) Navigate to the `/smart_contracts` folder
 2) Run `npm install` to install dependencies, `truffle` must be installed `globally`
 3) Navigate to the parent directory.
-4) Ensure ganache desktop is running.
 5) Open the index.html file with Chrome.
 6) Navigate to this file `./README.md`.
 7) Use the transaction hash, tokenId, contractAddress, and contract hash provided.

@@ -367,45 +367,28 @@ var StarNotary = web3.eth.contract([
 // Grab the contract at specified deployed address with the interface defined by the ABI
 var starNotary = StarNotary.at("0xd7bd75459e31151ab54164a6fa1cd8729c8f26be");
 
-// Get and display star name
-starNotary.starName(function(error, result) {
-  if (!error) {
-    document.getElementById("star-name").innerText = result;
-  } else {
-    console.log(error);
-  }
-});
+// creates a new star, returns star value after function is done
+const newStar = async () => {
 
-// Get and display star owner
-starNotary.starOwner(function(error, result) {
-  if (!error) {
-    document.getElementById("star-owner").innerText = result;
-  } else {
-    console.log(error);
-  }
-});
+    // these need to be replaced with form value endpoints
+    let name = "New star",
+      story = "Amazing demo star story, building this project was fun",
+      dec = "dec_121.874",
+      mag = "mag_245.978",
+      cent = "dec_121.874",
+      tokenId = 1;
+    coordsString = dec + mag + cent;
 
-// Enable claim button being clicked
-function claimButtonClicked() {
-  web3.eth.getAccounts(function(error, accounts) {
-    if (error) {
-      console.log(error);
-      return;
-    }
-    var account = accounts[0];
-    starNotary.claimStar(function(error, result) {
-      if (!error) {
-        var starClaimedEvent = starNotary.starClaimed({ from: account });
-        starClaimedEvent.watch(function(error, result) {
-          if (!error) {
-            location.reload();
-          } else {
-            console.log("watching for star claimed event is failing");
-          }
-        });
-      } else {
-        console.log(error);
-      }
+    // creates star with the provided name, and tokenId, from the first account.
+    await starNotary.createStar(name, story, dec, mag, cent, tokenId, {
+      from: accounts[0]
     });
-  });
+    let sampleStar = [name, story, dec];
+    return await starNotary.tokenIdToStarInfo(tokenId);
+}
+
+// returns the meta values of the star
+const tokenIdToStarInfo = async (tokenId) => {
+    let star = await starNotary.tokenIdToStarInfo(tokenId);
+    return star
 }
