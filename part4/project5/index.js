@@ -1,16 +1,13 @@
 if (typeof web3 != "undefined") {
   web3 = new Web3(web3.currentProvider); // what Metamask injected
 } else {
-  // Instantiate and set Ganache as your provider
+  // Instantiate and set Infura as provider
   web3 = new Web3(
     new Web3.providers.HttpProvider(
       "https://rinkeby.infura.io/v3/8f06b06788e046f9ba989b606c0574f1"
     )
   );
 }
-
-// The default (top) wallet account from a list of test accounts
-web3.eth.defaultAccount = web3.eth.accounts[0];
 
 // The interface definition for your smart contract (the ABI)
 var StarNotary = web3.eth.contract([
@@ -369,32 +366,59 @@ var starNotary = StarNotary.at("0xd7bd75459e31151ab54164a6fa1cd8729c8f26be");
 
 // creates a new star, returns star value after function is done
 const newStar = async (name, story, dec, mag, cent, tokenId) => {
-    // creates star with the provided name, and tokenId, from the first account.
-    await starNotary.createStar(name, story, dec, mag, cent, tokenId, {
-      from: accounts[0]
-    });
-    return await starNotary.tokenIdToStarInfo(tokenId);
-}
+  // creates star with the provided name, and tokenId, from the first account.
+  await starNotary.createStar(name, story, dec, mag, cent, tokenId, {
+    from: "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
+  }, function(error, result) {
+    if (!error) {
+      console.log(result);
+      return result;
+    } else {
+      console.log(error);
+    }
+  });
+};
 
 // returns the meta values of the star
-const tokenIdToStarInfo = async (tokenId) => {
-    let star = await starNotary.tokenIdToStarInfo(tokenId);
-    return star;
-}
+const tokenIdToStarInfo = async e => {
+  e.preventDefault();
+  await starNotary
+    .tokenIdToStarInfo()
+    .call(12, {
+      from: "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
+    }, function(error, result) {
+      if (!error) {
+        console.log(result);
+        return result;
+      } else {
+        console.log(error);
+      }
+    });
+};
 
 // handles the creation of a new star
-function handleNewStar(e) {
+async function handleNewStar(e) {
   e.preventDefault();
+  /*
   let name = document.getElementById('name').value,
   story = document.getElementById('story').value,
   dec = document.getElementById('dec').value,
   mag = document.getElementById('mag').value,
   cent = document.getElementById('cent').value,
   tokenId = document.getElementById('tokenId').value;
+  */
+  let name = "New star",
+    story = "Amazing demo star story, building this project was fun",
+    dec = "dec_121.874",
+    mag = "mag_245.978",
+    cent = "dec_121.874",
+    tokenId = 1;
   // creates the star, returns the values of the tokens
-  
-  let starResult = newStar(name, story, dec, mag, cent, tokenId);
-  console.log(starResult)
+
+  let starResult = await newStar(name, story, dec, mag, cent, tokenId);
+  console.log(starResult);
 }
 
-document.getElementById('newStar').addEventListener('submit', handleNewStar, false);
+document
+  .getElementById("newStar")
+  .addEventListener("submit", handleNewStar, false);
