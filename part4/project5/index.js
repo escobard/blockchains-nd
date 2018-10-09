@@ -390,5 +390,5 @@ const newStar = async () => {
 // returns the meta values of the star
 const tokenIdToStarInfo = async (tokenId) => {
     let star = await starNotary.tokenIdToStarInfo(tokenId);
-    return star
+    return star;
 }

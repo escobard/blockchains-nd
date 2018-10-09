@@ -13,18 +13,43 @@
 <body>
     <div class="container">
         <h1>Star Notary</h1>
-
-        <div class="row">
-            <label class="bold">Star Name:</label>
-            <label id="star-name"></label>
-        </div>
-
-        <div class="row">
-            <label class="bold">Star Owner:</label>
-            <label id="star-owner"></label>
-        </div>
-
-        <button id="claim-button" onclick="claimButtonClicked()">Claim Star</button>
+        <p>A small front end application to create star tokens on the Rinkeby test network.</p>
+        <h3>Create a Star</h3>
+        <form>
+            <div class="row">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Enter the star's name...">
+            </div>
+            <div class="row">
+                <label for="story">Story:</label>
+                <input type="text" name="story" id="story" placeholder="Enter the star's story..."><br>
+            </div>
+            <div class="row">
+                <label for="dec">Dec:</label>
+                <input type="text" name="dec" id="dec" placeholder="Enter the dec coordinates..."><br>
+            </div>
+            <div class="row">
+                <label for="mag">Mag:</label>
+                <input type="text" name="mag" id="mag" placeholder="Enter the mag coordinates..."><br>
+            </div>
+            <div class="row">
+                <label for="cent">Cent:</label>
+                <input type="text" name="cent" id="cent" placeholder="Enter the cent coordinates..."><br>
+            </div>
+            <div class="row">
+                <label for="tokenid">tokenId:</label>
+                <input type="text" name="tokenid" id="story" placeholder="Enter a number ONLY"><br>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        <h3>Find star by tokenId</h3>
+        <form>
+            <div class="row">
+                <label for="tokenid">tokenId:</label>
+                <input type="text" name="tokenid" id="story" placeholder="Enter a number ONLY"><br>
+            </div>
+            <button id="claim-button" onclick="claimButtonClicked()">Claim Star</button>
+        </form>
     </div>
 
     <script async src="./index.js"></script>
