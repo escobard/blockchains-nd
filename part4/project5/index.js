@@ -367,29 +367,43 @@ var starNotary = StarNotary.at("0xd7bd75459e31151ab54164a6fa1cd8729c8f26be");
 // creates a new star, returns star value after function is done
 const newStar = async (name, story, dec, mag, cent, tokenId) => {
   // creates star with the provided name, and tokenId, from the first account.
-  await starNotary.createStar(name, story, dec, mag, cent, tokenId, {
-    from: "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
-  }, function(error, result) {
-    if (!error) {
-      console.log('transaction Hash', result);
-      return result;
-    } else {
-      console.log(error);
-    }
-  });
-};
-
-// returns the meta values of the star
-const tokenIdToStarInfo = async (tokenId) => {
-  await starNotary
-    .tokenIdToStarInfo(tokenId, function(error, result) {
+  await starNotary.createStar(
+    name,
+    story,
+    dec,
+    mag,
+    cent,
+    tokenId,
+    {
+      from: "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
+    },
+    function(error, result) {
       if (!error) {
-        console.log(result);
+        console.log("transaction Hash", result);
         return result;
       } else {
         console.log(error);
       }
+    }
+  );
+};
+
+// returns the meta values of the star
+const tokenIdToStarInfo = async tokenId => {
+  return new Promise(async (resolve, reject) =>{
+    await starNotary.tokenIdToStarInfo(tokenId, function(error, result) {
+      if (!error) {
+        console.log('RESULT:', result);
+        resolve(result);
+      } else {
+        console.log(error);
+      }
     });
+  })
+  .then((results) =>{
+    return results;
+  })
+
 };
 
 // handles the fetching of star data
@@ -401,11 +415,12 @@ async function handleStarLookup(e) {
   let tokenId = 3;
 
   // creates the star, returns the values of the tokens
-
   let results = await tokenIdToStarInfo(tokenId);
-  
-  document.getElementById("starInfo").innerHTML = results;
-  console.log('Star found:', results)
+  document.getElementById("starInfo").innerHTML = "Loading...";
+  if (results) {
+    document.getElementById("starInfo").innerHTML = results;
+    console.log("Found star:", results);
+  }
 }
 
 // handles the creation of a new star
@@ -428,9 +443,12 @@ async function handleNewStar(e) {
   // creates the star, returns the values of the tokens
 
   await newStar(name, story, dec, mag, cent, tokenId);
-  
-  document.getElementById("starStatus").innerHTML = 'Star created! Find your token via tokenId after transaction has been mined.'
-    console.log('Star created! Find your token via tokenId after transaction has been mined.')
+
+  document.getElementById("starStatus").innerHTML =
+    "Star created! Find your token via tokenId after transaction has been mined.";
+  console.log(
+    "Star created! Find your token via tokenId after transaction has been mined."
+  );
 }
 
 // handles new star creation based on user input
