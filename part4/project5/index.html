@@ -42,13 +42,20 @@
             </div>
             <input type="submit" value="Submit">
         </form>
+        <div class="row">
+            <p>Star status: <span id="starStatus"></span></p>
+        </div>
         <h3>Find star by tokenId</h3>
         <form id="findStar">
             <div class="row">
-                <label for="tokenId">tokenId:</label>
-                <input type="text" name="tokenid" id="story" placeholder="Enter a number ONLY"><br>
+                <label for="tokenLookup">tokenId:</label>
+                <input type="text" name="tokenLookup" id="tokenLookup" placeholder="Enter a number ONLY"><br>
             </div>
+            <input type="submit" value="Submit">
         </form>
+        <div class="row">
+            <p>Star info: <span id="starInfo"></span></p>
+        </div>
     </div>
 
     <script async src="./index.js"></script>

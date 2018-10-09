@@ -371,7 +371,7 @@ const newStar = async (name, story, dec, mag, cent, tokenId) => {
     from: "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
   }, function(error, result) {
     if (!error) {
-      console.log(result);
+      console.log('transaction Hash', result);
       return result;
     } else {
       console.log(error);
@@ -380,13 +380,9 @@ const newStar = async (name, story, dec, mag, cent, tokenId) => {
 };
 
 // returns the meta values of the star
-const tokenIdToStarInfo = async e => {
-  e.preventDefault();
+const tokenIdToStarInfo = async (tokenId) => {
   await starNotary
-    .tokenIdToStarInfo()
-    .call(12, {
-      from: "0xf5c1908963d040c7d96520874ff4a8e0a11e9673"
-    }, function(error, result) {
+    .tokenIdToStarInfo(tokenId, function(error, result) {
       if (!error) {
         console.log(result);
         return result;
@@ -395,6 +391,22 @@ const tokenIdToStarInfo = async e => {
       }
     });
 };
+
+// handles the fetching of star data
+async function handleStarLookup(e) {
+  e.preventDefault();
+  /*
+  let tokenId = document.getElementById('tokenId').value.Number();
+  */
+  let tokenId = 3;
+
+  // creates the star, returns the values of the tokens
+
+  let results = await tokenIdToStarInfo(tokenId);
+  
+  document.getElementById("starInfo").innerHTML = results;
+  console.log('Star found:', results)
+}
 
 // handles the creation of a new star
 async function handleNewStar(e) {
@@ -405,20 +417,27 @@ async function handleNewStar(e) {
   dec = document.getElementById('dec').value,
   mag = document.getElementById('mag').value,
   cent = document.getElementById('cent').value,
-  tokenId = document.getElementById('tokenId').value;
+  tokenId = document.getElementById('tokenId').value.Number();
   */
   let name = "New star",
     story = "Amazing demo star story, building this project was fun",
-    dec = "dec_121.874",
-    mag = "mag_245.978",
-    cent = "dec_121.874",
-    tokenId = 1;
+    dec = "c_121.874",
+    mag = "ma_245.978",
+    cent = "cet_121.874",
+    tokenId = 3;
   // creates the star, returns the values of the tokens
 
-  let starResult = await newStar(name, story, dec, mag, cent, tokenId);
-  console.log(starResult);
+  await newStar(name, story, dec, mag, cent, tokenId);
+  
+  document.getElementById("starStatus").innerHTML = 'Star created! Find your token via tokenId after transaction has been mined.'
+    console.log('Star created! Find your token via tokenId after transaction has been mined.')
 }
 
+// handles new star creation based on user input
 document
   .getElementById("newStar")
   .addEventListener("submit", handleNewStar, false);
+
+document
+  .getElementById("findStar")
+  .addEventListener("submit", handleStarLookup, false);
