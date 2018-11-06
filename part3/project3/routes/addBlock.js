@@ -6,6 +6,7 @@ initChain = require('../middlewares/initChain')
 // the blockHeight route parameter is expted here, and passed back to the route
 router.get("/:blockData", initChain, async (req, res) => {
       // adds block data based on route parameters
+      let { params } = req;
       blockchain.addBlock(params.blockData);
 
       // logs the blockchain

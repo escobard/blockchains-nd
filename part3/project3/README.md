@@ -1,8 +1,14 @@
-# README - Quiz Book - react-native && react-redux  
+# RESTful Web API with Node.js Framework
 
 ## Project Criteria
 
-The main purpose of this application is to meet the project criteria for the third project of the Blockchains Nanodegree by Udacity.
+The main purpose of this application is to meet the project criteria for the third project of the Blockchains Nanodegree by Udacity:
+
+1. Project must use one of Express, Hapi, or Sails for RESTful routes.
+2. The API must run on localhost:8000
+3. GET endpoint to fetch block data under `/block/:blockHeight`
+4. POST endpoint to post a new block under `/block`.
+5. Must use the locally hosted level db to persist data
 
 ## Installation
 
@@ -43,13 +49,17 @@ Request body: {"body":"block body contents"}
 
 Any characters preceeding the /addblock route will create a new block with the parameters. Any new blocks are immediately shown by the response.
 
-### GET Endpoint - /getblockheight
-
-Returns the entire height of the the blockchain
-
 ### GET Endpoint - /health
 
 Returns a simple JSON response, tests API health
+
+## Libraries & Frameworks
+
+[Node](https://nodejs.org/en/)
+
+[Express](https://expressjs.com/)
+
+[Level](http://leveldb.org/)
 
 ## Contribution
 
@@ -59,4 +69,4 @@ For commercial or educational use, please paste a link to this repository to giv
 
 ## License
 
-As of January 9th, 2018, these files are open for all to use and contribute to. This repository is protected under the [MIT License](http://choosealicense.com/licenses/mit/).
+As of November 6th, 2018, these files are open for all to use and contribute to. This repository is protected under the [MIT License](http://choosealicense.com/licenses/mit/).

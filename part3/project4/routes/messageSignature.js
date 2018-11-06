@@ -54,6 +54,7 @@ router.post("/", checkAddress, async (req, res) => {
 			signature: body.signature,
 			address: body.address
 		});
+
 	}
 });
 
