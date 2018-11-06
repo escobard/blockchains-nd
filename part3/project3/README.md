@@ -49,10 +49,6 @@ Request body: {"body":"block body contents"}
 
 Any characters preceeding the /addblock route will create a new block with the parameters. Any new blocks are immediately shown by the response.
 
-### GET Endpoint - /getblockheight
-
-Returns the entire height of the the blockchain
-
 ### GET Endpoint - /health
 
 Returns a simple JSON response, tests API health

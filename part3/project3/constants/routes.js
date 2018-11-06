@@ -4,8 +4,7 @@ const routes = {
 	health: '/health',
 	addBlock: '/addBlock',
 	getBlock: '/block',
-	postBlock: '/block',
-	getHeight: '/getBlockHeight'
+	postBlock: '/block'
 };
 
 module.exports = routes;
