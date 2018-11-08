@@ -10,23 +10,6 @@ router.get('/', async (req, res) => {
       blockchain
     });
 
-  res.send({'sup'})
-
-
 });
 
 module.exports = router;
-
-
-class Class {
-
-
-}
-
-class test {
-
-    constructor(){
-        this.change = '';
-    }
-
-}
