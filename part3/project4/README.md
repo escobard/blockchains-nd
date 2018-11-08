@@ -4,6 +4,40 @@
 
 The main purpose of this application is to meet the project criteria for the third project of the Blockchains Nanodegree by Udacity.
 
+1. web API post endpoints validates request with JSON response
+    1. Response should contain message details, request timestamp, and time remaining for validation window.
+    1. User obtains a response in JSON format with a message to sign.
+    1. Message format = [walletAddress]:[timeStamp]:starRegistry
+    1. The request must be configured with a limited validation window of five minutes.
+    1. When re-submitting within validation window, validation window should reduce until it expires.
+    1. URL: http://localhost:8000/requestValidation
+1. Web API post endpoint validates message signature with JSON response.
+   Resources
+   1. Web API post endpoint validates message signature with JSON response.
+   1. Upon validation, the user is granted access to register a single star.
+      URL: http://localhost:8000/message-signature/validate
+1. Web API Post Endpoint with JSON response.
+   Resources
+   1. Star object and properties are stored within the body of the block.
+   1. Star properties include the coordinates with encoded story.
+   1. Star story supports ASCII text, limited to 250 words (500 bytes), and hex encoded.
+      URL: http://localhost:8000/block
+1. Get star block by hash with JSON response.
+   Resources
+   1. Response includes entire star block contents along with the addition of star story decoded to ascii.
+   1. URL: http://localhost:8000/stars/hash/[HASH]
+1. Get star block by wallet address (blockchain identity) with JSON response.
+   Resources
+   1. Response includes entire star block contents along with the addition of star story decoded to ascii.
+   1. Multiple stars might be registered to a single blockchain identity.
+   1. The response should support multiple star blocks.
+   1. URL: http://localhost:8000/stars/address/[ADDRESS]
+1. Get star block by star block height with JSON response.
+   Resources
+   1. Response includes entire star block contents along with the addition of star story decoded to ascii.
+   1. URL: http://localhost:8000/block/[HEIGHT]
+   
+   
 ## Installation
 
 Install NPM dependencies:
