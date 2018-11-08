@@ -3,30 +3,13 @@
 const router = require('express').Router()
 
 router.get('/', async (req, res) => {
-	console.log('blockchain: ', blockchain);
-	
+  let chain = await blockchain.fetchBlockchain();
+  blockchain.chain = chain;
   res.send(
     {
       blockchain
     });
 
-  res.send({'sup'})
-
-
 });
 
 module.exports = router;
-
-
-class Class {
-
-
-}
-
-class test {
-
-    constructor(){
-        this.change = '';
-    }
-
-}

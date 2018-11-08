@@ -8,7 +8,6 @@ global.level = require("./services/Level");
 global.stars = require("./services/Stars");
 global.blockchain = require("./services/Blockchain");
 
-
 const app = express();
 
 app.use(bodyParser.json());
