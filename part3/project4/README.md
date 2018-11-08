@@ -1,6 +1,6 @@
 # Project 4 - Blockchains ND - Star Registration Notary Service
 
-This API uses the bitcoin protocol to validate and sign blocks from a private blockchain API. 
+This API uses the bitcoin protocol to validate and sign blocks from a locally hosted private blockchain network. 
 
 ## Project Criteria 
 
