@@ -47,7 +47,6 @@ class Blockchain {
     // encodes star story
 
     newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
-    console.log(newBlock)
     let jsonBlock = JSON.stringify(newBlock);
     // console.log("JSON BLOCK", jsonBlock);
     // console.log("CHAIN IN BLOCK CREATION", this.chain);

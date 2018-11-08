@@ -2,8 +2,7 @@
 
 const router = require("express").Router();
 
-let blockchain = require("../services/blockchain"),
-  checkValidation = require("../middlewares/checkValidation"),
+let checkValidation = require("../middlewares/checkValidation"),
   checkBlockData = require("../middlewares/checkBlockData");
 
 // the blockHeight route parameter is expted here, and passed back to the route

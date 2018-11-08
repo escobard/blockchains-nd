@@ -2,8 +2,6 @@
 
 const router = require("express").Router();
 
-let blockchain = require("../services/blockchain")
-
 // the blockHeight route parameter is expted here, and passed back to the route
 router.get('/:parameter/:string', async (req, res) => {
   let { params: { parameter, string } } = req;

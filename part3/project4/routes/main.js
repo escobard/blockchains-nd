@@ -3,8 +3,8 @@
 const router = require('express').Router()
 
 router.get('/', async (req, res) => {
-	console.log('blockchain: ', blockchain);
-	
+  let chain = await blockchain.fetchBlockchain();
+  blockchain.chain = chain;
   res.send(
     {
       blockchain
