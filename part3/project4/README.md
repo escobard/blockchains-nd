@@ -1,6 +1,8 @@
 # Project 4 - Blockchains ND - Star Registration Notary Service
 
-## Project Criteria
+This API uses the bitcoin protocol to validate and sign blocks from a private blockchain API. 
+
+## Project Criteria 
 
 The main purpose of this application is to meet the project criteria for the fourth project of the Blockchains Nanodegree by Udacity.
 
