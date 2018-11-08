@@ -24,13 +24,48 @@ $ npm start
 
 Navigating to this page will display the entire blockchain, and populate the blockchain with a genesis block if there is no data
 
-### GET Endpoint - /getblockheight
-
-Returns the entire height of the the blockchain
+```angular2html
+{
+    blockchain: {
+        chain: [
+            {
+                hash: "050a5ed6c537bbf8f63cff1c297617aad9f7f8b12d6b4c2f41a38371cc36ba80",
+                height: 0,
+                body: "Genesis block - First block in the chain",
+                time: "1541637545",
+                previousblockhash: ""
+            },
+            {
+                hash: "3d344d97bf037d045a8dcd46ed659e54d1f7160625ca0a8690e44ad6f4254eff",
+                height: 1,
+                body: {
+                    address: "19xSGYkKgStMzqPthuJ4VW7C3XS2SUYTkE",
+                    star: {
+                        dec: "-26° 29' 24.9",
+                        ra: "16h 29m 1.0s",
+                        mag: "magniture string, optional",
+                        con: "constellation string, optional",
+                        star_story: "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+                    }
+                },
+                time: "1541718988",
+                previousblockhash: "050a5ed6c537bbf8f63cff1c297617aad9f7f8b12d6b4c2f41a38371cc36ba80"
+            }
+        ],
+            height: 2
+    }
+}
+```
 
 ### GET Endpoint - /health
 
 Returns a simple JSON response, tests API health
+
+```angular2html
+{
+    healthy: true
+}
+```
 
 ### POST endpoint - /requestValidation
 
@@ -128,13 +163,85 @@ Response: {
 
 Returns all found blocks with the provided ADDRESS.
 
+```angular2html
+{
+    "address": "19xSGYkKgStMzqPthuJ4VW7C3XS2SUYTkE",
+    "blocks": [
+        {
+            "hash": "3d344d97bf037d045a8dcd46ed659e54d1f7160625ca0a8690e44ad6f4254eff",
+            "height": 1,
+            "body": {
+                "address": "19xSGYkKgStMzqPthuJ4VW7C3XS2SUYTkE",
+                "star": {
+                    "dec": "-26° 29' 24.9",
+                    "ra": "16h 29m 1.0s",
+                    "mag": "magniture string, optional",
+                    "con": "constellation string, optional",
+                    "star_story": "Found star using https://www.google.com/sky/"
+                }
+            },
+            "time": "1541718988",
+            "previousblockhash": "050a5ed6c537bbf8f63cff1c297617aad9f7f8b12d6b4c2f41a38371cc36ba80"
+        }
+    ]
+}
+```
+
 ### GET Endpoints - /stars/hash/[HASH]
 
 Returns the found block with the provided HASH.
 
+```angular2html
+{
+    "hash": "3d344d97bf037d045a8dcd46ed659e54d1f7160625ca0a8690e44ad6f4254eff",
+    "blocks": [
+        {
+            "hash": "3d344d97bf037d045a8dcd46ed659e54d1f7160625ca0a8690e44ad6f4254eff",
+            "height": 1,
+            "body": {
+                "address": "19xSGYkKgStMzqPthuJ4VW7C3XS2SUYTkE",
+                "star": {
+                    "dec": "-26° 29' 24.9",
+                    "ra": "16h 29m 1.0s",
+                    "mag": "magniture string, optional",
+                    "con": "constellation string, optional",
+                    "star_story": "\u000f\u0000\r\u0000\n\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000e\f\u0000\u0000\u0000"
+                }
+            },
+            "time": "1541718988",
+            "previousblockhash": "050a5ed6c537bbf8f63cff1c297617aad9f7f8b12d6b4c2f41a38371cc36ba80"
+        }
+    ]
+}
+```
+
 ### GET Endpoints - /block/[HEIGHT]]
 
 Returns the found block with the provided HEIGHT.
+
+```angular2html
+{
+    "blockHeightParams": "Height: 1",
+    "block": [
+        {
+            "hash": "3d344d97bf037d045a8dcd46ed659e54d1f7160625ca0a8690e44ad6f4254eff",
+            "height": 1,
+            "body": {
+                "address": "19xSGYkKgStMzqPthuJ4VW7C3XS2SUYTkE",
+                "star": {
+                    "dec": "-26° 29' 24.9",
+                    "ra": "16h 29m 1.0s",
+                    "mag": "magniture string, optional",
+                    "con": "constellation string, optional",
+                    "star_story": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+                }
+            },
+            "time": "1541718988",
+            "previousblockhash": "050a5ed6c537bbf8f63cff1c297617aad9f7f8b12d6b4c2f41a38371cc36ba80"
+        }
+    ]
+}
+```
 
 ## Contribution
 
@@ -144,4 +251,4 @@ For commercial or educational use, please paste a link to this repository to giv
 
 ## License
 
-As of August 29th, 2018, these files are open for all to use and contribute to. This repository is protected under the [MIT License](http://choosealicense.com/licenses/mit/).
+As of November 11th, 2018, 2018, these files are open for all to use and contribute to. This repository is protected under the [MIT License](http://choosealicense.com/licenses/mit/).

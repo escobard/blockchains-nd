@@ -22,6 +22,7 @@ class Blockchain {
   createGenesis() {
     this.addBlock("Genesis block - First block in the chain");
   }
+
   addBlock(data) {
     let { height, chain } = this;
     this.height = this.chain.length;
@@ -48,8 +49,6 @@ class Blockchain {
 
     newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
     let jsonBlock = JSON.stringify(newBlock);
-    // console.log("JSON BLOCK", jsonBlock);
-    // console.log("CHAIN IN BLOCK CREATION", this.chain);
     level.addDataToLevelDB(jsonBlock);
   }
 
