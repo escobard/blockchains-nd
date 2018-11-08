@@ -1,8 +1,8 @@
-# Project 4 - Blockchains ND - Star registration notary service
+# Project 4 - Blockchains ND - Star Registration Notary Service
 
 ## Project Criteria
 
-The main purpose of this application is to meet the project criteria for the third project of the Blockchains Nanodegree by Udacity.
+The main purpose of this application is to meet the project criteria for the fourth project of the Blockchains Nanodegree by Udacity.
 
 1. web API post endpoints validates request with JSON response
     1. Response should contain message details, request timestamp, and time remaining for validation window.
