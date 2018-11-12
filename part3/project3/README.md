@@ -1,5 +1,7 @@
 # RESTful Web API with Node.js Framework
 
+This API uses Node.js to create a private blockchain protocol on a locally hosted network.
+
 ## Project Criteria
 
 The main purpose of this application is to meet the project criteria for the third project of the Blockchains Nanodegree by Udacity:
