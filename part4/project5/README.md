@@ -6,7 +6,7 @@ Ethereum token standards.
 
 ## Project Criteria
 
-The main purpose of this application is to meet the project criteria for the third project of the Blockchains Nanodegree by Udacity:
+The main purpose of this application is to meet the project criteria for the fifth project of the Blockchains Nanodegree by Udacity:
 
 1) Define and implement smart contract interface
     1) Smart contract implements the ERC-721 or ERC721Token interface
