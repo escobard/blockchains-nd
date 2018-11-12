@@ -14,11 +14,18 @@ Contract hash: `0xD7Bd75459E31151Ab54164A6Fa1CD8729c8F26be`
 
 ## Installation and usage
 
-1) Navigate to the `/` parent directory.
-2) Navigate to the parent directory.
-3) Open the index.html file with Chrome.
-4) 
-8) Create your own star by filling out the form.
+Metamask must be installed to use the application to interact with the deployed smart contract. 
+You can download, and learn more about metamask here: [https://metamask.io/](https://metamask.io/)
+
+1) Navigate to the parent directory, with a command terminal.
+2) Run the following command to start the application on port 8000 `python -m SimpleHTTPServer 8000`
+    1) python must be installed for this to work, node.js will be used in the react version.
+3) If privacy mode is enabled with your metamask account, accept the prompt.
+    1) if privacy mode is not enabled, the application will grab injected web3 instance from metamask
+4) Fill out the form to create your star.
+    1) The user can track the status of the transaction in the console log.
+5) Once succesful, star details are displayed under the star form.
+6) The user can retrieve the star from the network, by entering the star's tokenId.
 
 ## Testing
 

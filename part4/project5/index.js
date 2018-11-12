@@ -412,10 +412,8 @@ if (window.web3){
                 if (!error) {
                     console.log("transaction Hash", result);
                     document.getElementById("starStatus").innerHTML =
-                        "Star created! Find your token via tokenId after transaction has been mined.";
-                    console.log(
-                        "Star created! Find your token via tokenId after transaction has been mined."
-                    );
+                        `Star created! ${[name, story, dec, mag, cent, tokenId]}`;
+                    console.log(`Star created! ${[name, story, dec, mag, cent, tokenId]}`)
                     return result;
                 } else {
                     console.log(error);
