@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8f3ebc7-8ced-41c0-8345-8989d8d114c5" name="Default Changelist" comment="part4 - project 4 - updated documentation with expanded criteria">
+    <list default="true" id="c8f3ebc7-8ced-41c0-8345-8989d8d114c5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part3/project4/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/part3/project4/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part4/project5/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/part4/project5/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part4/project5/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/part4/project5/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part4/project5/smart_contracts/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/part4/project5/smart_contracts/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -60,12 +59,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="35" />
-          <entry key="gitignore" value="10" />
+          <entry key="gitignore" value="20" />
           <entry key="html" value="14" />
-          <entry key="js" value="362" />
+          <entry key="js" value="411" />
           <entry key="json" value="3" />
-          <entry key="md" value="881" />
-          <entry key="txt" value="200" />
+          <entry key="md" value="2874" />
+          <entry key="txt" value="344" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -73,19 +72,19 @@
           <entry key="CSS" value="35" />
           <entry key="HTML" value="15" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="362" />
-          <entry key="Markdown" value="880" />
-          <entry key="PLAIN_TEXT" value="210" />
+          <entry key="JavaScript" value="411" />
+          <entry key="Markdown" value="2873" />
+          <entry key="PLAIN_TEXT" value="364" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="gitignore" value="2" />
+          <entry key="gitignore" value="3" />
           <entry key="html" value="2" />
-          <entry key="js" value="27" />
+          <entry key="js" value="29" />
           <entry key="json" value="1" />
-          <entry key="md" value="7" />
+          <entry key="md" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -93,9 +92,9 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="2" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="27" />
-          <entry key="Markdown" value="7" />
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="JavaScript" value="29" />
+          <entry key="Markdown" value="9" />
+          <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -103,49 +102,68 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/part4/project5/README.md">
-              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="418">
-                    <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-                  </first_editor>
-                  <second_editor />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/part4/project5/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="529">
-                  <caret line="473" column="57" selection-start-line="473" selection-start-column="57" selection-end-line="473" selection-end-column="57" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/part4/project5/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="660">
-                  <caret line="395" column="40" selection-start-line="395" selection-start-column="40" selection-end-line="395" selection-end-column="40" />
-                  <folding>
-                    <element signature="e#1040#6612#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/part4/project5/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="804">
+                <caret line="108" column="20" lean-forward="true" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part4/project5/smart_contracts/test/StarNotaryTest.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2106">
+              <caret line="27" column="6" lean-forward="true" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part3/project4/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="672">
+                <caret line="291" selection-start-line="291" selection-end-line="297" selection-end-column="176" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part4/project5/smart_contracts/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part4/project5/smart_contracts/truffle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part4/project5/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="507">
+              <caret line="415" column="89" selection-start-line="415" selection-start-column="89" selection-end-line="415" selection-end-column="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -180,8 +198,9 @@
         <option value="$PROJECT_DIR$/part3/project4/index.js" />
         <option value="$PROJECT_DIR$/part3/project4/.gitignore" />
         <option value="$PROJECT_DIR$/part3/project4/README.md" />
-        <option value="$PROJECT_DIR$/part4/project5/README.md" />
         <option value="$PROJECT_DIR$/part4/project5/index.js" />
+        <option value="$PROJECT_DIR$/part4/project5/smart_contracts/.gitignore" />
+        <option value="$PROJECT_DIR$/part4/project5/README.md" />
       </list>
     </option>
   </component>
@@ -252,6 +271,17 @@
             <path>
               <item name="blockchains-term1" type="b2602c69:ProjectViewProjectNode" />
               <item name="blockchains-term1" type="462c0819:PsiDirectoryNode" />
+              <item name="part3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchains-term1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchains-term1" type="462c0819:PsiDirectoryNode" />
+              <item name="part3" type="462c0819:PsiDirectoryNode" />
+              <item name="project4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchains-term1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchains-term1" type="462c0819:PsiDirectoryNode" />
               <item name="part4" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -259,6 +289,21 @@
               <item name="blockchains-term1" type="462c0819:PsiDirectoryNode" />
               <item name="part4" type="462c0819:PsiDirectoryNode" />
               <item name="project5" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchains-term1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchains-term1" type="462c0819:PsiDirectoryNode" />
+              <item name="part4" type="462c0819:PsiDirectoryNode" />
+              <item name="project5" type="462c0819:PsiDirectoryNode" />
+              <item name="smart_contracts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchains-term1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchains-term1" type="462c0819:PsiDirectoryNode" />
+              <item name="part4" type="462c0819:PsiDirectoryNode" />
+              <item name="project5" type="462c0819:PsiDirectoryNode" />
+              <item name="smart_contracts" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -303,7 +348,7 @@
       <workItem from="1541532739235" duration="1398000" />
       <workItem from="1541718512082" duration="590000" />
       <workItem from="1541719120187" duration="4170000" />
-      <workItem from="1542046613438" duration="2725000" />
+      <workItem from="1542046613438" duration="5798000" />
     </task>
     <task id="LOCAL-00001" summary="fix: updated README.md file for project 3">
       <created>1541533811069</created>
@@ -340,11 +385,25 @@
       <option name="project" value="LOCAL" />
       <updated>1541719920853</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="part4 - project 5 - fix: updated metamask 4.1.4 considerations, now working with privacy mode, and without">
+      <created>1542049421797</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1542049421797</updated>
+    </task>
+    <task id="LOCAL-00007" summary="part4 - project 5 - doc: updated base installation usage">
+      <created>1542050091709</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1542050091709</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20384000" />
+    <option name="totallyTimeSpent" value="23457000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -420,7 +479,9 @@
     <MESSAGE value="part4 - project 4 - fixed broken block" />
     <MESSAGE value="part4 - project 4 - updated documentation, and tested all routes - working!" />
     <MESSAGE value="part4 - project 4 - updated documentation with expanded criteria" />
-    <option name="LAST_COMMIT_MESSAGE" value="part4 - project 4 - updated documentation with expanded criteria" />
+    <MESSAGE value="part4 - project 5 - fix: updated metamask 4.1.4 considerations, now working with privacy mode, and without" />
+    <MESSAGE value="part4 - project 5 - doc: updated base installation usage" />
+    <option name="LAST_COMMIT_MESSAGE" value="part4 - project 5 - doc: updated base installation usage" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/part3/project4/middlewares/initChain.js" />
@@ -557,16 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/part3/project4/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="690">
-            <caret line="279" selection-start-line="279" selection-end-line="287" selection-end-column="34" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/part3/project3/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
@@ -598,16 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/part4/project5/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="418">
-            <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/part4/project5/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-302">
@@ -615,13 +656,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/part4/project5/smart_contracts/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part4/project5/smart_contracts/truffle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/part4/project5/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="395" column="40" selection-start-line="395" selection-start-column="40" selection-end-line="395" selection-end-column="40" />
-          <folding>
-            <element signature="e#1040#6612#0" />
-          </folding>
+        <state relative-caret-position="507">
+          <caret line="415" column="89" selection-start-line="415" selection-start-column="89" selection-end-line="415" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part4/project5/smart_contracts/test/StarNotaryTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2106">
+          <caret line="27" column="6" lean-forward="true" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3/project4/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="672">
+            <caret line="291" selection-start-line="291" selection-end-line="297" selection-end-column="176" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part4/project5/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="804">
+            <caret line="108" column="20" lean-forward="true" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
