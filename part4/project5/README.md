@@ -8,7 +8,7 @@ Ethereum token standards.
 
 The main purpose of this application is to meet the project criteria for the third project of the Blockchains Nanodegree by Udacity:
 
-1)Define and implement smart contract interface
+1) Define and implement smart contract interface
     1) Smart contract implements the ERC-721 or ERC721Token interface
 1) Add metadata to the star token
     1) The star token should have these pieces of metadata added:
