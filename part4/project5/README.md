@@ -14,12 +14,10 @@ Contract hash: `0xD7Bd75459E31151Ab54164A6Fa1CD8729c8F26be`
 
 ## Installation and usage
 
-1) Navigate to the `/smart_contracts` folder
-2) Run `npm install` to install dependencies, `truffle` must be installed `globally`
-3) Navigate to the parent directory.
-5) Open the index.html file with Chrome.
-6) Navigate to this file `./README.md`.
-7) Use the transaction hash, tokenId, contractAddress, and contract hash provided to look up the star.
+1) Navigate to the `/` parent directory.
+2) Navigate to the parent directory.
+3) Open the index.html file with Chrome.
+4) 
 8) Create your own star by filling out the form.
 
 ## Testing

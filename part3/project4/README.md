@@ -277,6 +277,16 @@ Returns the found block with the provided HEIGHT.
 }
 ```
 
+## Libraries & Frameworks
+
+[Node](https://nodejs.org/en/)
+
+[Express](https://expressjs.com/)
+
+[Level](http://leveldb.org/)
+
+[Bitcoin](https://bitcoin.org/en/)
+
 ## Contribution
 
 All files in this repository are protected under the MIT license, but feel free to contribute, fork, star, or share this application as you see fit.
