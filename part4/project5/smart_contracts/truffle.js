@@ -1,6 +1,6 @@
-let HDWalletProvider = require('truffle-hdwallet-provider');
+const mnemonic = require("./config.js");
 
-var mnemonic = "kiss vintage describe snake barrel dream almost chronic jewel vicious scene base"
+let HDWalletProvider = require('truffle-hdwallet-provider');
 
 module.exports = {
   networks:{
